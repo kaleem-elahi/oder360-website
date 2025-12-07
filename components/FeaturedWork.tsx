@@ -55,7 +55,6 @@ export default function FeaturedWork() {
     <section className="featured-work" ref={sectionRef}>
       <div className="container">
         <div className="section-header fade-in-up">
-          <div className="section-badge">Featured</div>
           <h2 className="section-title">Our Featured Works</h2>
           <p className="section-subtitle">Showcasing excellence in F&B operations and culinary innovation</p>
         </div>

@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function About() {
   return (
     <section className="about" id="about">
@@ -49,9 +51,14 @@ export default function About() {
           <div className="about-visual fade-in-right">
             <div className="profile-card">
               <div className="profile-image">
-                <div className="profile-placeholder">
-                  <span>AR</span>
-                </div>
+                <Image
+                  src="/images/assets/brand/owner.png"
+                  alt="Abdul Rasheed - Founder & CEO"
+                  width={200}
+                  height={200}
+                  className="profile-photo"
+                  priority
+                />
               </div>
               <div className="profile-info">
                 <h3>Abdul Rasheed</h3>
