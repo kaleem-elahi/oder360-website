@@ -20,7 +20,7 @@ const featuredItems = [
     number: '03',
     title: 'Coffee Culture',
     description: 'Premium coffee shop operations and specialty beverage programs',
-    image: '/images/assets/Website/20UR Coffee/DSC00517 copy.jpg',
+    image: '/images/assets/Website/Karakccino/IMG_9372.jpg',
   },
 ]
 

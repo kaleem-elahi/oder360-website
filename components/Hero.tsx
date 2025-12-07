@@ -118,8 +118,8 @@ export default function Hero() {
             </div>
             <div className="hero-image-item item-2">
               <Image
-                src="/images/assets/Website/20UR Coffee/DSC00517 copy.jpg"
-                alt="Coffee"
+                src="/images/assets/Website/Karakccino/IMG_9372.jpg"
+                alt="Specialty Coffee"
                 fill
                 className="hero-grid-image"
                 sizes="(max-width: 768px) 50vw, 33vw"

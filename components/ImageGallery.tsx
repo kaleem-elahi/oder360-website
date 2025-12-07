@@ -18,9 +18,9 @@ const galleryImages: GalleryImage[] = [
     category: 'food',
   },
   {
-    src: '/images/assets/Website/20UR Coffee/DSC00517 copy.jpg',
-    alt: 'Premium coffee preparation',
-    title: 'Coffee Excellence',
+    src: '/images/assets/Website/20UR Coffee/Cheese Croissant 1.jpg',
+    alt: 'Freshly baked pastries',
+    title: 'Artisan Baking',
     category: 'food',
   },
   {
@@ -54,8 +54,8 @@ const galleryImages: GalleryImage[] = [
     category: 'kitchen',
   },
   {
-    src: '/images/assets/Website/Karakccino/DSC_0011.jpg',
-    alt: 'Specialty coffee',
+    src: '/images/assets/Website/Karakccino/IMG_9372.jpg',
+    alt: 'Specialty coffee and food',
     title: 'Specialty Coffee',
     category: 'food',
   },
@@ -139,19 +139,14 @@ export default function ImageGallery() {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="gallery-image-wrapper">
-                <div className="gallery-image-placeholder">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    className="gallery-image"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement
-                      target.style.display = 'none'
-                    }}
-                  />
-                </div>
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="gallery-image"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={index < 4}
+                />
                 <div className="gallery-overlay">
                   <h3>{image.title}</h3>
                   <span className="gallery-category">{image.category}</span>
