@@ -8,19 +8,19 @@ const featuredItems = [
     number: '01',
     title: 'Pizza from Italian Style',
     description: 'Specialized Italian-style pizza with secret recipe sauces and authentic pizza base',
-    image: '/images/featured/pizza-01.jpg',
+    image: '/images/assets/Website/Pizzaty/IMG_7715.jpg',
   },
   {
     number: '02',
     title: 'Culinary Excellence',
     description: 'Fine dining and restaurant operations with focus on quality and customer satisfaction',
-    image: '/images/featured/culinary-02.jpg',
+    image: '/images/assets/Website/Capsica/RISOTTO SALMON.jpg',
   },
   {
     number: '03',
-    title: 'Multi-Concept Operations',
-    description: 'Expert management across various F&B concepts from QSR to fine dining',
-    image: '/images/featured/multi-concept-03.jpg',
+    title: 'Coffee Culture',
+    description: 'Premium coffee shop operations and specialty beverage programs',
+    image: '/images/assets/Website/20UR Coffee/DSC00517 copy.jpg',
   },
 ]
 
@@ -55,7 +55,8 @@ export default function FeaturedWork() {
     <section className="featured-work" ref={sectionRef}>
       <div className="container">
         <div className="section-header fade-in-up">
-          <h2 className="section-title">My Featured Works</h2>
+          <div className="section-badge">Featured</div>
+          <h2 className="section-title">Our Featured Works</h2>
           <p className="section-subtitle">Showcasing excellence in F&B operations and culinary innovation</p>
         </div>
         <div className="featured-grid">
@@ -63,16 +64,7 @@ export default function FeaturedWork() {
             <div key={index} className="featured-item" data-aos="fade-up" data-delay={index * 150}>
               <div className="featured-number">{item.number}</div>
               <div className="featured-image-wrapper">
-                <div 
-                  className="featured-image-placeholder"
-                  style={{
-                    background: index === 0 
-                      ? 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
-                      : index === 1
-                      ? 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
-                      : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-                  }}
-                >
+                <div className="featured-image-placeholder">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -100,6 +92,3 @@ export default function FeaturedWork() {
     </section>
   )
 }
-
-
-

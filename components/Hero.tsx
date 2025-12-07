@@ -51,8 +51,8 @@ export default function Hero() {
       <div className="hero-background">
         <div className="hero-bg-image">
           <Image
-            src="/images/hero-kitchen.jpg"
-            alt="Professional kitchen operations"
+            src="/images/assets/Website/Pizzaty/IMG_7715.jpg"
+            alt="Modern restaurant operations"
             fill
             priority
             className="hero-image"
@@ -62,43 +62,87 @@ export default function Hero() {
           />
         </div>
         <div className="hero-overlay"></div>
+        <div className="hero-gradient"></div>
       </div>
       <div className="hero-content">
         <div className="hero-text fade-in-up">
+          <div className="hero-badge">
+            <span className="badge-dot"></span>
+            Restaurant Operations Platform
+          </div>
           <h1 className="hero-title">
-            <span className="title-line">From Concept</span>
-            <span className="title-line">to Establishment</span>
-            <span className="title-line highlight">12 Years of Excellence</span>
+            <span className="title-line">Transform Your</span>
+            <span className="title-line">Restaurant Operations</span>
+            <span className="title-line highlight">Into Success</span>
           </h1>
           <p className="hero-subtitle">
-            Experienced Restaurant professional with 12 years of significant experience in Restaurant Operations. 
-            Extensive knowledge in leading and managing operations, cost control, and bringing culinary concepts to life.
+            From concept to establishment. We provide end-to-end restaurant operations solutions 
+            that scale your business, optimize costs, and maximize profitability.
           </p>
           <div className="hero-buttons">
             <Link href="#contact" className="btn btn-primary">
-              Get Started
+              Start Your Journey
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </Link>
             <Link href="#services" className="btn btn-secondary">
-              Our Services
+              Explore Services
             </Link>
+          </div>
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <div className="stat-value">12+</div>
+              <div className="stat-label">Years Experience</div>
+            </div>
+            <div className="hero-stat">
+              <div className="stat-value">50+</div>
+              <div className="stat-label">Projects Delivered</div>
+            </div>
+            <div className="hero-stat">
+              <div className="stat-value">100%</div>
+              <div className="stat-label">Client Satisfaction</div>
+            </div>
           </div>
         </div>
         <div className="hero-visual fade-in">
-          <div className="floating-card card-1">
-            <div className="card-icon">👨‍🍳</div>
-            <div className="card-text">Kitchen Excellence</div>
-          </div>
-          <div className="floating-card card-2">
-            <div className="card-icon">🥖</div>
-            <div className="card-text">Artisan Baking</div>
-          </div>
-          <div className="floating-card card-3">
-            <div className="card-icon">📊</div>
-            <div className="card-text">Operations</div>
-          </div>
-          <div className="floating-card card-4">
-            <div className="card-icon">👥</div>
-            <div className="card-text">Team Management</div>
+          <div className="hero-image-grid">
+            <div className="hero-image-item item-1">
+              <Image
+                src="/images/assets/Website/Capsica/PIZZA.jpg"
+                alt="Pizza"
+                fill
+                className="hero-grid-image"
+                sizes="(max-width: 768px) 50vw, 33vw"
+              />
+            </div>
+            <div className="hero-image-item item-2">
+              <Image
+                src="/images/assets/Website/20UR Coffee/DSC00517 copy.jpg"
+                alt="Coffee"
+                fill
+                className="hero-grid-image"
+                sizes="(max-width: 768px) 50vw, 33vw"
+              />
+            </div>
+            <div className="hero-image-item item-3">
+              <Image
+                src="/images/assets/Website/Pizzaty/IMG_0891.jpg"
+                alt="Restaurant"
+                fill
+                className="hero-grid-image"
+                sizes="(max-width: 768px) 50vw, 33vw"
+              />
+            </div>
+            <div className="hero-image-item item-4">
+              <Image
+                src="/images/assets/Website/Capsica/RISOTTO SALMON.jpg"
+                alt="Food"
+                fill
+                className="hero-grid-image"
+                sizes="(max-width: 768px) 50vw, 33vw"
+              />
+            </div>
           </div>
         </div>
       </div>

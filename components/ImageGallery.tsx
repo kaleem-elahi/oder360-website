@@ -7,71 +7,62 @@ interface GalleryImage {
   src: string
   alt: string
   title: string
-  category: 'kitchen' | 'baking' | 'operations'
-  gradient: string
+  category: 'kitchen' | 'food' | 'operations'
 }
 
 const galleryImages: GalleryImage[] = [
   {
-    src: '/images/kitchen-1.jpg',
-    alt: 'Modern commercial kitchen with professional chefs',
-    title: 'Professional Kitchen Operations',
-    category: 'kitchen',
-    gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    src: '/images/assets/Website/Capsica/PIZZA.jpg',
+    alt: 'Artisan pizza preparation',
+    title: 'Artisan Pizza',
+    category: 'food',
   },
   {
-    src: '/images/baking-1.jpg',
-    alt: 'Freshly baked pastries and bread',
-    title: 'Artisan Baking',
-    category: 'baking',
-    gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    src: '/images/assets/Website/20UR Coffee/DSC00517 copy.jpg',
+    alt: 'Premium coffee preparation',
+    title: 'Coffee Excellence',
+    category: 'food',
   },
   {
-    src: '/images/kitchen-2.jpg',
-    alt: 'Chef preparing gourmet dishes',
-    title: 'Culinary Excellence',
-    category: 'kitchen',
-    gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-  },
-  {
-    src: '/images/baking-2.jpg',
-    alt: 'Beautiful cake decoration and desserts',
-    title: 'Dessert Mastery',
-    category: 'baking',
-    gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-  },
-  {
-    src: '/images/operations-1.jpg',
-    alt: 'Team coordination in restaurant kitchen',
-    title: 'Team Coordination',
+    src: '/images/assets/Website/Pizzaty/IMG_0891.jpg',
+    alt: 'Restaurant operations',
+    title: 'Operations Flow',
     category: 'operations',
-    gradient: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
   },
   {
-    src: '/images/baking-3.jpg',
-    alt: 'Fresh bread and pastries display',
-    title: 'Fresh Daily Bakes',
-    category: 'baking',
-    gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+    src: '/images/assets/Website/Capsica/RISOTTO SALMON.jpg',
+    alt: 'Fine dining presentation',
+    title: 'Fine Dining',
+    category: 'food',
   },
   {
-    src: '/images/kitchen-3.jpg',
-    alt: 'Modern kitchen equipment and setup',
-    title: 'State-of-the-Art Equipment',
-    category: 'kitchen',
-    gradient: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
-  },
-  {
-    src: '/images/operations-2.jpg',
-    alt: 'Restaurant operations and service',
-    title: 'Efficient Operations',
+    src: '/images/assets/Website/20UR Coffee/DSC00521 copy.jpg',
+    alt: 'Coffee shop operations',
+    title: 'Cafe Operations',
     category: 'operations',
-    gradient: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+  },
+  {
+    src: '/images/assets/Website/Capsica/PASTA ARRABBIATA AIOLI.jpg',
+    alt: 'Italian pasta dishes',
+    title: 'Italian Cuisine',
+    category: 'food',
+  },
+  {
+    src: '/images/assets/Website/Pizzaty/IMG_0865.jpg',
+    alt: 'Restaurant kitchen',
+    title: 'Kitchen Operations',
+    category: 'kitchen',
+  },
+  {
+    src: '/images/assets/Website/Karakccino/DSC_0011.jpg',
+    alt: 'Specialty coffee',
+    title: 'Specialty Coffee',
+    category: 'food',
   },
 ]
 
 export default function ImageGallery() {
-  const [activeFilter, setActiveFilter] = useState<'all' | 'kitchen' | 'baking' | 'operations'>('all')
+  const [activeFilter, setActiveFilter] = useState<'all' | 'kitchen' | 'food' | 'operations'>('all')
   const sectionRef = useRef<HTMLElement>(null)
 
   const filteredImages =
@@ -107,8 +98,9 @@ export default function ImageGallery() {
     <section className="image-gallery" ref={sectionRef}>
       <div className="container">
         <div className="section-header fade-in-up">
+          <div className="section-badge">Gallery</div>
           <h2 className="section-title">Behind the Scenes</h2>
-          <p className="section-subtitle">Experience the artistry and precision of our F&B operations</p>
+          <p className="section-subtitle">Experience the artistry and precision of our operations</p>
         </div>
 
         <div className="gallery-filters">
@@ -119,16 +111,16 @@ export default function ImageGallery() {
             All
           </button>
           <button
+            className={`filter-btn ${activeFilter === 'food' ? 'active' : ''}`}
+            onClick={() => setActiveFilter('food')}
+          >
+            Food
+          </button>
+          <button
             className={`filter-btn ${activeFilter === 'kitchen' ? 'active' : ''}`}
             onClick={() => setActiveFilter('kitchen')}
           >
             Kitchen
-          </button>
-          <button
-            className={`filter-btn ${activeFilter === 'baking' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('baking')}
-          >
-            Baking
           </button>
           <button
             className={`filter-btn ${activeFilter === 'operations' ? 'active' : ''}`}
@@ -147,10 +139,7 @@ export default function ImageGallery() {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="gallery-image-wrapper">
-                <div 
-                  className="gallery-image-placeholder"
-                  style={{ background: image.gradient }}
-                >
+                <div className="gallery-image-placeholder">
                   <Image
                     src={image.src}
                     alt={image.alt}
@@ -158,7 +147,6 @@ export default function ImageGallery() {
                     className="gallery-image"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     onError={(e) => {
-                      // Fallback to gradient if image fails to load
                       const target = e.target as HTMLImageElement
                       target.style.display = 'none'
                     }}
@@ -176,4 +164,3 @@ export default function ImageGallery() {
     </section>
   )
 }
-
