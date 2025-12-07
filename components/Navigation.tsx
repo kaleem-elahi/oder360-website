@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -23,8 +24,15 @@ export default function Navigation() {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <Link href="/" className="logo-text">
-          O'der<span className="logo-accent">360</span>
+        <Link href="/" className="logo-link">
+          <Image
+            src="/images/assets/brand/logo.png"
+            alt="O'der360 Logo"
+            width={150}
+            height={50}
+            className="logo-image"
+            priority
+          />
         </Link>
         <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <li>

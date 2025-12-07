@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -6,9 +7,15 @@ export default function Footer() {
       <div className="container">
         <div className="footer-content">
           <div className="footer-brand">
-            <h3>
-              O'der<span className="logo-accent">360</span>
-            </h3>
+            <Link href="/" className="footer-logo-link">
+              <Image
+                src="/images/assets/brand/logo.png"
+                alt="O'der360 Logo"
+                width={180}
+                height={60}
+                className="footer-logo-image"
+              />
+            </Link>
             <p>Transforming F&B operations into excellence across the UAE and beyond.</p>
           </div>
           <div className="footer-links">
