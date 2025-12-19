@@ -1,7 +1,7 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect } from 'react'
 
 export default function Hero() {
@@ -32,8 +32,8 @@ export default function Hero() {
       const scrolled = window.pageYOffset
       const heroVisual = document.querySelector('.hero-visual')
       if (heroVisual && scrolled < window.innerHeight) {
-        ;(heroVisual as HTMLElement).style.transform = `translateY(${scrolled * 0.5}px)`
-        ;(heroVisual as HTMLElement).style.opacity = String(1 - scrolled / window.innerHeight)
+        ; (heroVisual as HTMLElement).style.transform = `translateY(${scrolled * 0.5}px)`
+          ; (heroVisual as HTMLElement).style.opacity = String(1 - scrolled / window.innerHeight)
       }
     }
 
@@ -76,14 +76,14 @@ export default function Hero() {
             <span className="title-line highlight">Into Success</span>
           </h1>
           <p className="hero-subtitle">
-            From concept to establishment. We provide end-to-end restaurant operations solutions 
+            From concept to establishment. We provide end-to-end restaurant operations solutions
             that scale your business, optimize costs, and maximize profitability.
           </p>
           <div className="hero-buttons">
             <Link href="#contact" className="btn btn-primary">
               Start Your Journey
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
             <Link href="#services" className="btn btn-secondary">
@@ -96,7 +96,7 @@ export default function Hero() {
               <div className="stat-label">Years Experience</div>
             </div>
             <div className="hero-stat">
-              <div className="stat-value">50+</div>
+              <div className="stat-value">8+</div>
               <div className="stat-label">Projects Delivered</div>
             </div>
             <div className="hero-stat">
@@ -105,7 +105,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="hero-visual fade-in">
+        <div className="hero-visual fade-in" style={{ opacity: 1 }}>
           <div className="hero-image-grid">
             <div className="hero-image-item item-1">
               <Image

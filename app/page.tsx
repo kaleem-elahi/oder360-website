@@ -1,15 +1,15 @@
-import Navigation from '@/components/Navigation'
+import About from '@/components/About'
+import Contact from '@/components/Contact'
+import Expertise from '@/components/Expertise'
+import FeaturedWork from '@/components/FeaturedWork'
+import Footer from '@/components/Footer'
 import Hero from '@/components/Hero'
+import ImageGallery from '@/components/ImageGallery'
+import Navigation from '@/components/Navigation'
+import Portfolio from '@/components/Portfolio'
 import Services from '@/components/Services'
 import Stats from '@/components/Stats'
-import ImageGallery from '@/components/ImageGallery'
-import About from '@/components/About'
-import Expertise from '@/components/Expertise'
-import Portfolio from '@/components/Portfolio'
-import FeaturedWork from '@/components/FeaturedWork'
 import Timeline from '@/components/Timeline'
-import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'Abdul Rasheed - From Concept to Establishment | F&B Operations Expert',
@@ -29,7 +29,7 @@ export default function Home() {
         <Expertise />
         <Portfolio />
         <FeaturedWork />
-        <Timeline />
+        {/* <Timeline /> */}
         <Contact />
       </main>
       <Footer />

@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react'
 const featuredItems = [
   {
     number: '01',
-    title: 'Pizza from Italian Style',
+    title: 'Neapolitan Style Pizza',
     description: 'Specialized Italian-style pizza with secret recipe sauces and authentic pizza base',
     image: '/images/assets/Website/Pizzaty/IMG_7715.jpg',
   },

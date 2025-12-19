@@ -9,6 +9,10 @@ export const metadata: Metadata = {
     default: 'Abdul Rasheed - From Concept to Establishment | F&B Operations Expert',
     template: '%s | Abdul Rasheed'
   },
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
   description: '12 years of Restaurant Operations experience. Expert in menu creation, cost management, brand conceptualization, P&L analysis, and secret recipe development. Projects: Cafe Rashed Ali Pro, Capsica, Gemello, Desert Cafe Suwaiq.',
   keywords: [
     'F&B operations UAE',
@@ -84,8 +88,8 @@ export default function RootLayout({
   return (
     <html lang="en-AE">
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#007AFF" />
         <meta name="geo.region" content="AE" />
