@@ -26,7 +26,7 @@ export default function Navigation() {
       <div className="nav-container">
         <Link href="/" className="logo-link">
           <Image
-            src="/images/assets/brand/logo.png"
+            src="/images/assets/brand/image.png"
             alt="O'der360 Logo"
             width={150}
             height={50}
@@ -56,7 +56,7 @@ export default function Navigation() {
             </Link>
           </li>
           <li>
-            <Link href="#contact" className="nav-link" onClick={handleLinkClick}>
+            <Link href="#contact" className="nav-link nav-cta" onClick={handleLinkClick}>
               Contact
             </Link>
           </li>

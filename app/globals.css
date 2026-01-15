@@ -54,17 +54,24 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
-    transition: var(--transition);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.2rem 0;
 }
 
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: var(--shadow-sm);
+    /* background: rgba(255, 255, 255, 0.85); */
+    background-color: rgb(250 228 207);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .nav-container {
@@ -103,40 +110,90 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-primary);
+    color: white;
+    /* Default to white for transparent header on dark hero */
     font-weight: 500;
     font-size: 0.95rem;
+    padding: 0.5rem 0;
     transition: var(--transition);
     position: relative;
+    opacity: 0.9;
+}
+
+.navbar.scrolled .nav-link {
+    color: var(--text-primary);
+    /* Switch to black on white background */
+}
+
+/* Ensure mobile menu links are dark since background is white */
+@media (max-width: 968px) {
+    .nav-link {
+        color: var(--text-primary);
+    }
+}
+
+.nav-link:hover {
+    opacity: 1;
+    color: var(--primary-color);
 }
 
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -4px;
+    bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
     background: var(--primary-color);
     transition: var(--transition);
+    border-radius: 2px;
 }
 
 .nav-link:hover::after {
     width: 100%;
 }
 
+.nav-cta {
+    background: var(--primary-color);
+    color: white !important;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    opacity: 1;
+    box-shadow: 0 4px 10px rgba(255, 107, 53, 0.2);
+    transition: all 0.3s ease;
+}
+
+.nav-cta::after {
+    display: none;
+}
+
+.nav-cta:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 107, 53, 0.3);
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
-    gap: 4px;
+    gap: 5px;
+    padding: 5px;
+    z-index: 10;
 }
 
 .hamburger span {
-    width: 25px;
+    width: 24px;
     height: 2px;
-    background: var(--text-primary);
+    background: white;
+    /* White initially */
     transition: var(--transition);
+    border-radius: 2px;
+}
+
+.navbar.scrolled .hamburger span {
+    background: var(--text-primary);
+    /* Dark when scrolled */
 }
 
 /* Hero Section */
@@ -1715,12 +1772,15 @@ body {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background: white;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         width: 100%;
         text-align: center;
         transition: 0.3s;
-        box-shadow: var(--shadow-md);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         padding: 2rem 0;
+        gap: 1.5rem;
     }
 
     .nav-menu.active {
