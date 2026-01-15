@@ -46,13 +46,18 @@ export default function Navigation() {
             </Link>
           </li>
           <li>
-            <Link href="#about" className="nav-link" onClick={handleLinkClick}>
-              About
+            <Link href="#portfolio" className="nav-link" onClick={handleLinkClick}>
+              Portfolio
             </Link>
           </li>
           <li>
-            <Link href="#portfolio" className="nav-link" onClick={handleLinkClick}>
-              Portfolio
+            <Link href="#expertise" className="nav-link" onClick={handleLinkClick}>
+              Expertise
+            </Link>
+          </li>
+          <li>
+            <Link href="#about" className="nav-link" onClick={handleLinkClick}>
+              About
             </Link>
           </li>
           <li>

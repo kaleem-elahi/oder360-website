@@ -25,11 +25,11 @@ export default function Home() {
         <Services />
         <Stats />
         <ImageGallery />
-        <About />
-        <Expertise />
         <Portfolio />
+        <Expertise />
         <FeaturedWork />
         {/* <Timeline /> */}
+        <About />
         <Contact />
       </main>
       <Footer />

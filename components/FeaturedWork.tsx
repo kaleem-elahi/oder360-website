@@ -1,23 +1,24 @@
 'use client'
 
+import { ChefHat, Coffee, Pizza } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
 
 const featuredItems = [
   {
-    number: '01',
+    icon: <Pizza className="w-10 h-10" />,
     title: 'Neapolitan Style Pizza',
     description: 'Specialized Italian-style pizza with secret recipe sauces and authentic pizza base',
     image: '/images/assets/Website/Pizzaty/IMG_7715.jpg',
   },
   {
-    number: '02',
+    icon: <ChefHat className="w-10 h-10" />,
     title: 'Culinary Excellence',
     description: 'Fine dining and restaurant operations with focus on quality and customer satisfaction',
     image: '/images/assets/Website/Capsica/RISOTTO SALMON.jpg',
   },
   {
-    number: '03',
+    icon: <Coffee className="w-10 h-10" />,
     title: 'Coffee Culture',
     description: 'Premium coffee shop operations and specialty beverage programs',
     image: '/images/assets/Website/Karakccino/IMG_9372.jpg',
@@ -52,7 +53,7 @@ export default function FeaturedWork() {
   }, [])
 
   return (
-    <section className="featured-work" ref={sectionRef}>
+    <section className="featured-work" ref={sectionRef} id="featured-work">
       <div className="container">
         <div className="section-header fade-in-up">
           <h2 className="section-title">Our Featured Works</h2>
@@ -61,7 +62,7 @@ export default function FeaturedWork() {
         <div className="featured-grid">
           {featuredItems.map((item, index) => (
             <div key={index} className="featured-item" data-aos="fade-up" data-delay={index * 150}>
-              <div className="featured-number">{item.number}</div>
+              <div className="featured-bg-icon">{item.icon}</div>
               <div className="featured-image-wrapper">
                 <div className="featured-image-placeholder">
                   <Image
@@ -83,6 +84,9 @@ export default function FeaturedWork() {
               <div className="featured-content">
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
+                <div className="featured-link">
+                  View Project <span>→</span>
+                </div>
               </div>
             </div>
           ))}
