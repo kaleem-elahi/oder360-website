@@ -1,3 +1,29 @@
+@font-face {
+    font-family: 'Basera';
+    src: url('/images/assets/brand/basera.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.hero-title,
+.section-title,
+.service-title,
+.expertise-title,
+.featured-content h3,
+.portfolio-content h3,
+.profile-title h3,
+.stat-number,
+.stat-value {
+    font-family: 'Basera', serif;
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
