@@ -12,49 +12,49 @@ interface GalleryImage {
 
 const galleryImages: GalleryImage[] = [
   {
-    src: '/images/assets/Website/Capsica/PIZZA.jpg',
+    src: '/images/assets/Website/Capsica/pizza.jpg',
     alt: 'Artisan pizza preparation',
     title: 'Artisan Pizza',
     category: 'food',
   },
   {
-    src: '/images/assets/Website/20UR Coffee/Cheese Croissant 1.jpg',
+    src: '/images/assets/Website/20UR Coffee/cheese-croissant-1.jpg',
     alt: 'Freshly baked pastries',
     title: 'Artisan Baking',
     category: 'food',
   },
   {
-    src: '/images/assets/Website/Pizzaty/IMG_0891.jpg',
+    src: '/images/assets/Website/Pizzaty/restaurant-0891.jpg',
     alt: 'Restaurant operations',
     title: 'Operations Flow',
     category: 'operations',
   },
   {
-    src: '/images/assets/Website/Capsica/RISOTTO SALMON.jpg',
+    src: '/images/assets/Website/Capsica/risotto-salmon.jpg',
     alt: 'Fine dining presentation',
     title: 'Fine Dining',
     category: 'food',
   },
   {
-    src: '/images/assets/Website/20UR Coffee/DSC00521 copy.jpg',
+    src: '/images/assets/Website/20UR Coffee/cafe00521.jpg',
     alt: 'Coffee shop operations',
     title: 'Cafe Operations',
     category: 'operations',
   },
   {
-    src: '/images/assets/Website/Capsica/PASTA ARRABBIATA AIOLI.jpg',
+    src: '/images/assets/Website/Capsica/pasta-arrabbiata-aioli.jpg',
     alt: 'Italian pasta dishes',
     title: 'Italian Cuisine',
     category: 'food',
   },
   {
-    src: '/images/assets/Website/Pizzaty/IMG_0865.jpg',
+    src: '/images/assets/Website/Pizzaty/restaurant-0865.jpg',
     alt: 'Restaurant kitchen',
     title: 'Kitchen Operations',
     category: 'kitchen',
   },
   {
-    src: '/images/assets/Website/Karakccino/IMG_9372.jpg',
+    src: '/images/assets/Website/Karakccino/restaurant-9372.jpg',
     alt: 'Specialty coffee and food',
     title: 'Specialty Coffee',
     category: 'food',

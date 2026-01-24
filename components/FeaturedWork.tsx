@@ -9,19 +9,19 @@ const featuredItems = [
     icon: <Pizza className="w-10 h-10" />,
     title: 'Neapolitan Style Pizza',
     description: 'Specialized Italian-style pizza with secret recipe sauces and authentic pizza base',
-    image: '/images/assets/Website/Pizzaty/IMG_7715.jpg',
+    image: '/images/assets/Website/Pizzaty/restaurant-7715.jpg',
   },
   {
     icon: <ChefHat className="w-10 h-10" />,
     title: 'Culinary Excellence',
     description: 'Fine dining and restaurant operations with focus on quality and customer satisfaction',
-    image: '/images/assets/Website/Capsica/RISOTTO SALMON.jpg',
+    image: '/images/assets/Website/Capsica/risotto-salmon.jpg',
   },
   {
     icon: <Coffee className="w-10 h-10" />,
     title: 'Coffee Culture',
     description: 'Premium coffee shop operations and specialty beverage programs',
-    image: '/images/assets/Website/Karakccino/IMG_9372.jpg',
+    image: '/images/assets/Website/Karakccino/restaurant-9372.jpg',
   },
 ]
 

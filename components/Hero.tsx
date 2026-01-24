@@ -51,7 +51,7 @@ export default function Hero() {
       <div className="hero-background">
         <div className="hero-bg-image">
           <Image
-            src="/images/assets/Website/Pizzaty/IMG_7715.jpg"
+            src="/images/assets/Website/Pizzaty/restaurant-7715.jpg"
             alt="Modern restaurant operations"
             fill
             priority
@@ -109,7 +109,7 @@ export default function Hero() {
           <div className="hero-image-grid">
             <div className="hero-image-item item-1">
               <Image
-                src="/images/assets/Website/Capsica/PIZZA.jpg"
+                src="/images/assets/Website/Capsica/pizza.jpg"
                 alt="Pizza"
                 fill
                 className="hero-grid-image"
@@ -118,7 +118,7 @@ export default function Hero() {
             </div>
             <div className="hero-image-item item-2">
               <Image
-                src="/images/assets/Website/Karakccino/IMG_9372.jpg"
+                src="/images/assets/Website/Karakccino/restaurant-9372.jpg"
                 alt="Specialty Coffee"
                 fill
                 className="hero-grid-image"
@@ -127,7 +127,7 @@ export default function Hero() {
             </div>
             <div className="hero-image-item item-3">
               <Image
-                src="/images/assets/Website/Pizzaty/IMG_0891.jpg"
+                src="/images/assets/Website/Pizzaty/restaurant-0891.jpg"
                 alt="Restaurant"
                 fill
                 className="hero-grid-image"
@@ -136,7 +136,7 @@ export default function Hero() {
             </div>
             <div className="hero-image-item item-4">
               <Image
-                src="/images/assets/Website/Capsica/RISOTTO SALMON.jpg"
+                src="/images/assets/Website/Capsica/risotto-salmon.jpg"
                 alt="Food"
                 fill
                 className="hero-grid-image"
