@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
     // Recipient email (Abdul Rasheed's email)
     const recipientEmail = 'itsmeabdulrasheed@gmail.com'
-    const subject = `New Contact Form Submission from ${name} - O'der360`
+    const subject = `New Contact Form Submission from ${name} - Oder360`
 
     // Create Nodemailer transporter with Gmail SMTP
     const transporter = nodemailer.createTransport({
@@ -139,7 +139,7 @@ export async function POST(request: NextRequest) {
         <body>
           <div class="header">
             <h2>📧 New Contact Form Submission</h2>
-            <p>O'der360 Website</p>
+            <p>Oder360 Website</p>
           </div>
           <div class="content">
             <div class="field">
@@ -169,7 +169,7 @@ export async function POST(request: NextRequest) {
             </div>
           </div>
           <div class="footer">
-              <p>This email was sent from the O'der360 website contact form.</p>
+              <p>This email was sent from the Oder360 website contact form.</p>
             <p style="margin-top: 5px;">Timestamp: ${new Date().toLocaleString('en-AE', { timeZone: 'Asia/Dubai' })}</p>
           </div>
         </body>
@@ -178,7 +178,7 @@ export async function POST(request: NextRequest) {
 
     // Plain text version for email clients that don't support HTML
     const textBody = `
-New Contact Form Submission - O'der360
+New Contact Form Submission - Oder360
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -191,7 +191,7 @@ ${message}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-This email was sent from the O'der360 website contact form.
+This email was sent from the Oder360 website contact form.
 Reply directly to this email to respond to ${name} at ${email}
 
 Timestamp: ${new Date().toLocaleString('en-AE', { timeZone: 'Asia/Dubai' })}
@@ -200,7 +200,7 @@ Timestamp: ${new Date().toLocaleString('en-AE', { timeZone: 'Asia/Dubai' })}
     // Send email using Nodemailer
     const mailOptions = {
       from: {
-        name: 'O\'der360 Contact Form',
+        name: 'Oder360 Contact Form',
         address: process.env.GMAIL_USER,
       },
       to: recipientEmail,
@@ -220,15 +220,15 @@ Timestamp: ${new Date().toLocaleString('en-AE', { timeZone: 'Asia/Dubai' })}
 
     // Return success response
     return NextResponse.json(
-      { 
-        success: true, 
-        message: 'Thank you! Your message has been sent. We\'ll get back to you soon.' 
+      {
+        success: true,
+        message: 'Thank you! Your message has been sent. We\'ll get back to you soon.'
       },
       { status: 200 }
     )
   } catch (error) {
     console.error('Error processing contact form:', error)
-    
+
     // More specific error messages
     if (error instanceof Error) {
       if (error.message.includes('Invalid login')) {
@@ -244,7 +244,7 @@ Timestamp: ${new Date().toLocaleString('en-AE', { timeZone: 'Asia/Dubai' })}
         )
       }
     }
-    
+
     return NextResponse.json(
       { error: 'Failed to send message. Please try again later.' },
       { status: 500 }

@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Footer() {
   return (
@@ -10,7 +10,7 @@ export default function Footer() {
             <Link href="/" className="footer-logo-link">
               <Image
                 src="/images/assets/brand/logo.png"
-                alt="O'der360 Logo"
+                alt="Oder360 Logo"
                 width={180}
                 height={60}
                 className="footer-logo-image"
@@ -53,7 +53,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} O'der360. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Oder360. All rights reserved.</p>
         </div>
       </div>
     </footer>

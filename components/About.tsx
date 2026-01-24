@@ -6,9 +6,9 @@ export default function About() {
       <div className="container">
         <div className="about-content">
           <div className="about-text fade-in-left">
-            <h2 className="section-title">About O'der360</h2>
+            <h2 className="section-title">About Oder360</h2>
             <p className="about-description">
-              O'der360 is a leading F&B operations consultancy founded by <strong>Abdul Rasheed</strong>,
+              Oder360 is a leading F&B operations consultancy founded by <strong>Abdul Rasheed</strong>,
               an experienced Restaurant professional with 12 years of significant experience in Restaurant Operations.
               Extensive knowledge in leading and managing operations and cost control across the UAE and Oman.
             </p>

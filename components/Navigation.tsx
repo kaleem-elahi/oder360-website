@@ -27,7 +27,7 @@ export default function Navigation() {
         <Link href="/" className="logo-link">
           <Image
             src="/images/assets/brand/image.png"
-            alt="O'der360 Logo"
+            alt="Oder360 Logo"
             width={150}
             height={50}
             className="logo-image"

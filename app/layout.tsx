@@ -6,8 +6,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Abdul Rasheed - From Concept to Establishment | F&B Operations Expert',
-    template: '%s | Abdul Rasheed'
+    default: 'Oder360 - From Concept to Establishment | F&B Operations Expert',
+    template: '%s | Oder360'
   },
   icons: {
     icon: '/favicon.png',
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
     'restaurant pre-opening UAE'
   ],
   authors: [{ name: 'Abdul Rasheed', url: 'https://www.linkedin.com/in/abdulrasheed547454416' }],
-  creator: 'O\'der360',
-  publisher: 'O\'der360',
+  creator: 'Oder360',
+  publisher: 'Oder360',
   formatDetection: {
     email: false,
     address: false,
@@ -44,21 +44,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_AE',
     url: 'https://oder360.ae',
-    siteName: 'O\'der360',
-    title: 'O\'der360 - F&B Operations Excellence for UAE Brand Managers',
+    siteName: 'Oder360',
+    title: 'Oder360 - F&B Operations Excellence for UAE Brand Managers',
     description: 'Leading F&B operations consultancy in UAE. Expert services for brand managers with proven track record of increasing profitability and operational efficiency.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'O\'der360 - F&B Operations Excellence',
+        alt: 'Oder360 - F&B Operations Excellence',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'O\'der360 - F&B Operations Excellence for UAE Brand Managers',
+    title: 'Oder360 - F&B Operations Excellence for UAE Brand Managers',
     description: 'Leading F&B operations consultancy in UAE. Expert services for brand managers.',
     images: ['/og-image.jpg'],
   },
@@ -105,7 +105,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'ProfessionalService',
-              name: 'O\'der360',
+              name: 'Oder360',
               description: 'Leading F&B operations consultancy in UAE specializing in restaurant management, staff management, financial oversight, and franchise development.',
               url: 'https://oder360.ae',
               logo: 'https://oder360.ae/logo.png',
