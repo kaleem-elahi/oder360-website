@@ -78,6 +78,38 @@ const portfolioItems = [
     },
   },
   {
+    title: 'Hael',
+    subtitle: 'Specialty Coffee & Flagship Outlets',
+    description: 'Strategic expansion and operations management for flagship coffee outlets, achieving substantial revenue growth.',
+    image: '/images/assets/Website/Hael/WhatsApp Image 2025-12-09 at 18.52.22 (2).jpeg',
+    logo: null,
+    category: 'Cafe',
+    images: [
+      '/images/assets/Website/Hael/WhatsApp Image 2025-12-09 at 18.52.22 (2).jpeg',
+      '/images/assets/Website/Hael/WhatsApp Image 2025-12-09 at 18.52.19 (2).jpeg',
+      '/images/assets/Website/Hael/WhatsApp Image 2025-12-09 at 18.52.19 (3).jpeg',
+      '/images/assets/Website/Hael/WhatsApp Image 2025-12-09 at 18.52.21 (1).jpeg',
+      '/images/assets/Website/Hael/WhatsApp Image 2025-12-09 at 18.52.23 (1).jpeg',
+    ],
+    businessDetails: {
+      location: 'Abu Dhabi, UAE',
+      type: 'Specialty Coffee Shop',
+      achievements: [
+        'Opened 3+ Hael flagship outlets successfully',
+        'Achieved 35% revenue increase through operational excellence',
+        'Optimized flagship store workflows and service standards',
+        'Enhanced brand presence in the specialty coffee market',
+      ],
+      services: [
+        'Operations Management',
+        'Flagship Setup & Launch',
+        'Staff Training & Development',
+        'Process Optimization',
+        'Quality Control',
+      ],
+    },
+  },
+  {
     title: 'Capsica',
     subtitle: 'Italian Fine Dining',
     description: 'Fast-casual F&B brand management with focus on operational efficiency and cost control.',
@@ -270,7 +302,7 @@ export default function Portfolio() {
                     <p>{item.subtitle}</p>
                     <div className="portfolio-click-hint">
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M15 10l-5 5-5-5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M15 10l-5 5-5-5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                       Click to view details
                     </div>
