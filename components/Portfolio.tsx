@@ -10,7 +10,7 @@ const portfolioItems = [
     subtitle: 'Italian Pizza Restaurant',
     description: 'Complete restaurant operations management including menu development, kitchen design, and staff training. Achieved 20% MoM growth.',
     image: '/images/assets/Website/Pizzaty/restaurant-7715.jpg',
-    logo: '/images/assets/Website/Pizzaty/pizzaty-logo.png',
+    logo: '/images/assets/Website/Pizzaty/Pizzaty LOGO.png',
     category: 'QSR',
     images: [
       '/images/assets/Website/Pizzaty/restaurant-7715.jpg',
@@ -44,7 +44,7 @@ const portfolioItems = [
     subtitle: 'Premium Coffee Shop',
     description: 'KSA to UAE expansion with comprehensive operations setup. Achieved 90%+ customer satisfaction.',
     image: '/images/assets/Website/20UR Coffee/cafe00517.jpg',
-    logo: '/images/assets/Website/20UR Coffee/20urlogo-png.png',
+    logo: '/images/assets/Website/20UR Coffee/20_ur_LOGO-png.png',
     category: 'Cafe',
     images: [
       '/images/assets/Website/20UR Coffee/cafe00517.jpg',
@@ -114,7 +114,7 @@ const portfolioItems = [
     subtitle: 'Italian Fine Dining',
     description: 'Fast-casual F&B brand management with focus on operational efficiency and cost control.',
     image: '/images/assets/Website/Capsica/pizza.jpg',
-    logo: '/images/assets/Website/Capsica/capsica-logo.png',
+    logo: '/images/assets/Website/Capsica/Capsica Logo Copy.png',
     category: 'Fine Dining',
     images: [
       '/images/assets/Website/Capsica/pizza.jpg',
@@ -150,7 +150,7 @@ const portfolioItems = [
     subtitle: 'Multi-Concept Restaurant',
     description: 'Multi-branch operations management with consistent quality standards and profitability optimization.',
     image: '/images/assets/Website/Gemello/1-3.jpg',
-    logo: '/images/assets/Website/Gemello/gemello-logo-png.png',
+    logo: '/images/assets/Website/Gemello/Gemello Logo png.png',
     category: 'Multi-Concept',
     images: [
       '/images/assets/Website/Gemello/1-3.jpg',

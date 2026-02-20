@@ -57,98 +57,104 @@ export default function Hero() {
             priority
             className="hero-image"
             sizes="100vw"
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
           />
         </div>
-        <div className="hero-overlay"></div>
-        <div className="hero-gradient"></div>
+        <div className="hero-overlay-luxury"></div>
       </div>
+
       <div className="hero-content">
-        <div className="hero-text fade-in-up">
-          <div className="hero-badge">
-            <span className="badge-dot"></span>
-            Restaurant Operations Platform
-          </div>
-          <h1 className="hero-title">
-            <span className="title-line">Transform Your</span>
-            <span className="title-line">Restaurant Operations</span>
-            <span className="title-line highlight">Into Success</span>
+        <div className="hero-text-container">
+
+          <h1 className="hero-title-modern">
+            <span className="text-reveal">Transform Your</span>
+            <span className="text-reveal delay-1">F&B Concept Into a</span>
+            <span className="text-reveal highlight-gradient delay-2">Profitable Business</span>
           </h1>
-          <p className="hero-subtitle">
-            From concept to establishment. We provide end-to-end restaurant operations solutions
-            that scale your business, optimize costs, and maximize profitability.
+
+          <p className="hero-subtitle-modern fade-in-up delay-3">
+            We help investors, entrepreneurs, and food brands launch and grow restaurants,
+            food trucks, specialty cafés, kiosks, and franchise concepts
+            <span className="text-italic">“from concept development to profitable operations.”</span>
           </p>
-          <div className="hero-buttons">
-            <Link href="#contact" className="btn btn-primary">
+
+          <div className="hero-workflow hero-badge-modern fade-in-up delay-4">
+            <span className="workflow-item">Strategy</span>
+            <span className="workflow-arrow">→</span>
+            <span className="workflow-item">Systems</span>
+            <span className="workflow-arrow">→</span>
+            <span className="workflow-item">Execution</span>
+          </div>
+
+          <p className="hero-description-modern fade-in-up delay-5">
+            Backed by strong financial, accounting, and compliance expertise to reduce risk, control costs, and ensure sustainable growth.
+          </p>
+
+          <div className="hero-actions fade-in-up delay-6">
+            <Link href="#contact" className="btn-modern btn-primary-modern">
               Start Your Journey
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <span className="btn-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
             </Link>
-            <Link href="#services" className="btn btn-secondary">
+            <Link href="#services" className="btn-modern btn-outline-modern">
               Explore Services
             </Link>
           </div>
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <div className="stat-value">12+</div>
-              <div className="stat-label">Years Experience</div>
+
+          <div className="hero-stats-modern fade-in-up delay-7">
+            <div className="stat-glass-item">
+              <span className="stat-number">12+</span>
+              <span className="stat-label">Years Experience</span>
             </div>
-            <div className="hero-stat">
-              <div className="stat-value">8+</div>
-              <div className="stat-label">Projects Delivered</div>
+            <div className="divider-line"></div>
+            <div className="stat-glass-item">
+              <span className="stat-number">8+</span>
+              <span className="stat-label">Projects Delivered</span>
             </div>
-            <div className="hero-stat">
-              <div className="stat-value">100%</div>
-              <div className="stat-label">Client Satisfaction</div>
+            <div className="divider-line"></div>
+            <div className="stat-glass-item">
+              <span className="stat-number">100%</span>
+              <span className="stat-label">Client Success</span>
             </div>
           </div>
         </div>
-        <div className="hero-visual fade-in" style={{ opacity: 1 }}>
-          <div className="hero-image-grid">
-            <div className="hero-image-item item-1">
+
+        <div className="hero-visual-modern">
+          <div className="image-showcase-container">
+            <div className="main-visual-card">
               <Image
-                src="/images/assets/Website/Capsica/pizza.jpg"
-                alt="Pizza"
+                src="/images/assets/Website/Hael/restaurant-2025-12-09-18.52.19-3.jpg"
+                alt="Restaurant Interior"
                 fill
-                className="hero-grid-image"
-                sizes="(max-width: 768px) 50vw, 33vw"
+                className="visual-image-main"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
+              <div className="glass-overlay-card">
+                <div className="card-info">
+                  <span className="card-tag">Concept to Reality</span>
+                  <p className="card-msg">Scale Your Vision</p>
+                </div>
+              </div>
             </div>
-            <div className="hero-image-item item-2">
-              <Image
-                src="/images/assets/Website/Karakccino/restaurant-9372.jpg"
-                alt="Specialty Coffee"
-                fill
-                className="hero-grid-image"
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-            </div>
-            <div className="hero-image-item item-3">
-              <Image
-                src="/images/assets/Website/Pizzaty/restaurant-0891.jpg"
-                alt="Restaurant"
-                fill
-                className="hero-grid-image"
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-            </div>
-            <div className="hero-image-item item-4">
-              <Image
-                src="/images/assets/Website/Capsica/risotto-salmon.jpg"
-                alt="Food"
-                fill
-                className="hero-grid-image"
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
+
+            <div className="floating-elements">
+              <div className="floating-img item-1">
+                <Image src="/images/assets/Website/Capsica/pizza.jpg" alt="Pizza" fill className="visual-image" />
+              </div>
+              <div className="floating-img item-2">
+                <Image src="/images/assets/Website/Karakccino/restaurant-9372.jpg" alt="Coffee" fill className="visual-image" />
+              </div>
+              <div className="floating-img item-3">
+                <Image src="/images/assets/Website/Capsica/risotto-salmon.jpg" alt="Salmon" fill className="visual-image" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="scroll-indicator">
-        <div className="mouse"></div>
-      </div>
+
     </section>
+
   )
 }

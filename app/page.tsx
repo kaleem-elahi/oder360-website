@@ -5,6 +5,7 @@ import FeaturedWork from '@/components/FeaturedWork'
 import Footer from '@/components/Footer'
 import Hero from '@/components/Hero'
 import ImageGallery from '@/components/ImageGallery'
+import LogoTicker from '@/components/LogoTicker'
 import Navigation from '@/components/Navigation'
 import Portfolio from '@/components/Portfolio'
 import Services from '@/components/Services'
@@ -22,12 +23,13 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
+        <LogoTicker />
         <Services />
         <Stats />
         <ImageGallery />
         <Portfolio />
         <Expertise />
-        <FeaturedWork />
+        {/* <FeaturedWork /> */}
         {/* <Timeline /> */}
         <About />
         <Contact />
