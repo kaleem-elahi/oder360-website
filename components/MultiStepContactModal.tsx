@@ -31,6 +31,7 @@ export default function MultiStepContactModal() {
         name: '',
         email: '',
         businessAge: '',
+        serviceOfInterest: '',
         message: '',
         contactPreference: '',
         phone: ''
@@ -46,7 +47,7 @@ export default function MultiStepContactModal() {
             setStep(0)
             setIsSuccess(false)
             setFormData({
-                name: '', email: '', businessAge: '', message: '', contactPreference: '', phone: ''
+                name: '', email: '', businessAge: '', serviceOfInterest: '', message: '', contactPreference: '', phone: ''
             })
             // Lock body scroll
             document.body.style.overflow = 'hidden'
@@ -62,7 +63,7 @@ export default function MultiStepContactModal() {
     }
 
     const handleNext = () => {
-        if (step < 4) {
+        if (step < 5) {
             setStep(s => s + 1)
             setErrorMsg('')
         } else {
@@ -78,8 +79,8 @@ export default function MultiStepContactModal() {
         if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
             e.preventDefault()
             handleNext()
-        } else if (e.key === 'Enter' && step !== 2) {
-            // Allow standard enter to proceed except on textarea (which is now step 2)
+        } else if (e.key === 'Enter' && step !== 3) {
+            // Allow standard enter to proceed except on textarea (which is now step 3)
             e.preventDefault()
             handleNext()
         }
@@ -126,7 +127,7 @@ export default function MultiStepContactModal() {
 
             {/* Progress Bar */}
             <div className="typeform-progress">
-                <div className="typeform-progress-bar" style={{ width: `${((step + 1) / 5) * 100}%` }} />
+                <div className="typeform-progress-bar" style={{ width: `${((step + 1) / 6) * 100}%` }} />
             </div>
 
             <button className="typeform-close" onClick={closeModal} aria-label="Close modal">
@@ -186,9 +187,53 @@ export default function MultiStepContactModal() {
                             </div>
                         </div>
 
-                        {/* STEP 2: DETAILS */}
+                        {/* STEP 2: SERVICE OF INTEREST */}
                         <div className={`typeform-slide ${step === 2 ? 'active' : step < 2 ? 'prev' : 'next'}`}>
                             <div className="typeform-question-number">3 &rarr;</div>
+                            <h2 className="typeform-title">Which service would you like to know more about...</h2>
+                            <div className="service-grid">
+                                <button
+                                    className={`service-card-btn ${formData.serviceOfInterest === 'Open a New Concept' ? 'selected' : ''}`}
+                                    onClick={() => { setFormData({ ...formData, serviceOfInterest: 'Open a New Concept' }); handleNext() }}
+                                >
+                                    <div className="service-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path><polygon points="12 2 15 5 9 5 12 2"></polygon></svg>
+                                    </div>
+                                    <span className="service-name">Open a New Concept</span>
+                                </button>
+                                <button
+                                    className={`service-card-btn ${formData.serviceOfInterest === 'Account Audit (Financial Management)' ? 'selected' : ''}`}
+                                    onClick={() => { setFormData({ ...formData, serviceOfInterest: 'Account Audit (Financial Management)' }); handleNext() }}
+                                >
+                                    <div className="service-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                                    </div>
+                                    <span className="service-name">Account Audit (Financial Management)</span>
+                                </button>
+                                <button
+                                    className={`service-card-btn ${formData.serviceOfInterest === 'Franchise Development & Expansion' ? 'selected' : ''}`}
+                                    onClick={() => { setFormData({ ...formData, serviceOfInterest: 'Franchise Development & Expansion' }); handleNext() }}
+                                >
+                                    <div className="service-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                                    </div>
+                                    <span className="service-name">Franchise Development & Expansion</span>
+                                </button>
+                                <button
+                                    className={`service-card-btn ${formData.serviceOfInterest === 'General Inquiry' ? 'selected' : ''}`}
+                                    onClick={() => { setFormData({ ...formData, serviceOfInterest: 'General Inquiry' }); handleNext() }}
+                                >
+                                    <div className="service-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                    </div>
+                                    <span className="service-name">General Inquiry</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* STEP 3: DETAILS */}
+                        <div className={`typeform-slide ${step === 3 ? 'active' : step < 3 ? 'prev' : 'next'}`}>
+                            <div className="typeform-question-number">4 &rarr;</div>
                             <h2 className="typeform-title">Please share more details about your inquiry. *</h2>
                             <p className="typeform-subtitle">You can share the website of your company, or share the service you need for your business idea. (Ctrl+Enter to proceed)</p>
 
@@ -227,9 +272,9 @@ export default function MultiStepContactModal() {
                             </button>
                         </div>
 
-                        {/* STEP 3: CONTACT PREF */}
-                        <div className={`typeform-slide ${step === 3 ? 'active' : step < 3 ? 'prev' : 'next'}`}>
-                            <div className="typeform-question-number">4 &rarr;</div>
+                        {/* STEP 4: CONTACT PREF */}
+                        <div className={`typeform-slide ${step === 4 ? 'active' : step < 4 ? 'prev' : 'next'}`}>
+                            <div className="typeform-question-number">5 &rarr;</div>
                             <h2 className="typeform-title">What is the best way to contact you? *</h2>
                             <div className="typeform-options">
                                 <button
@@ -249,9 +294,9 @@ export default function MultiStepContactModal() {
                             </div>
                         </div>
 
-                        {/* STEP 4: CONTACT DETAIL (PHONE OR EMAIL) & SUBMIT */}
-                        <div className={`typeform-slide ${step === 4 ? 'active' : step < 4 ? 'prev' : 'next'}`}>
-                            <div className="typeform-question-number">5 &rarr;</div>
+                        {/* STEP 5: CONTACT DETAIL (PHONE OR EMAIL) & SUBMIT */}
+                        <div className={`typeform-slide ${step === 5 ? 'active' : step < 5 ? 'prev' : 'next'}`}>
+                            <div className="typeform-question-number">6 &rarr;</div>
                             <h2 className="typeform-title">
                                 {formData.contactPreference === 'Call me'
                                     ? "Of course. What is your phone number? *"
