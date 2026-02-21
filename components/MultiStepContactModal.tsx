@@ -10,7 +10,16 @@ const BG_IMAGES = [
     '/images/assets/Website/Hael/restaurant-2025-12-09-18.52.22-2.jpg',
     '/images/assets/Website/Karakccino/cafe-0016.jpg',
     '/images/assets/Website/Pizzaty/restaurant-0891.jpg',
-    '/images/assets/Website/20UR Coffee/cafe00520.jpg',
+]
+
+const DISCUSSION_STARTERS = [
+    { label: "Full Operational Review", text: "We operate a [concept type] restaurant in [Emirate] with [number] outlet(s).\nWe are currently facing challenges in [margin control / labor efficiency / inventory management / SOP consistency].\nWe would like to request a full operational audit and improvement roadmap." },
+    { label: "Improve Profitability", text: "Our restaurant generates approximately [monthly revenue range].\nWe are experiencing pressure on margins due to food cost, labor, or overhead inefficiencies.\nWe need structured financial oversight, P&L clarity, and cost optimization support." },
+    { label: "Pre-Opening Support", text: "We are planning to launch a [concept type] restaurant in the UAE.\nWe require support with feasibility assessment, SOP development, compliance readiness, and structured pre-opening execution." },
+    { label: "Menu Optimization", text: "We would like to improve our menu profitability and pricing strategy.\nWe need margin analysis, sales mix insights, and contribution mapping to increase average check and overall revenue performance." },
+    { label: "Workforce Optimization", text: "We are looking to optimize manpower structure, KPI tracking, and staff productivity.\nOur goal is to reduce labor cost while maintaining service consistency across [number] outlet(s)." },
+    { label: "Franchise Development", text: "We are preparing for multi-location expansion and require structured franchise systems, operating manuals, and performance control frameworks to scale sustainably." },
+    { label: "Strategic Assessment", text: "We are facing operational challenges but would prefer a structured diagnostic assessment to identify key improvement areas and define a clear action roadmap." }
 ]
 
 export default function MultiStepContactModal() {
@@ -53,7 +62,7 @@ export default function MultiStepContactModal() {
     }
 
     const handleNext = () => {
-        if (step < 5) {
+        if (step < 4) {
             setStep(s => s + 1)
             setErrorMsg('')
         } else {
@@ -66,8 +75,11 @@ export default function MultiStepContactModal() {
     }
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter' && step !== 3) {
-            // Allow enter to proceed except on textarea
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+            e.preventDefault()
+            handleNext()
+        } else if (e.key === 'Enter' && step !== 2) {
+            // Allow standard enter to proceed except on textarea (which is now step 2)
             e.preventDefault()
             handleNext()
         }
@@ -114,7 +126,7 @@ export default function MultiStepContactModal() {
 
             {/* Progress Bar */}
             <div className="typeform-progress">
-                <div className="typeform-progress-bar" style={{ width: `${((step + 1) / 6) * 100}%` }} />
+                <div className="typeform-progress-bar" style={{ width: `${((step + 1) / 5) * 100}%` }} />
             </div>
 
             <button className="typeform-close" onClick={closeModal} aria-label="Close modal">
@@ -154,31 +166,10 @@ export default function MultiStepContactModal() {
                             </button>
                         </div>
 
-                        {/* STEP 1: EMAIL */}
+                        {/* STEP 1: BUSINESS AGE */}
                         <div className={`typeform-slide ${step === 1 ? 'active' : step < 1 ? 'prev' : 'next'}`}>
                             <div className="typeform-question-number">2 &rarr;</div>
-                            <h2 className="typeform-title">Nice to meet you, {formData.name}! Could you share your email address? *</h2>
-                            <input
-                                type="email"
-                                placeholder="name@example.com"
-                                className="typeform-input"
-                                value={formData.email}
-                                onChange={e => setFormData({ ...formData, email: e.target.value })}
-                                onKeyDown={handleKeyDown}
-                            />
-                            <button
-                                className="typeform-btn"
-                                onClick={handleNext}
-                                disabled={!formData.email.trim() || !formData.email.includes('@')}
-                            >
-                                OK ✓
-                            </button>
-                        </div>
-
-                        {/* STEP 2: BUSINESS AGE */}
-                        <div className={`typeform-slide ${step === 2 ? 'active' : step < 2 ? 'prev' : 'next'}`}>
-                            <div className="typeform-question-number">3 &rarr;</div>
-                            <h2 className="typeform-title">How old is your Business?</h2>
+                            <h2 className="typeform-title">Nice to meet you, {formData.name}! How old is your Business?</h2>
                             <div className="typeform-options">
                                 <button
                                     className={`typeform-option-btn ${formData.businessAge === 'Less than 5 years' ? 'selected' : ''}`}
@@ -195,19 +186,40 @@ export default function MultiStepContactModal() {
                             </div>
                         </div>
 
-                        {/* STEP 3: DETAILS */}
-                        <div className={`typeform-slide ${step === 3 ? 'active' : step < 3 ? 'prev' : 'next'}`}>
-                            <div className="typeform-question-number">4 &rarr;</div>
+                        {/* STEP 2: DETAILS */}
+                        <div className={`typeform-slide ${step === 2 ? 'active' : step < 2 ? 'prev' : 'next'}`}>
+                            <div className="typeform-question-number">3 &rarr;</div>
                             <h2 className="typeform-title">Please share more details about your inquiry. *</h2>
-                            <p className="typeform-subtitle">You can share the website of your company, or share the service you need for your business idea.</p>
+                            <p className="typeform-subtitle">You can share the website of your company, or share the service you need for your business idea. (Ctrl+Enter to proceed)</p>
+
                             <textarea
                                 className="typeform-input typeform-textarea"
                                 placeholder="Type your answer here..."
                                 value={formData.message}
                                 onChange={e => setFormData({ ...formData, message: e.target.value })}
+                                onKeyDown={handleKeyDown}
                             />
+
+                            <div className="discussion-starters">
+                                <p className="starters-label">Not sure what to write? Select a structured discussion starter below:</p>
+                                <div className="starters-grid">
+                                    {DISCUSSION_STARTERS.map((s, i) => (
+                                        <button
+                                            key={i}
+                                            className="starter-btn"
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setFormData({ ...formData, message: s.text });
+                                            }}
+                                        >
+                                            [ {s.label} ]
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
                             <button
-                                className="typeform-btn"
+                                className="typeform-btn mt-6"
                                 onClick={handleNext}
                                 disabled={!formData.message.trim()}
                             >
@@ -215,9 +227,9 @@ export default function MultiStepContactModal() {
                             </button>
                         </div>
 
-                        {/* STEP 4: CONTACT PREF */}
-                        <div className={`typeform-slide ${step === 4 ? 'active' : step < 4 ? 'prev' : 'next'}`}>
-                            <div className="typeform-question-number">5 &rarr;</div>
+                        {/* STEP 3: CONTACT PREF */}
+                        <div className={`typeform-slide ${step === 3 ? 'active' : step < 3 ? 'prev' : 'next'}`}>
+                            <div className="typeform-question-number">4 &rarr;</div>
                             <h2 className="typeform-title">What is the best way to contact you? *</h2>
                             <div className="typeform-options">
                                 <button
@@ -237,16 +249,16 @@ export default function MultiStepContactModal() {
                             </div>
                         </div>
 
-                        {/* STEP 5: PHONE (OR SUBMIT) */}
-                        <div className={`typeform-slide ${step === 5 ? 'active' : step < 5 ? 'prev' : 'next'}`}>
-                            <div className="typeform-question-number">6 &rarr;</div>
+                        {/* STEP 4: CONTACT DETAIL (PHONE OR EMAIL) & SUBMIT */}
+                        <div className={`typeform-slide ${step === 4 ? 'active' : step < 4 ? 'prev' : 'next'}`}>
+                            <div className="typeform-question-number">5 &rarr;</div>
                             <h2 className="typeform-title">
                                 {formData.contactPreference === 'Call me'
                                     ? "Of course. What is your phone number? *"
-                                    : "Almost done! Confirm your final details and submit."}
+                                    : "Great. What is your email address? *"}
                             </h2>
 
-                            {formData.contactPreference === 'Call me' && (
+                            {formData.contactPreference === 'Call me' ? (
                                 <div className="phone-input-wrapper">
                                     <span className="phone-prefix">🌍</span>
                                     <input
@@ -256,8 +268,19 @@ export default function MultiStepContactModal() {
                                         value={formData.phone}
                                         onChange={e => setFormData({ ...formData, phone: e.target.value })}
                                         onKeyDown={handleKeyDown}
+                                        autoFocus
                                     />
                                 </div>
+                            ) : (
+                                <input
+                                    type="email"
+                                    placeholder="name@example.com"
+                                    className="typeform-input"
+                                    value={formData.email}
+                                    onChange={e => setFormData({ ...formData, email: e.target.value })}
+                                    onKeyDown={handleKeyDown}
+                                    autoFocus
+                                />
                             )}
 
                             {errorMsg && <div className="typeform-error">{errorMsg}</div>}
@@ -265,7 +288,11 @@ export default function MultiStepContactModal() {
                             <button
                                 className="typeform-btn submit-btn"
                                 onClick={submitForm}
-                                disabled={isLoading || (formData.contactPreference === 'Call me' && !formData.phone.trim())}
+                                disabled={
+                                    isLoading ||
+                                    (formData.contactPreference === 'Call me' && !formData.phone.trim()) ||
+                                    (formData.contactPreference === 'Email me' && (!formData.email.trim() || !formData.email.includes('@')))
+                                }
                             >
                                 {isLoading ? 'Submitting...' : 'Submit 🎉'}
                             </button>
