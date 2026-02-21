@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { FormEvent, useState } from 'react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -76,7 +76,7 @@ export default function Contact() {
           <div className="contact-info fade-in-left">
             <h2 className="section-title">Let&apos;s Work Together</h2>
             <p className="contact-description">
-              Ready to transform your F&B operations? Get in touch with us to discuss how O'der360 can help 
+              Ready to transform your F&B operations? Get in touch with us to discuss how O'der360 can help
               elevate your business in the UAE market.
             </p>
             <div className="contact-details">
@@ -100,7 +100,7 @@ export default function Contact() {
                 </div>
                 <div className="contact-text">
                   <h4>Email</h4>
-                  <a href="mailto:itsmeabdulrasheed@gmail.com">itsmeabdulrasheed@gmail.com</a>
+                  <a href="mailto:contact@oder360.com">contact@oder360.com</a>
                 </div>
               </div>
               <div className="contact-item">
@@ -130,7 +130,7 @@ export default function Contact() {
                 </svg>
               </a>
               <a
-                href="mailto:itsmeabdulrasheed@gmail.com"
+                href="mailto:contact@oder360.com"
                 className="social-link"
                 aria-label="Email"
               >
@@ -186,8 +186,8 @@ export default function Contact() {
                   required
                 ></textarea>
               </div>
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="btn btn-primary btn-full"
                 disabled={isSubmitting}
               >

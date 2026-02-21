@@ -36,32 +36,32 @@ export default function Navigation() {
         </Link>
         <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <li>
-            <Link href="#home" className="nav-link" onClick={handleLinkClick}>
+            <Link href="/" className="nav-link" onClick={handleLinkClick}>
               Home
             </Link>
           </li>
           <li>
-            <Link href="#services" className="nav-link" onClick={handleLinkClick}>
+            <Link href="/services" className="nav-link" onClick={handleLinkClick}>
               Services
             </Link>
           </li>
           <li>
-            <Link href="#portfolio" className="nav-link" onClick={handleLinkClick}>
+            <Link href="/#portfolio" className="nav-link" onClick={handleLinkClick}>
               Portfolio
             </Link>
           </li>
           <li>
-            <Link href="#expertise" className="nav-link" onClick={handleLinkClick}>
+            <Link href="/#expertise" className="nav-link" onClick={handleLinkClick}>
               Expertise
             </Link>
           </li>
           <li>
-            <Link href="#about" className="nav-link" onClick={handleLinkClick}>
+            <Link href="/#about" className="nav-link" onClick={handleLinkClick}>
               About
             </Link>
           </li>
           <li>
-            <Link href="#contact" className="nav-link nav-cta" onClick={handleLinkClick}>
+            <Link href="/#contact" className="nav-link nav-cta" onClick={handleLinkClick}>
               Contact
             </Link>
           </li>

@@ -111,7 +111,7 @@ export default function RootLayout({
               logo: 'https://oder360.ae/logo.png',
               image: 'https://oder360.ae/og-image.jpg',
               telephone: '+971547454416',
-              email: 'itsmeabdulrasheed@gmail.com',
+              email: 'contact@oder360.com',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: 'Abu Dhabi',

@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Recipient email (Abdul Rasheed's email)
-    const recipientEmail = 'itsmeabdulrasheed@gmail.com'
+    const recipientEmail = 'contact@oder360.com'
     const subject = `New Contact Form Submission from ${name} - Oder360`
 
     // Create Nodemailer transporter with Gmail SMTP

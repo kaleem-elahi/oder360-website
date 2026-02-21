@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      <main>
+      <main className="home-page">
         <Hero />
         <LogoTicker />
         <Services />
