@@ -36,11 +36,13 @@ h6,
     --primary-dark: #E85A2B;
     --secondary-color: #004E89;
     --accent-color: #FFB800;
-    --text-primary: #0A0A0A;
-    --text-secondary: #6B7280;
-    --bg-primary: #FFFFFF;
-    --bg-secondary: #FAFAFA;
-    --bg-dark: #0A0A0A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #9CA3AF;
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #141414;
+    --bg-dark: #050505;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --border-card: rgba(255, 255, 255, 0.08);
     --bg-gradient: linear-gradient(135deg, #FF6B35 0%, #FF8C42 50%, #FFB800 100%);
     --gradient-1: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
     --gradient-2: linear-gradient(135deg, #004E89 0%, #0066CC 100%);
@@ -90,8 +92,7 @@ body {
 }
 
 .navbar.scrolled {
-    /* background: rgba(255, 255, 255, 0.85); */
-    background-color: #ffffffb3;
+    background-color: rgba(10, 10, 10, 0.85);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -1005,12 +1006,13 @@ body {
 }
 
 .service-card {
-    background: white;
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
     border-radius: 24px;
     padding: 2.5rem;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: var(--transition);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-card);
     opacity: 0;
     transform: translateY(30px);
 }
@@ -1185,14 +1187,13 @@ body {
 
 /* Modern Profile Card Redesign */
 .profile-card {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(20, 20, 20, 0.8);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 30px;
     padding: 3rem 2rem;
-    box-shadow:
-        0 20px 40px -10px rgba(0, 0, 0, 0.1),
-        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-card);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -1261,9 +1262,9 @@ body {
     inset: 0;
     border-radius: 50%;
     overflow: hidden;
-    border: 4px solid white;
-    background: white;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 4px solid var(--border-card);
+    background: var(--bg-primary);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .profile-photo {
@@ -1288,7 +1289,7 @@ body {
     color: var(--text-primary);
     margin-bottom: 0.5rem;
     letter-spacing: -0.5px;
-    background: linear-gradient(135deg, var(--text-primary) 0%, #333 100%);
+    background: linear-gradient(135deg, var(--text-primary) 0%, #bdc3c7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1320,10 +1321,11 @@ body {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background: white;
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
     border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-card);
     transition: all 0.3s ease;
 }
 
@@ -1362,7 +1364,7 @@ body {
     font-weight: 500;
     font-size: 0.95rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid var(--border-card);
 }
 
 .location-icon {
@@ -1397,8 +1399,10 @@ body {
 .portfolio-item {
     border-radius: 24px;
     overflow: hidden;
-    background: white;
-    box-shadow: var(--shadow-sm);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: var(--transition);
     opacity: 0;
     transform: translateY(30px);
@@ -1519,7 +1523,7 @@ body {
 /* Expertise Section */
 .expertise {
     padding: 140px 20px;
-    background: #ffffff;
+    background: var(--bg-primary);
     position: relative;
     overflow: hidden;
 }
@@ -1554,11 +1558,12 @@ body {
 }
 
 .expertise-item {
-    background: #ffffff;
+    background: var(--bg-card);
     border-radius: 40px;
     padding: 4.5rem 2.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--border-card);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     text-align: center;
     position: relative;
@@ -1691,10 +1696,12 @@ body {
 }
 
 .featured-item {
-    background: #ffffff;
+    background: var(--bg-card);
     border-radius: 40px;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-card);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     opacity: 1;
@@ -1782,7 +1789,8 @@ body {
 }
 
 .featured-content {
-    background: white;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
     padding: 3.5rem 3rem;
     position: relative;
     z-index: 4;
@@ -1872,15 +1880,17 @@ body {
     height: 16px;
     border-radius: 50%;
     background: var(--primary-color);
-    border: 4px solid white;
+    border: 4px solid var(--border-card);
     box-shadow: 0 0 0 4px var(--primary-color);
 }
 
 .timeline-content {
-    background: white;
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-card);
     border-radius: 16px;
     padding: 2rem;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     margin-left: 1rem;
 }
 
@@ -2041,12 +2051,14 @@ body {
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    border: 2px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-card);
     border-radius: 12px;
     font-size: 1rem;
     font-family: inherit;
     transition: var(--transition);
-    background: white;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    backdrop-filter: blur(10px);
 }
 
 .form-group input:focus,
@@ -2335,8 +2347,9 @@ body {
 
 .filter-btn {
     padding: 0.75rem 1.5rem;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    background: white;
+    border: 1px solid var(--border-card);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
     border-radius: 50px;
     font-size: 0.95rem;
     font-weight: 600;
@@ -2595,10 +2608,11 @@ body {
 }
 
 .gallery-modal-content {
-    background: white;
+    background: var(--bg-primary);
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--border-card);
 }
 
 .gallery-modal-image-wrapper {
@@ -2618,7 +2632,7 @@ body {
 .gallery-modal-info {
     padding: 2rem;
     text-align: center;
-    background: white;
+    background: var(--bg-primary);
 }
 
 .gallery-modal-info h3 {
@@ -2791,14 +2805,15 @@ body {
 }
 
 .portfolio-modal {
-    background: white;
+    background: var(--bg-primary);
     border-radius: 24px;
     max-width: 1200px;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: var(--shadow-xl);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-card);
     transform: scale(0.95) translateY(20px);
     animation: modalSlideIn 0.3s ease-out forwards;
 }
@@ -3021,7 +3036,7 @@ body {
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--text-primary);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-card);
     transition: var(--transition);
 }
 
@@ -3308,11 +3323,12 @@ body {
 }
 
 .detailed-service-card {
-    background: white;
+    background: var(--bg-card);
     border-radius: 20px;
     padding: 3rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-card);
+    backdrop-filter: blur(10px);
     transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
@@ -3502,9 +3518,11 @@ body {
     max-width: 700px;
     margin: 0 auto;
     padding: 4rem;
-    background: white;
+    background: var(--bg-card);
     border-radius: 30px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-card);
+    backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
 }
