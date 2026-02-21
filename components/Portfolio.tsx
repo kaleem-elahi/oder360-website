@@ -122,7 +122,6 @@ const portfolioItems = [
       '/images/assets/Website/Capsica/pasta-arrabbiata-aioli.jpg',
       '/images/assets/Website/Capsica/creamy-pesto-with-me-shrimp.jpg',
       '/images/assets/Website/Capsica/cocktail-meball.jpg',
-      '/images/assets/Website/Capsica/las-vegans.jpg',
       '/images/assets/Website/Capsica/cafe-3853.jpg',
       '/images/assets/Website/Capsica/red-valvet-iced-latte.jpg',
       '/images/assets/Website/Capsica/satchi-capsica.jpg',

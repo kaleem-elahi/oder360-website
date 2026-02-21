@@ -3638,10 +3638,10 @@ body {
     position: relative;
     z-index: 5;
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 2rem;
-    min-height: 400px;
+    padding: 3rem 2rem;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -3656,47 +3656,52 @@ body {
 
 .typeform-slide {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
     width: 100%;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(40px);
+    transform: translateY(calc(-50% + 40px));
     transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .typeform-slide.active {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0);
+    transform: translateY(-50%);
 }
 
 .typeform-slide.prev {
-    transform: translateY(-40px);
+    transform: translateY(calc(-50% - 40px));
     opacity: 0;
 }
 
 .typeform-slide.next {
-    transform: translateY(40px);
+    transform: translateY(calc(-50% + 40px));
     opacity: 0;
 }
 
 .typeform-question-number {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: var(--primary-color);
-    margin-bottom: 1rem;
-    font-weight: 700;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
 .typeform-title {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 2.2rem;
+    font-weight: 500;
     color: white;
     margin-bottom: 2rem;
-    line-height: 1.3;
+    line-height: 1.4;
+    max-width: 800px;
 }
 
 .typeform-subtitle {
@@ -3729,8 +3734,9 @@ body {
 
 .typeform-textarea {
     resize: none;
-    min-height: 100px;
-    font-size: 1.5rem;
+    min-height: 120px;
+    font-size: 1.35rem;
+    line-height: 1.5;
 }
 
 .phone-input-wrapper {
@@ -3995,28 +4001,89 @@ body {
 @media (max-width: 768px) {
     .service-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 0.75rem;
+        max-width: 100%;
+        width: 100%;
     }
 
     .service-card-btn {
-        padding: 1.5rem 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .service-card-btn .service-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0;
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    .service-card-btn .service-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .typeform-content-container {
+        padding: 1.5rem;
     }
 
     .typeform-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .typeform-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .typeform-input {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+    }
+
+    .typeform-textarea {
+        font-size: 1.2rem;
+        min-height: 100px;
+    }
+
+    .typeform-options {
+        width: 100%;
+        max-width: 100%;
     }
 
     .typeform-option-btn {
         font-size: 1.1rem;
         padding: 1rem;
+        width: 100%;
+    }
+
+    @media(max-width: 768px) {
+        .typeform-option-btn.align-center {
+            height: auto;
+            flex-direction: row;
+            justify-content: flex-start;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        .typeform-option-btn.align-center .icon-large {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            margin-right: 1rem;
+        }
     }
 
     .typeform-navigation {
-        right: 2rem;
+        right: 1.5rem;
         bottom: 1.5rem;
+    }
+
+    .typeform-btn {
+        padding: 0.75rem 2rem;
+        font-size: 1.1rem;
     }
 }
