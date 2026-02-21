@@ -1,3 +1,4 @@
+import ContactModalButton from '@/components/ContactModalButton'
 import Footer from '@/components/Footer'
 import Navigation from '@/components/Navigation'
 import { Metadata } from 'next'
@@ -237,11 +238,7 @@ export default function ServicesPage() {
                         <div className="cta-content fade-in-up">
                             <h2 className="cta-title">Ready to transform your operations?</h2>
                             <p className="cta-desc">Let's discuss how our tailored consulting services can bring measurable growth to your brand.</p>
-                            <button
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    window.dispatchEvent(new Event('open-contact-modal'));
-                                }}
+                            <ContactModalButton
                                 className="btn-modern btn-primary-modern border-none cursor-pointer text-left"
                                 style={{ fontFamily: 'inherit' }}
                             >
@@ -251,7 +248,7 @@ export default function ServicesPage() {
                                         <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                                 </span>
-                            </button>
+                            </ContactModalButton>
                         </div>
                     </div>
                 </section>
