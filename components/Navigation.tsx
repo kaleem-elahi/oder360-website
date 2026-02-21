@@ -61,9 +61,17 @@ export default function Navigation() {
             </Link>
           </li>
           <li>
-            <Link href="/#contact" className="nav-link nav-cta" onClick={handleLinkClick}>
+            <button
+              className="nav-link nav-cta border-none cursor-pointer text-left"
+              style={{ fontFamily: 'inherit', fontSize: '1rem', background: 'var(--primary-color)' }}
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick();
+                window.dispatchEvent(new Event('open-contact-modal'));
+              }}
+            >
               Contact
-            </Link>
+            </button>
           </li>
         </ul>
         <div

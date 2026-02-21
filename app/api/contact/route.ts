@@ -4,23 +4,25 @@ import nodemailer from 'nodemailer'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, phone, message } = body
+    const { name, email, phone, message, businessAge, contactPreference } = body
 
-    // Validate required fields
-    if (!name || !email || !message) {
+    // Validate required fields (at least name, message, and either email or phone)
+    if (!name || (!email && !phone) || !message) {
       return NextResponse.json(
-        { error: 'Name, email, and message are required' },
+        { error: 'Name, message, and either email or phone are required.' },
         { status: 400 }
       )
     }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Please provide a valid email address' },
-        { status: 400 }
-      )
+    // Validate email format if provided
+    if (email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(email)) {
+        return NextResponse.json(
+          { error: 'Please provide a valid email address' },
+          { status: 400 }
+        )
+      }
     }
 
     // Check if Gmail credentials are configured
@@ -32,20 +34,20 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Recipient email (Abdul Rasheed's email)
+    // Recipient email
     const recipientEmail = 'contact@oder360.com'
     const subject = `New Contact Form Submission from ${name} - Oder360`
 
-    // Create Nodemailer transporter with Gmail SMTP
+    // Create Nodemailer transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.GMAIL_USER, // Your Gmail address
-        pass: process.env.GMAIL_APP_PASSWORD, // Gmail App Password (not your regular password)
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
       },
     })
 
-    // HTML email body with nice formatting
+    // HTML email body
     const htmlBody = `
       <!DOCTYPE html>
       <html>
@@ -67,15 +69,8 @@ export async function POST(request: NextRequest) {
               border-radius: 8px 8px 0 0; 
               text-align: center;
             }
-            .header h2 { 
-              margin: 0; 
-              font-size: 24px;
-            }
-            .header p { 
-              margin: 10px 0 0 0; 
-              opacity: 0.9; 
-              font-size: 14px;
-            }
+            .header h2 { margin: 0; font-size: 24px; }
+            .header p { margin: 10px 0 0 0; opacity: 0.9; font-size: 14px; }
             .content { 
               background: #f9f9f9; 
               padding: 30px 20px; 
@@ -83,24 +78,27 @@ export async function POST(request: NextRequest) {
               border-top: none; 
               border-radius: 0 0 8px 8px; 
             }
-            .field { 
-              margin-bottom: 20px; 
+            .grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 20px;
+              margin-bottom: 20px;
             }
+            .field { margin-bottom: 15px; }
             .label { 
               font-weight: 600; 
               color: #007AFF; 
-              font-size: 14px;
+              font-size: 13px;
               text-transform: uppercase;
               letter-spacing: 0.5px;
-              margin-bottom: 8px;
+              margin-bottom: 6px;
             }
             .value { 
-              margin-top: 5px; 
-              padding: 12px 15px; 
-              background: white; 
-              border-radius: 6px; 
-              border-left: 4px solid #007AFF;
-              font-size: 15px;
+               padding: 10px 15px; 
+               background: white; 
+               border-radius: 6px; 
+               border-left: 4px solid #007AFF;
+               font-size: 14px;
             }
             .message-box { 
               margin-top: 25px; 
@@ -109,9 +107,7 @@ export async function POST(request: NextRequest) {
               border-radius: 6px; 
               border-left: 4px solid #5856D6; 
             }
-            .message-box .label {
-              margin-bottom: 12px;
-            }
+            .message-box .label { margin-bottom: 12px; }
             .message-content {
               margin-top: 10px; 
               white-space: pre-wrap; 
@@ -126,85 +122,82 @@ export async function POST(request: NextRequest) {
               color: #666; 
               text-align: center; 
             }
-            .reply-note {
-              background: #e3f2fd;
-              padding: 12px;
-              border-radius: 6px;
-              margin-top: 15px;
-              font-size: 13px;
-              color: #1976d2;
-            }
           </style>
         </head>
         <body>
           <div class="header">
-            <h2>📧 New Contact Form Submission</h2>
+            <h2>📧 New Application / Inquiry</h2>
             <p>Oder360 Website</p>
           </div>
           <div class="content">
-            <div class="field">
-              <div class="label">👤 Name</div>
-              <div class="value">${name}</div>
+            <div class="grid">
+                <div class="field">
+                    <div class="label">👤 Name</div>
+                    <div class="value">${name}</div>
+                </div>
+                ${email ? `
+                <div class="field">
+                    <div class="label">✉️ Email</div>
+                    <div class="value"><a href="mailto:${email}" style="color: #007AFF; text-decoration: none;">${email}</a></div>
+                </div>
+                ` : ''}
+                ${phone ? `
+                <div class="field">
+                    <div class="label">📞 Phone</div>
+                    <div class="value"><a href="tel:${phone}" style="color: #007AFF; text-decoration: none;">${phone}</a></div>
+                </div>
+                ` : ''}
+                ${businessAge ? `
+                <div class="field">
+                    <div class="label">🏢 Business Age</div>
+                    <div class="value">${businessAge}</div>
+                </div>
+                ` : ''}
+                ${contactPreference ? `
+                <div class="field">
+                    <div class="label">🎯 Preference</div>
+                    <div class="value">${contactPreference}</div>
+                </div>
+                ` : ''}
             </div>
-            <div class="field">
-              <div class="label">✉️ Email</div>
-              <div class="value">
-                <a href="mailto:${email}" style="color: #007AFF; text-decoration: none;">${email}</a>
-              </div>
-            </div>
-            ${phone ? `
-            <div class="field">
-              <div class="label">📞 Phone</div>
-              <div class="value">
-                <a href="tel:${phone}" style="color: #007AFF; text-decoration: none;">${phone}</a>
-              </div>
-            </div>
-            ` : ''}
+            
             <div class="message-box">
-              <div class="label">💬 Message</div>
+              <div class="label">💬 Message / Details</div>
               <div class="message-content">${message.replace(/\n/g, '<br>')}</div>
             </div>
-            <div class="reply-note">
+            ${email ? `
+            <div style="background: #e3f2fd; padding: 12px; border-radius: 6px; margin-top: 15px; font-size: 13px; color: #1976d2;">
               💡 <strong>Tip:</strong> Reply directly to this email to respond to ${name}
             </div>
+            ` : ''}
           </div>
           <div class="footer">
-              <p>This email was sent from the Oder360 website contact form.</p>
+            <p>This email was sent from the Oder360 Typeform Contact Form.</p>
             <p style="margin-top: 5px;">Timestamp: ${new Date().toLocaleString('en-AE', { timeZone: 'Asia/Dubai' })}</p>
           </div>
         </body>
       </html>
     `
 
-    // Plain text version for email clients that don't support HTML
     const textBody = `
 New Contact Form Submission - Oder360
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 Name: ${name}
-Email: ${email}
-${phone ? `Phone: ${phone}` : 'Phone: Not provided'}
+Email: ${email || 'N/A'}
+Phone: ${phone || 'N/A'}
+Business Age: ${businessAge || 'N/A'}
+Prefers to be contacted via: ${contactPreference || 'N/A'}
 
 Message:
 ${message}
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-This email was sent from the Oder360 website contact form.
-Reply directly to this email to respond to ${name} at ${email}
-
 Timestamp: ${new Date().toLocaleString('en-AE', { timeZone: 'Asia/Dubai' })}
     `.trim()
 
-    // Send email using Nodemailer
     const mailOptions = {
-      from: {
-        name: 'Oder360 Contact Form',
-        address: process.env.GMAIL_USER,
-      },
+      from: { name: 'Oder360 Contact Form', address: process.env.GMAIL_USER },
       to: recipientEmail,
-      replyTo: email, // So you can reply directly to the sender
+      replyTo: email || process.env.GMAIL_USER, // use user's email if provided
       subject: subject,
       html: htmlBody,
       text: textBody,
@@ -212,42 +205,9 @@ Timestamp: ${new Date().toLocaleString('en-AE', { timeZone: 'Asia/Dubai' })}
 
     const info = await transporter.sendMail(mailOptions)
 
-    console.log('Email sent successfully:', {
-      messageId: info.messageId,
-      to: recipientEmail,
-      from: email,
-    })
-
-    // Return success response
-    return NextResponse.json(
-      {
-        success: true,
-        message: 'Thank you! Your message has been sent. We\'ll get back to you soon.'
-      },
-      { status: 200 }
-    )
+    return NextResponse.json({ success: true, message: 'Thank you! Your message has been sent.' }, { status: 200 })
   } catch (error) {
     console.error('Error processing contact form:', error)
-
-    // More specific error messages
-    if (error instanceof Error) {
-      if (error.message.includes('Invalid login')) {
-        return NextResponse.json(
-          { error: 'Email service authentication failed. Please check your credentials.' },
-          { status: 500 }
-        )
-      }
-      if (error.message.includes('ECONNECTION')) {
-        return NextResponse.json(
-          { error: 'Failed to connect to email service. Please try again later.' },
-          { status: 500 }
-        )
-      }
-    }
-
-    return NextResponse.json(
-      { error: 'Failed to send message. Please try again later.' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Failed to send message.' }, { status: 500 })
   }
 }

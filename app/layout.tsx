@@ -1,3 +1,4 @@
+import MultiStepContactModal from '@/components/MultiStepContactModal'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -99,6 +100,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         {children}
+        <MultiStepContactModal />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
