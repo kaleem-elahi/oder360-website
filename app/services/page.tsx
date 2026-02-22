@@ -133,7 +133,9 @@ const additionalServices = [
             'Supplier sourcing & contract negotiation',
             'Central kitchen & production planning',
             'Inventory control systems & wastage reduction'
-        ]
+        ],
+        icon: '📦',
+        shortDesc: 'Streamline sourcing and reduce costs.'
     },
     {
         title: 'Compliance, Hygiene & Food Safety',
@@ -141,7 +143,9 @@ const additionalServices = [
             'FSMS / HACCP documentation',
             'Hygiene audits & inspection readiness',
             'Staff food safety training'
-        ]
+        ],
+        icon: '✓',
+        shortDesc: 'Stay audit-ready and compliant.'
     },
     {
         title: 'Technology & Systems Advisory',
@@ -149,7 +153,9 @@ const additionalServices = [
             'POS & inventory system selection',
             'Operational reporting tools',
             'Cost-tracking & performance dashboards'
-        ]
+        ],
+        icon: '⚙',
+        shortDesc: 'Right systems for better decisions.'
     }
 ]
 
@@ -211,19 +217,26 @@ export default function ServicesPage() {
 
                 {/* Additional Services Banner */}
                 <section className="additional-services">
+                    <div className="additional-services-bg" aria-hidden="true" />
                     <div className="container">
                         <div className="additional-header fade-in-up">
-                            <h2 className="additional-title">🔹 Additional Services</h2>
-                            <p>Specialized focused solutions for your business foundation.</p>
+                            <span className="additional-badge">Specialized Support</span>
+                            <h2 className="additional-title">Additional Services</h2>
+                            <p className="additional-subtitle">Focused solutions that strengthen your operations foundation.</p>
                         </div>
 
                         <div className="additional-grid">
                             {additionalServices.map((service, index) => (
-                                <div key={index} className={`additional-card fade-in-up delay-${index + 1}`}>
+                                <div key={index} className={`additional-card fade-in-up delay-${(index % 3) + 1}`}>
+                                    <div className="additional-card-icon" aria-hidden="true">{service.icon}</div>
                                     <h3 className="additional-card-title">{service.title}</h3>
+                                    {service.shortDesc && <p className="additional-card-desc">{service.shortDesc}</p>}
                                     <ul className="additional-list">
                                         {service.items.map((item, idx) => (
-                                            <li key={idx}>{item}</li>
+                                            <li key={idx}>
+                                                <span className="additional-list-icon" aria-hidden="true">→</span>
+                                                <span>{item}</span>
+                                            </li>
                                         ))}
                                     </ul>
                                 </div>
@@ -238,7 +251,7 @@ export default function ServicesPage() {
                         <div className="cta-content fade-in-up">
                             <h2 className="cta-title">Ready to transform your operations?</h2>
                             <p className="cta-desc">Let's discuss how our tailored consulting services can bring measurable growth to your brand.</p>
-                            <ContactModalButton
+                            <center><ContactModalButton
                                 className="btn-modern btn-primary-modern border-none cursor-pointer text-left"
                                 style={{ fontFamily: 'inherit' }}
                             >
@@ -249,6 +262,7 @@ export default function ServicesPage() {
                                     </svg>
                                 </span>
                             </ContactModalButton>
+                            </center>
                         </div>
                     </div>
                 </section>
