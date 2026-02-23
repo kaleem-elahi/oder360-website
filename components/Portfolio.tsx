@@ -7,8 +7,9 @@ import PortfolioModal from './PortfolioModal'
 const portfolioItems = [
   {
     title: 'Pizzaty',
-    subtitle: 'Italian Pizza Restaurant',
-    description: 'Complete restaurant operations management including menu development, kitchen design, and staff training. Achieved 20% MoM growth.',
+    subtitle: 'Napolitano Pizza (Food Truck)',
+    description:
+      'Built a Neapolitan-style pizza concept from scratch, including brand creation, menu engineering, kiosk design, team recruitment and training, and full launch execution in Abu Dhabi. Successfully positioned Pizzaty as a trending kiosk brand, achieving 20% month-on-month growth and strong customer loyalty.',
     image: '/images/assets/Website/Pizzaty/restaurant-7715.jpg',
     logo: '/images/assets/Website/Pizzaty/Pizzaty LOGO.png',
     category: 'QSR',
@@ -22,7 +23,7 @@ const portfolioItems = [
       '/images/assets/Website/Pizzaty/restaurant-2024-10-17-14.50.45173f2295.jpg',
     ],
     businessDetails: {
-      location: 'UAE',
+      location: 'Abu Dhabi - UAE',
       type: 'Quick Service Restaurant (QSR)',
       achievements: [
         'Achieved 20% month-over-month sales growth in Q1',
@@ -79,8 +80,8 @@ const portfolioItems = [
   },
   {
     title: 'Hael',
-    subtitle: 'Specialty Coffee & Flagship Outlets',
-    description: 'Strategic expansion and operations management for flagship coffee outlets, achieving substantial revenue growth.',
+    subtitle: 'Specialty Premium Tea & Coffee',
+    description: 'Building a Cultural Brand Into a Scalable F&B Concept Developed and scaled Hael from an idea inspired by traditional Arabic tea culture into a successful specialty tea and café brand in Abu Dhabi. Led concept development, menu innovation, operational setup, team recruitment and training, and multi-location execution. Positioned Hael as a culturally rooted yet modern brand, earning strong customer loyalty and consistent performance across events, kiosks, and flagship operations',
     image: '/images/assets/Website/Hael/restaurant-2025-12-09-18.52.22-2.jpg',
     logo: '/images/assets/Website/Hael/brand-hael.png',
     category: 'Cafe',
@@ -111,8 +112,8 @@ const portfolioItems = [
   },
   {
     title: 'Capsica',
-    subtitle: 'Italian Fine Dining',
-    description: 'Fast-casual F&B brand management with focus on operational efficiency and cost control.',
+    subtitle: 'Fast – Casual Italian Restaurant',
+    description: 'Led the end-to-end development of Capsica, a fast-casual Italian restaurant concept in Muscat, from ground zero. Delivered strategic site selection, concept positioning, menu development, interior design coordination, team recruitment and training, procurement setup, and full operational launch. Integrated the brand with multiple delivery aggregators and managed day-to-day operations, successfully scaling Capsica to two outlets within the Muscat region and achieving sustainable profitability.',
     image: '/images/assets/Website/Capsica/pizza.jpg',
     logo: '/images/assets/Website/Capsica/Capsica Logo Copy.png',
     category: 'Fine Dining',
@@ -127,7 +128,7 @@ const portfolioItems = [
       '/images/assets/Website/Capsica/satchi-capsica.jpg',
     ],
     businessDetails: {
-      location: 'UAE',
+      location: 'Muscat- Sultanate of Oman',
       type: 'Fast-Casual Italian Restaurant',
       achievements: [
         'Optimized operational efficiency by 15%',
@@ -146,8 +147,8 @@ const portfolioItems = [
   },
   {
     title: 'Gemello',
-    subtitle: 'Multi-Concept Restaurant',
-    description: 'Multi-branch operations management with consistent quality standards and profitability optimization.',
+    subtitle: 'Turning a Simple Idea Into a Successful Slider Brand',
+    description: 'Developed Gemello as a mini slider burger concept in Oman, built around the client’s vision of serving two signature sliders in a single box. Led the complete brand creation from naming and concept positioning to team recruitment, training, equipment selection, vendor sourcing, marketing strategy, and grand opening execution. Successfully introduced Gemello to the market through high-impact activations at the German University of Technology in Oman and Sultan Qaboos University, driving strong brand awareness, customer traction, and sustained growth.',
     image: '/images/assets/Website/Gemello/16.jpg',
     logo: null,
     category: 'Multi-Concept',
@@ -187,8 +188,8 @@ const portfolioItems = [
   },
   {
     title: 'Karakccino',
-    subtitle: 'Specialty Coffee',
-    description: 'Specialty coffee concept with unique operations model and exceptional customer experience.',
+    subtitle: 'Building a Community-Focused Quick-Service Brand',
+    description: 'Developed Karakccino as a quick-service food and beverage concept designed to serve fresh, quality daily meals for the growing residential community of Al Mugheira (Al Mirfa), Abu Dhabi. Took full ownership of the project from concept creation to a fully operational launch, including menu selection, brand setup, team recruitment and training, vendor sourcing, staff visa and insurance coordination, food truck design and fabrication, equipment selection, and end-to-end operational readiness. Successfully established Karakccino as a reliable neighborhood brand built for speed, quality, and consistency.',
     image: '/images/assets/Website/Karakccino/restaurant-9372.jpg',
     logo: null,
     category: 'Coffee',
