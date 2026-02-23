@@ -128,29 +128,7 @@ export default function ImageGallery() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isModalOpen, selectedImage])
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px',
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible')
-          }, index * 100)
-        }
-      })
-    }, observerOptions)
-
-    const items = sectionRef.current?.querySelectorAll('.gallery-item')
-    items?.forEach((item) => observer.observe(item))
-
-    return () => {
-      items?.forEach((item) => observer.unobserve(item))
-    }
-  }, [activeFilter])
+  const slidingImages = [...filteredImages, ...filteredImages]
 
   return (
     <section className="image-gallery" ref={sectionRef}>
@@ -161,58 +139,33 @@ export default function ImageGallery() {
           <p className="section-subtitle">Experience the artistry and precision of our operations</p>
         </div>
 
-        <div className="gallery-filters">
-          <button
-            className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('all')}
-          >
-            All
-          </button>
-          <button
-            className={`filter-btn ${activeFilter === 'food' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('food')}
-          >
-            Food
-          </button>
-          <button
-            className={`filter-btn ${activeFilter === 'kitchen' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('kitchen')}
-          >
-            Kitchen
-          </button>
-          <button
-            className={`filter-btn ${activeFilter === 'operations' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('operations')}
-          >
-            Operations
-          </button>
-        </div>
 
-        <div className="gallery-grid">
-          {filteredImages.map((image, index) => (
-            <div
-              key={index}
-              className="gallery-item"
-              data-category={image.category}
-              style={{ animationDelay: `${index * 0.1}s` }}
-              onClick={() => handleImageClick(image)}
-            >
-              <div className="gallery-image-wrapper">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="gallery-image"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority={index < 4}
-                />
-                <div className="gallery-overlay">
-                  <h3>{image.title}</h3>
-                  <span className="gallery-category">{image.category}</span>
+        <div className="gallery-track">
+          <div className="gallery-track-inner">
+            {slidingImages.map((image, index) => (
+              <div
+                key={`${image.src}-${index}`}
+                className="gallery-item"
+                data-category={image.category}
+                onClick={() => handleImageClick(image)}
+              >
+                <div className="gallery-image-wrapper">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="gallery-image"
+                    sizes="380px"
+                    priority={index < 4}
+                  />
+                  <div className="gallery-overlay">
+                    <h3>{image.title}</h3>
+                    <span className="gallery-category">{image.category}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 

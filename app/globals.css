@@ -2166,9 +2166,13 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
+    .gallery-item {
+        width: 280px;
+        min-width: 280px;
+    }
+
+    .gallery-track-inner {
+        gap: 1.25rem;
     }
 
     .gallery-filters {
@@ -2255,8 +2259,14 @@ body {
         gap: 2rem;
     }
 
-    .gallery-grid {
-        grid-template-columns: 1fr;
+    .gallery-item {
+        width: 260px;
+        min-width: 260px;
+    }
+
+    .gallery-track-inner {
+        gap: 1rem;
+        animation-duration: 75s;
     }
 
     .gallery-filters {
@@ -2375,24 +2385,45 @@ body {
     box-shadow: 0 4px 16px rgba(0, 122, 255, 0.3);
 }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+.gallery-track {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 -20px;
+}
+
+.gallery-track-inner {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    width: max-content;
+    animation: gallerySlideRightToLeft 90s linear infinite;
+}
+
+.gallery-track-inner:hover {
+    animation-play-state: paused;
+}
+
+@keyframes gallerySlideRightToLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .gallery-item {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    width: 340px;
+    min-width: 340px;
     border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.gallery-item.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+.gallery-item:hover {
+    transform: scale(1.03);
 }
 
 .gallery-image-wrapper {
@@ -2545,39 +2576,6 @@ body {
 .btn-primary {
     position: relative;
     z-index: 1;
-}
-
-/* Stagger animation for gallery */
-.gallery-item:nth-child(1) {
-    transition-delay: 0.1s;
-}
-
-.gallery-item:nth-child(2) {
-    transition-delay: 0.2s;
-}
-
-.gallery-item:nth-child(3) {
-    transition-delay: 0.3s;
-}
-
-.gallery-item:nth-child(4) {
-    transition-delay: 0.4s;
-}
-
-.gallery-item:nth-child(5) {
-    transition-delay: 0.5s;
-}
-
-.gallery-item:nth-child(6) {
-    transition-delay: 0.6s;
-}
-
-.gallery-item:nth-child(7) {
-    transition-delay: 0.7s;
-}
-
-.gallery-item:nth-child(8) {
-    transition-delay: 0.8s;
 }
 
 /* Gallery Modal */
