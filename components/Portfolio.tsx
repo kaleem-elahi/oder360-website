@@ -114,11 +114,11 @@ const portfolioItems = [
     title: 'Capsica',
     subtitle: 'Fast – Casual Italian Restaurant',
     description: 'Led the end-to-end development of Capsica, a fast-casual Italian restaurant concept in Muscat, from ground zero. Delivered strategic site selection, concept positioning, menu development, interior design coordination, team recruitment and training, procurement setup, and full operational launch. Integrated the brand with multiple delivery aggregators and managed day-to-day operations, successfully scaling Capsica to two outlets within the Muscat region and achieving sustainable profitability.',
-    image: '/images/assets/Website/Capsica/pizza.jpg',
+    image: '/images/assets/Website/Capsica/PIZZA.jpg',
     logo: '/images/assets/Website/Capsica/Capsica Logo Copy.png',
     category: 'Fine Dining',
     images: [
-      '/images/assets/Website/Capsica/pizza.jpg',
+      '/images/assets/Website/Capsica/PIZZA.jpg',
       '/images/assets/Website/Capsica/risotto-salmon.jpg',
       '/images/assets/Website/Capsica/pasta-arrabbiata-aioli.jpg',
       '/images/assets/Website/Capsica/creamy-pesto-with-me-shrimp.jpg',

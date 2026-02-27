@@ -12,7 +12,7 @@ interface GalleryImage {
 
 const galleryImages: GalleryImage[] = [
   {
-    src: '/images/assets/Website/Capsica/pizza.jpg',
+    src: '/images/assets/Website/Capsica/PIZZA.jpg',
     alt: 'Artisan pizza preparation',
     title: 'Artisan Pizza',
     category: 'food',
