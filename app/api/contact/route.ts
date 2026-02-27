@@ -47,6 +47,18 @@ export async function POST(request: NextRequest) {
       },
     })
 
+    // Verify transporter can connect (helps surface auth/connectivity issues)
+    try {
+      await transporter.verify()
+    } catch (verifyError) {
+      console.error('Nodemailer verify failed:', verifyError)
+      // In non-production return the error message to help debugging
+      if (process.env.NODE_ENV !== 'production') {
+        return NextResponse.json({ error: `Email transporter verify failed: ${verifyError.message || String(verifyError)}` }, { status: 502 })
+      }
+      return NextResponse.json({ error: 'Email service is currently unavailable.' }, { status: 502 })
+    }
+
     // HTML email body
     const htmlBody = `
       <!DOCTYPE html>
