@@ -150,7 +150,7 @@ const portfolioItems = [
     subtitle: 'Turning a Simple Idea Into a Successful Slider Brand',
     description: 'Developed Gemello as a mini slider burger concept in Oman, built around the client’s vision of serving two signature sliders in a single box. Led the complete brand creation from naming and concept positioning to team recruitment, training, equipment selection, vendor sourcing, marketing strategy, and grand opening execution. Successfully introduced Gemello to the market through high-impact activations at the German University of Technology in Oman and Sultan Qaboos University, driving strong brand awareness, customer traction, and sustained growth.',
     image: '/images/assets/Website/Gemello/16.jpg',
-    logo: null,
+    logo: '/images/assets/Website/Gemello/Gemello Logo png.png',
     category: 'Multi-Concept',
     images: [
       '/images/assets/Website/Gemello/15.jpg',
