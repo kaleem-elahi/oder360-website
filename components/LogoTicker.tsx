@@ -3,14 +3,13 @@
 import Image from 'next/image';
 
 const logos = [
-    { name: 'Hael', src: '/images/assets/Website/Hael/logo.png' },
+    { name: 'Hael', src: '/images/assets/Website/Hael/brand-hael.png' },
     { name: 'Pizzaty', src: '/images/assets/Website/Pizzaty/Pizzaty LOGO.png' },
     { name: 'Capsica', src: '/images/assets/Website/Capsica/Capsica Logo Copy.png' },
-    { name: 'Karakccino', src: '/images/assets/Website/Karakccino/logo.png' },
     { name: 'Gemello', src: '/images/assets/Website/Gemello/Gemello Logo png.png' },
-    { name: 'Basbosa Briste', src: '/images/assets/Website/Basbosa/logo.png' },
-    { name: 'Desert Café', src: '/images/assets/Website/Desert/logo.png' },
+    { name: 'Desert Café', src: '/images/assets/Website/Desert Cafe/Desert Cafe Logo.png' },
     { name: '20UR Coffee', src: '/images/assets/Website/20UR Coffee/20_ur_LOGO-png.png' },
+    { name: 'Cafe Rashid Ali Pro', src: '/images/assets/Website/Rashid ali pro/Brand logo Rashid ali pro.png' },
 ]
 
 export default function LogoTicker() {
