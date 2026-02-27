@@ -51,8 +51,8 @@ export default function Hero() {
       <div className="hero-background">
         <div className="hero-bg-image">
           <Image
-            src="/images/assets/Website/Pizzaty/restaurant-7715.jpg"
-            alt="Modern restaurant operations"
+            src="/images/assets/Website/Capsica/PIZZA.jpg"
+            alt="Artisan pizza"
             fill
             priority
             className="hero-image"
