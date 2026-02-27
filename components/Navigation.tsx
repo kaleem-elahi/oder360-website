@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [notification, setNotification] = useState<{ show: boolean; text: string }>({ show: false, text: '' })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,7 +15,19 @@ export default function Navigation() {
     }
 
     window.addEventListener('scroll', handleScroll)
+    const handleContactSuccess = (e: Event) => {
+      const detail = (e as CustomEvent)?.detail || {}
+      const name = detail.name ? `, ${detail.name}` : ''
+      setNotification({ show: true, text: `Message sent${name}. We will contact you shortly.` })
+      setTimeout(() => setNotification({ show: false, text: '' }), 6000)
+    }
+    window.addEventListener('contact-success', handleContactSuccess as EventListener)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    // cleanup listener on unmount
+    return () => window.removeEventListener('contact-success', () => {})
   }, [])
 
   const handleLinkClick = () => {
@@ -85,6 +98,14 @@ export default function Navigation() {
         </div>
       </div>
     </nav>
+      {notification.show && (
+        <div style={{ position: 'fixed', top: 20, right: 20, zIndex: 1200 }}>
+          <div style={{ background: '#10b981', color: 'white', padding: '12px 16px', borderRadius: 8, boxShadow: '0 6px 18px rgba(0,0,0,0.25)', minWidth: 260 }}>
+            <strong>Success</strong>
+            <div style={{ marginTop: 6 }}>{notification.text}</div>
+          </div>
+        </div>
+      )}
   )
 }
 
