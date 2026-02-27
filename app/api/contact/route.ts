@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
 
 export async function POST(request: NextRequest) {
   try {
@@ -38,25 +37,10 @@ export async function POST(request: NextRequest) {
     const recipientEmail = 'contact@oder360.com'
     const subject = `New Contact Form Submission from ${name} - Oder360`
 
-    // Create Nodemailer transporter
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
-      },
-    })
-
-    // Verify transporter can connect (helps surface auth/connectivity issues)
-    try {
-      await transporter.verify()
-    } catch (verifyError) {
-      console.error('Nodemailer verify failed:', verifyError)
-      // In non-production return the error message to help debugging
-      if (process.env.NODE_ENV !== 'production') {
-        return NextResponse.json({ error: `Email transporter verify failed: ${verifyError.message || String(verifyError)}` }, { status: 502 })
-      }
-      return NextResponse.json({ error: 'Email service is currently unavailable.' }, { status: 502 })
+    // Use Brevo (Sendinblue) transactional API to send email
+    if (!process.env.BREVO_API_KEY) {
+      console.error('BREVO_API_KEY is not configured')
+      return NextResponse.json({ error: 'Email service is not configured. Please contact the administrator.' }, { status: 500 })
     }
 
     // HTML email body
@@ -213,16 +197,35 @@ ${message}
 Timestamp: ${new Date().toLocaleString('en-AE', { timeZone: 'Asia/Dubai' })}
     `.trim()
 
-    const mailOptions = {
-      from: { name: 'Oder360 Contact Form', address: process.env.GMAIL_USER },
-      to: recipientEmail,
-      replyTo: email || process.env.GMAIL_USER, // use user's email if provided
+    const senderEmail = process.env.SENDER_EMAIL || process.env.GMAIL_USER || 'no-reply@oder360.com'
+
+    const brevoPayload = {
+      sender: { name: 'Oder360 Contact Form', email: senderEmail },
+      to: [{ email: recipientEmail }],
+      replyTo: { email: email || senderEmail },
       subject: subject,
-      html: htmlBody,
-      text: textBody,
+      htmlContent: htmlBody,
+      textContent: textBody,
     }
 
-    const info = await transporter.sendMail(mailOptions)
+    // Call Brevo SMTP API
+    const resp = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': process.env.BREVO_API_KEY || '',
+      },
+      body: JSON.stringify(brevoPayload),
+    })
+
+    if (!resp.ok) {
+      const bodyText = await resp.text()
+      console.error('Brevo send failed:', resp.status, bodyText)
+      if (process.env.NODE_ENV !== 'production') {
+        return NextResponse.json({ error: `Brevo send failed: ${resp.status} ${bodyText}` }, { status: 502 })
+      }
+      return NextResponse.json({ error: 'Failed to send message.' }, { status: 502 })
+    }
 
     return NextResponse.json({ success: true, message: 'Thank you! Your message has been sent.' }, { status: 200 })
   } catch (error) {
