@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { useRef } from 'react'
 
 // Background images that will beautifully blur behind each question
 const BG_IMAGES = [
@@ -116,6 +117,13 @@ export default function MultiStepContactModal() {
             const data = await response.json()
             if (response.ok) {
                 setIsSuccess(true)
+                // Close modal automatically shortly after success so user sees confirmation briefly
+                if (typeof window !== 'undefined') {
+                    // schedule close after 1.5s
+                    autoCloseRef.current = window.setTimeout(() => {
+                        closeModal()
+                    }, 1500)
+                }
             } else {
                 setErrorMsg(data.error || 'Something went wrong')
             }
@@ -125,6 +133,16 @@ export default function MultiStepContactModal() {
             setIsLoading(false)
         }
     }
+
+    const autoCloseRef = useRef<number | null>(null)
+
+    useEffect(() => {
+        return () => {
+            if (autoCloseRef.current) {
+                clearTimeout(autoCloseRef.current)
+            }
+        }
+    }, [])
 
     if (!isOpen) return null
 
