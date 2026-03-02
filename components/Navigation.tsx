@@ -22,12 +22,10 @@ export default function Navigation() {
       setTimeout(() => setNotification({ show: false, text: '' }), 6000)
     }
     window.addEventListener('contact-success', handleContactSuccess as EventListener)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  useEffect(() => {
-    // cleanup listener on unmount
-    return () => window.removeEventListener('contact-success', () => {})
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('contact-success', handleContactSuccess as EventListener)
+    }
   }, [])
 
   const handleLinkClick = () => {
@@ -35,7 +33,8 @@ export default function Navigation() {
   }
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <>
+      <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
         <Link href="/" className="logo-link">
           <Image
@@ -97,7 +96,7 @@ export default function Navigation() {
           <span></span>
         </div>
       </div>
-    </nav>
+      </nav>
       {notification.show && (
         <div style={{ position: 'fixed', top: 20, right: 20, zIndex: 1200 }}>
           <div style={{ background: '#10b981', color: 'white', padding: '12px 16px', borderRadius: 8, boxShadow: '0 6px 18px rgba(0,0,0,0.25)', minWidth: 260 }}>
@@ -106,6 +105,7 @@ export default function Navigation() {
           </div>
         </div>
       )}
+    </>
   )
 }
 
