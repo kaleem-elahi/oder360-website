@@ -58,8 +58,25 @@ export default function MultiStepContactModal() {
     }, [])
 
     const closeModal = () => {
+        // If the form was successfully submitted, dispatch a global event
+        if (isSuccess) {
+            try {
+                window.dispatchEvent(new CustomEvent('contact-success', { detail: { name: formData.name } }))
+            } catch (e) {
+                // ignore in environments without CustomEvent
+            }
+        }
+
         setIsOpen(false)
         document.body.style.overflow = ''
+
+        // Reset modal state after it's closed so success message can be shown externally
+        setTimeout(() => {
+            setStep(0)
+            setFormData({ name: '', email: '', businessAge: '', serviceOfInterest: '', message: '', contactPreference: '', phone: '' })
+            setIsSuccess(false)
+            setErrorMsg('')
+        }, 300)
     }
 
     const handleNext = () => {
