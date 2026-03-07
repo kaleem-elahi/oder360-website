@@ -191,7 +191,7 @@ const portfolioItems = [
     subtitle: 'Building a Community-Focused Quick-Service Brand',
     description: 'Developed Karakccino as a quick-service food and beverage concept designed to serve fresh, quality daily meals for the growing residential community of Al Mugheira (Al Mirfa), Abu Dhabi. Took full ownership of the project from concept creation to a fully operational launch, including menu selection, brand setup, team recruitment and training, vendor sourcing, staff visa and insurance coordination, food truck design and fabrication, equipment selection, and end-to-end operational readiness. Successfully established Karakccino as a reliable neighborhood brand built for speed, quality, and consistency.',
     image: '/images/assets/Website/Karakccino/restaurant-9372.jpg',
-    logo: '/images/assets/Website/Karakccino/restaurant-9372.jpg',
+    logo: '/images/assets/Website/',
     category: 'Coffee',
     images: [
       '/images/assets/Website/Karakccino/restaurant-9372.jpg',

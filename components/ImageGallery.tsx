@@ -134,7 +134,7 @@ export default function ImageGallery() {
     <section className="image-gallery" ref={sectionRef}>
       <div className="container">
         <div className="section-header fade-in-up">
-          <div className="section-badge">Gallery</div>
+          {/* <div className="section-badge">Gallery</div> */}
           <h2 className="section-title">Behind the Scenes</h2>
           <p className="section-subtitle">Experience the artistry and precision of our operations</p>
         </div>

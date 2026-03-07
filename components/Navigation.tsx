@@ -35,67 +35,66 @@ export default function Navigation() {
   return (
     <>
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="nav-container">
-        <Link href="/" className="logo-link">
-          <Image
-            src="/images/assets/brand/image.png"
-            alt="Oder360 Logo"
-            width={150}
-            height={50}
-            className="logo-image"
-            priority
-          />
-        </Link>
-        <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <li>
-            <Link href="/" className="nav-link" onClick={handleLinkClick}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="/services" className="nav-link" onClick={handleLinkClick}>
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link href="/#portfolio" className="nav-link" onClick={handleLinkClick}>
-              Portfolio
-            </Link>
-          </li>
-          <li>
-            <Link href="/#expertise" className="nav-link" onClick={handleLinkClick}>
-              Expertise
-            </Link>
-          </li>
-          <li>
-            <Link href="/#about" className="nav-link" onClick={handleLinkClick}>
-              About
-            </Link>
-          </li>
-          <li>
-            <button
-              className="nav-link nav-cta border-none cursor-pointer text-left"
-              style={{ fontFamily: 'inherit', fontSize: '1rem', background: 'var(--primary-color)' }}
-              onClick={(e) => {
-                e.preventDefault();
-                handleLinkClick();
-                window.dispatchEvent(new Event('open-contact-modal'));
-              }}
-            >
-              Contact
-            </button>
-          </li>
-        </ul>
-        <div
-          className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
+        <div className="nav-container">
+          <Link href="/" className="logo-link">
+            <Image
+              src="/images/assets/brand/image.png"
+              alt="Oder360 Logo"
+              width={150}
+              height={50}
+              className="logo-image"
+              priority
+            />
+          </Link>
+          <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+            <li>
+              <Link href="/" className="nav-link" onClick={handleLinkClick}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/services" className="nav-link" onClick={handleLinkClick}>
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link href="/#portfolio" className="nav-link" onClick={handleLinkClick}>
+                Portfolio
+              </Link>
+            </li>
+            <li>
+              <Link href="/#expertise" className="nav-link" onClick={handleLinkClick}>
+                Expertise
+              </Link>
+            </li>
+            <li>
+              <Link href="/#about" className="nav-link" onClick={handleLinkClick}>
+                About
+              </Link>
+            </li>
+            <li>
+              <button
+                className="nav-link nav-cta text-left cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick();
+                  window.dispatchEvent(new Event('open-contact-modal'));
+                }}
+              >
+                Contact
+              </button>
+            </li>
+          </ul>
+          <div
+            className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-      </div>
       </nav>
       {notification.show && (
         <div style={{ position: 'fixed', top: 20, right: 20, zIndex: 1200 }}>

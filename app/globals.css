@@ -134,6 +134,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-link {
@@ -339,6 +340,7 @@ body {
     color: white;
     font-weight: 800;
     letter-spacing: -2px;
+    font-family: sans-serif;
 }
 
 .text-reveal {
@@ -677,7 +679,7 @@ body {
     color: white;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-family: 'Basera', serif;
+    font-family: sans-serif;
 }
 
 .workflow-arrow {
@@ -1056,6 +1058,7 @@ body {
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--text-primary);
+    font-family: sans-serif;
 }
 
 .service-description {
@@ -2434,6 +2437,7 @@ body {
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-50%);
     }
