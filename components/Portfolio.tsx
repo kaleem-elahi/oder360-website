@@ -11,7 +11,7 @@ const portfolioItems = [
     description:
       'Built a Neapolitan-style pizza concept from scratch, including brand creation, menu engineering, kiosk design, team recruitment and training, and full launch execution in Abu Dhabi. Successfully positioned Pizzaty as a trending kiosk brand, achieving 20% month-on-month growth and strong customer loyalty.',
     image: '/images/assets/Website/Pizzaty/restaurant-7715.jpg',
-    logo: '/images/assets/Website/Pizzaty/Pizzaty LOGO.png',
+    logo: '/images/assets/Website/Pizzaty/Pizzaty-Logo.png',
     category: 'QSR',
     images: [
       '/images/assets/Website/Pizzaty/restaurant-7715.jpg',
@@ -83,7 +83,7 @@ const portfolioItems = [
     subtitle: 'Specialty Premium Tea & Coffee',
     description: 'Building a Cultural Brand Into a Scalable F&B Concept Developed and scaled Hael from an idea inspired by traditional Arabic tea culture into a successful specialty tea and café brand in Abu Dhabi. Led concept development, menu innovation, operational setup, team recruitment and training, and multi-location execution. Positioned Hael as a culturally rooted yet modern brand, earning strong customer loyalty and consistent performance across events, kiosks, and flagship operations',
     image: '/images/assets/Website/Hael/restaurant-2025-12-09-18.52.22-2.jpg',
-    logo: '/images/assets/Website/Hael/brand-hael.png',
+    logo: '/images/assets/Website/Hael/Hael-Logo.png',
     category: 'Cafe',
     images: [
       '/images/assets/Website/Hael/restaurant-2025-12-09-18.52.22-2.jpg',
@@ -115,7 +115,7 @@ const portfolioItems = [
     subtitle: 'Fast – Casual Italian Restaurant',
     description: 'Led the end-to-end development of Capsica, a fast-casual Italian restaurant concept in Muscat, from ground zero. Delivered strategic site selection, concept positioning, menu development, interior design coordination, team recruitment and training, procurement setup, and full operational launch. Integrated the brand with multiple delivery aggregators and managed day-to-day operations, successfully scaling Capsica to two outlets within the Muscat region and achieving sustainable profitability.',
     image: '/images/assets/Website/Capsica/PIZZA.jpg',
-    logo: '/images/assets/Website/Capsica/Capsica Logo Copy.png',
+    logo: '/images/assets/Website/Capsica/Capsica-Logo.png',
     category: 'Fine Dining',
     images: [
       '/images/assets/Website/Capsica/PIZZA.jpg',
@@ -150,7 +150,7 @@ const portfolioItems = [
     subtitle: 'Turning a Simple Idea Into a Successful Slider Brand',
     description: 'Developed Gemello as a mini slider burger concept in Oman, built around the client’s vision of serving two signature sliders in a single box. Led the complete brand creation from naming and concept positioning to team recruitment, training, equipment selection, vendor sourcing, marketing strategy, and grand opening execution. Successfully introduced Gemello to the market through high-impact activations at the German University of Technology in Oman and Sultan Qaboos University, driving strong brand awareness, customer traction, and sustained growth.',
     image: '/images/assets/Website/Gemello/16.jpg',
-    logo: '/images/assets/Website/Gemello/Gemello Logo png.png',
+    logo: '/images/assets/Website/Gemello/Gemello-Logo.png',
     category: 'Multi-Concept',
     images: [
       '/images/assets/Website/Gemello/15.jpg',
@@ -191,7 +191,7 @@ const portfolioItems = [
     subtitle: 'Building a Community-Focused Quick-Service Brand',
     description: 'Developed Karakccino as a quick-service food and beverage concept designed to serve fresh, quality daily meals for the growing residential community of Al Mugheira (Al Mirfa), Abu Dhabi. Took full ownership of the project from concept creation to a fully operational launch, including menu selection, brand setup, team recruitment and training, vendor sourcing, staff visa and insurance coordination, food truck design and fabrication, equipment selection, and end-to-end operational readiness. Successfully established Karakccino as a reliable neighborhood brand built for speed, quality, and consistency.',
     image: '/images/assets/Website/Karakccino/restaurant-9372.jpg',
-    logo: '/images/assets/Website/',
+    logo: '/images/assets/Website/Karakccino/Karakccino-Logo.png',
     category: 'Coffee',
     images: [
       '/images/assets/Website/Karakccino/restaurant-9372.jpg',
@@ -229,7 +229,7 @@ const portfolioItems = [
     subtitle: 'Cafe & Dining',
     description: 'Brand identity and cafe operations support for a distinctive desert-inspired concept.',
     image: '/images/assets/Website/Desert Cafe/Desert Cafe Logo.png',
-    logo: '/images/assets/Website/Desert Cafe/Desert Cafe Logo.png',
+    logo: '/images/assets/Website/Desert Cafe/Desert-Cafe-Logo.png',
     category: 'Cafe',
     images: [
       '/images/assets/Website/Desert Cafe/Desert Cafe Logo.png',
@@ -253,7 +253,7 @@ const portfolioItems = [
     subtitle: 'Premium Cafe Experience',
     description: 'Full operations and brand rollout for Rashid Ali Pro cafe outlets with premium coffee and dining.',
     image: '/images/assets/Website/Cafe Rashid Ali Pro/DSC_4185.jpg',
-    logo: '/images/assets/Website/Rashid ali pro/Brand logo Rashid ali pro.png',
+    logo: '/images/assets/Website/Cafe Rashid Ali Pro/Cafe-RashidAli-Pro-Logo.png',
     category: 'Cafe',
     images: [
       '/images/assets/Website/Cafe Rashid Ali Pro/DSC_4185.jpg',
