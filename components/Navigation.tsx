@@ -68,7 +68,7 @@ export default function Navigation() {
               </Link>
             </li>
             <li>
-              <Link href="/#about" className="nav-link" onClick={handleLinkClick}>
+              <Link href="/about" className="nav-link" onClick={handleLinkClick}>
                 About
               </Link>
             </li>

@@ -1,4 +1,3 @@
-import About from '@/components/About'
 import Contact from '@/components/Contact'
 import Expertise from '@/components/Expertise'
 import FeaturedWork from '@/components/FeaturedWork'
@@ -31,7 +30,6 @@ export default function Home() {
         <Expertise />
         {/* <FeaturedWork /> */}
         {/* <Timeline /> */}
-        <About />
         <Contact />
       </main>
       <Footer />

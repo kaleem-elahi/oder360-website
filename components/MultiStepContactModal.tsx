@@ -6,7 +6,7 @@ import { useRef } from 'react'
 
 // Background images that will beautifully blur behind each question
 const BG_IMAGES = [
-    '/images/assets/Website/Capsica/PIZZA.jpg',
+    '/images/assets/Website/Capsica/pizza.jpg',
     '/images/assets/Website/Pizzaty/restaurant-7715.jpg',
     '/images/assets/Website/Hael/restaurant-2025-12-09-18.52.22-2.jpg',
     '/images/assets/Website/Karakccino/cafe-0016.jpg',

@@ -51,7 +51,7 @@ export default function Hero() {
       <div className="hero-background">
         <div className="hero-bg-image">
           <Image
-            src="/images/assets/Website/Capsica/PIZZA.jpg"
+            src="/images/assets/Website/Capsica/pizza.jpg"
             alt="Artisan pizza"
             fill
             priority
@@ -151,7 +151,7 @@ export default function Hero() {
                 <Image src="/images/assets/Website/Capsica/pizza.jpg" alt="Pizza" fill className="visual-image" />
               </div>
               <div className="floating-img item-2">
-                <Image src="/images/assets/Website/Karakccino/restaurant-9372.jpg" alt="Coffee" fill className="visual-image" />
+                <Image src="/images/assets/Website/Karakccino/cafe-0012.jpg" alt="Coffee" fill className="visual-image" />
               </div>
               <div className="floating-img item-3">
                 <Image src="/images/assets/Website/Capsica/risotto-salmon.jpg" alt="Salmon" fill className="visual-image" />

@@ -12,7 +12,7 @@ interface GalleryImage {
 
 const galleryImages: GalleryImage[] = [
   {
-    src: '/images/assets/Website/Capsica/PIZZA.jpg',
+    src: '/images/assets/Website/Capsica/pizza.jpg',
     alt: 'Artisan pizza preparation',
     title: 'Artisan Pizza',
     category: 'food',
@@ -54,7 +54,7 @@ const galleryImages: GalleryImage[] = [
     category: 'kitchen',
   },
   {
-    src: '/images/assets/Website/Karakccino/restaurant-9372.jpg',
+    src: '/images/assets/Website/Karakccino/cafe-0012.jpg',
     alt: 'Specialty coffee and food',
     title: 'Specialty Coffee',
     category: 'food',

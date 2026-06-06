@@ -21,7 +21,7 @@ const featuredItems = [
     icon: <Coffee className="w-10 h-10" />,
     title: 'Coffee Culture',
     description: 'Premium coffee shop operations and specialty beverage programs',
-    image: '/images/assets/Website/Karakccino/restaurant-9372.jpg',
+    image: '/images/assets/Website/Karakccino/cafe-0012.jpg',
   },
 ]
 
