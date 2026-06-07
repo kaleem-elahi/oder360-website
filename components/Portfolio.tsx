@@ -228,11 +228,11 @@ const portfolioItems = [
     title: 'Desert Cafe',
     subtitle: 'Cafe & Dining',
     description: 'Brand identity and cafe operations support for a distinctive desert-inspired concept.',
-    image: '/images/assets/Website/Desert Cafe/Desert Cafe Logo.png',
+    image: '/images/assets/Website/Desert Cafe/Desert-Cafe-Logo.png',
     logo: '/images/assets/Website/Desert Cafe/Desert-Cafe-Logo.png',
     category: 'Cafe',
     images: [
-      '/images/assets/Website/Desert Cafe/Desert Cafe Logo.png',
+      '/images/assets/Website/Desert Cafe/Desert-Cafe-Logo.png',
     ],
     businessDetails: {
       location: 'UAE',

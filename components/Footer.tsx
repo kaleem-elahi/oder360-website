@@ -18,38 +18,36 @@ export default function Footer() {
             </Link>
             <p>Transforming F&B operations into excellence across the UAE and beyond.</p>
           </div>
-          <div className="footer-links">
-            <div className="footer-column">
-              <h4>Services</h4>
-              <ul>
-                <li>
-                  <Link href="#services">Staff Management</Link>
-                </li>
-                <li>
-                  <Link href="#services">Financial Management</Link>
-                </li>
-                <li>
-                  <Link href="#services">Menu Engineering</Link>
-                </li>
-                <li>
-                  <Link href="#services">Pre-Opening Operations</Link>
-                </li>
-              </ul>
-            </div>
-            <div className="footer-column">
-              <h4>Company</h4>
-              <ul>
-                <li>
-                  <Link href="#about">About Us</Link>
-                </li>
-                <li>
-                  <Link href="#portfolio">Portfolio</Link>
-                </li>
-                <li>
-                  <Link href="#contact">Contact</Link>
-                </li>
-              </ul>
-            </div>
+          <div className="footer-column">
+            <h4>Services</h4>
+            <ul>
+              <li>
+                <Link href="#services">Staff Management</Link>
+              </li>
+              <li>
+                <Link href="#services">Financial Management</Link>
+              </li>
+              <li>
+                <Link href="#services">Menu Engineering</Link>
+              </li>
+              <li>
+                <Link href="#services">Pre-Opening Operations</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li>
+                <Link href="#about">About Us</Link>
+              </li>
+              <li>
+                <Link href="#portfolio">Portfolio</Link>
+              </li>
+              <li>
+                <Link href="#contact">Contact</Link>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="footer-bottom">

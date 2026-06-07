@@ -75,13 +75,15 @@ export default function Navigation() {
             <li>
               <button
                 className="nav-link nav-cta text-left cursor-pointer"
+                data-tooltip="Let's connect to setup your business model"
+                title="Let's connect to setup your business model"
                 onClick={(e) => {
                   e.preventDefault();
                   handleLinkClick();
                   window.dispatchEvent(new Event('open-contact-modal'));
                 }}
               >
-                Contact
+                Let&apos;s Connect 🧑‍🍳
               </button>
             </li>
           </ul>
