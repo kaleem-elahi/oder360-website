@@ -87,7 +87,6 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div className="contact-text">
-                  <h4>Phone</h4>
                   <a href="tel:+971547454416">+971 54 745 4416</a>
                 </div>
               </div>
@@ -99,7 +98,6 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div className="contact-text">
-                  <h4>Email</h4>
                   <a href="mailto:contact@oder360.com">contact@oder360.com</a>
                 </div>
               </div>
@@ -111,7 +109,6 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div className="contact-text">
-                  <h4>Location</h4>
                   <p>Abu Dhabi, UAE</p>
                 </div>
               </div>
