@@ -88,7 +88,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en-AE">
+    <html lang="en-AE" data-theme="dark">
       <head>
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
@@ -98,6 +98,17 @@ export default function RootLayout({
         <meta name="geo.placename" content="Abu Dhabi" />
         <meta name="geo.position" content="24.4539;54.3773" />
         <meta name="ICBM" content="24.4539, 54.3773" />
+        {/* Flash-prevention: apply saved theme BEFORE paint */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            try {
+              var saved = localStorage.getItem('oder360-theme');
+              var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+              var theme = saved || (prefersDark ? 'dark' : 'light');
+              document.documentElement.setAttribute('data-theme', theme);
+            } catch(e) {}
+          })();
+        `}} />
       </head>
       <body className={inter.className}>
         {/* Google tag (gtag.js) */}

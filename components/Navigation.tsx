@@ -8,6 +8,25 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [notification, setNotification] = useState<{ show: boolean; text: string }>({ show: false, text: '' })
+  const [isDark, setIsDark] = useState(true)
+
+  // Apply theme on mount (reads from localStorage to avoid flicker)
+  useEffect(() => {
+    const saved = localStorage.getItem('oder360-theme')
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const useDark = saved ? saved === 'dark' : prefersDark
+
+    setIsDark(useDark)
+    document.documentElement.setAttribute('data-theme', useDark ? 'dark' : 'light')
+  }, [])
+
+  const toggleTheme = () => {
+    const next = !isDark
+    setIsDark(next)
+    const theme = next ? 'dark' : 'light'
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('oder360-theme', theme)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,14 +106,27 @@ export default function Navigation() {
               </button>
             </li>
           </ul>
-          <div
-            className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            {/* Theme toggle */}
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {isDark ? '☀️' : '🌙'}
+            </button>
+
+            <div
+              className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
         </div>
       </nav>
@@ -109,5 +141,3 @@ export default function Navigation() {
     </>
   )
 }
-
-
