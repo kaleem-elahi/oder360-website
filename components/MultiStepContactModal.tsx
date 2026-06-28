@@ -117,13 +117,7 @@ export default function MultiStepContactModal() {
             const data = await response.json()
             if (response.ok) {
                 setIsSuccess(true)
-                // Close modal automatically shortly after success so user sees confirmation briefly
-                if (typeof window !== 'undefined') {
-                    // schedule close after 1.5s
-                    autoCloseRef.current = window.setTimeout(() => {
-                        closeModal()
-                    }, 1500)
-                }
+                // No auto-close — let user enjoy the success experience and take action
             } else {
                 setErrorMsg(data.error || 'Something went wrong')
             }
@@ -172,11 +166,87 @@ export default function MultiStepContactModal() {
             <div className="typeform-content-container">
 
                 {isSuccess ? (
-                    <div className="typeform-slide typeform-success-slide">
-                        <div className="success-icon">✓</div>
-                        <h2>Thank you, {formData.name || 'friend'}!</h2>
-                        <p>Your journey with Oder360 begins now. We will reach out to you shortly.</p>
-                        <button className="typeform-btn typeform-btn-done" onClick={closeModal}>Go back to site</button>
+                    <div className="typeform-success-immersive">
+                        {/* Animated Orb */}
+                        <div className="success-orb-wrapper">
+                            <div className="success-orb-pulse" />
+                            <div className="success-orb-pulse delay-1" />
+                            <div className="success-orb">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                            </div>
+                        </div>
+
+                        {/* Headline */}
+                        <div className="success-headline-block">
+                            <p className="success-label">You&apos;re inside the 360°</p>
+                            <h2 className="success-headline">Welcome, {formData.name?.split(' ')[0] || 'friend'}.</h2>
+                            <p className="success-sub">Your inquiry is with us. Our team will reach out within <strong>24 hours</strong> to begin your operational journey.</p>
+                        </div>
+
+                        {/* Stats Row */}
+                        <div className="success-stats">
+                            <div className="success-stat">
+                                <span className="stat-number">50<span className="stat-plus">+</span></span>
+                                <span className="stat-label">F&amp;B Brands Served</span>
+                            </div>
+                            <div className="success-stat-divider" />
+                            <div className="success-stat">
+                                <span className="stat-number">AED 20M<span className="stat-plus">+</span></span>
+                                <span className="stat-label">Revenue Optimised</span>
+                            </div>
+                            <div className="success-stat-divider" />
+                            <div className="success-stat">
+                                <span className="stat-number">98<span className="stat-plus">%</span></span>
+                                <span className="stat-label">Client Retention</span>
+                            </div>
+                        </div>
+
+                        {/* What Happens Next */}
+                        <div className="success-next-steps">
+                            <p className="success-next-label">What happens next</p>
+                            <div className="success-steps-row">
+                                <div className="success-step">
+                                    <div className="success-step-num">01</div>
+                                    <div className="success-step-text">
+                                        <strong>Review</strong>
+                                        <span>We analyse your inquiry within 24h</span>
+                                    </div>
+                                </div>
+                                <div className="success-step-arrow">→</div>
+                                <div className="success-step">
+                                    <div className="success-step-num">02</div>
+                                    <div className="success-step-text">
+                                        <strong>Discovery Call</strong>
+                                        <span>A tailored strategy session with our team</span>
+                                    </div>
+                                </div>
+                                <div className="success-step-arrow">→</div>
+                                <div className="success-step">
+                                    <div className="success-step-num">03</div>
+                                    <div className="success-step-text">
+                                        <strong>Your Roadmap</strong>
+                                        <span>A custom operational plan built for your business</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Bottom CTAs */}
+                        <div className="success-ctas">
+                            <a
+                                href="https://www.linkedin.com/in/abdulrasheed547454416"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="success-cta-btn success-cta-linkedin"
+                            >
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" /><circle cx="4" cy="4" r="2" /></svg>
+                                Follow on LinkedIn
+                            </a>
+                            <button className="success-cta-btn success-cta-explore" onClick={closeModal}>
+                                Explore our work
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                            </button>
+                        </div>
                     </div>
                 ) : (
                     <div className="typeform-slider-wrapper">
