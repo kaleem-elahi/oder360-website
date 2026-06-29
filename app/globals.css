@@ -4779,6 +4779,17 @@ html.modal-open::-webkit-scrollbar {
     color: white;
     line-height: 1;
 }
+/* Override global stat-number gradient inside success modal */
+.success-stat .stat-number {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: white;
+    background-clip: unset;
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1;
+}
 .stat-plus {
     color: var(--primary-color);
     font-size: 1.2rem;
