@@ -34,6 +34,19 @@ export default function Contact() {
           type: 'success',
         })
 
+        // Fire Google Ads conversion event on successful form submission
+        try {
+          if (typeof window !== 'undefined' && (window as any).gtag) {
+            ;(window as any).gtag('event', 'conversion', {
+              send_to: 'AW-18169896326/6ACZCInq0rkcEIa7ithD',
+              value: 1.0,
+              currency: 'INR',
+            })
+          }
+        } catch (e) {
+          // Silently ignore if gtag is not available
+        }
+
         // Reset form
         setFormData({
           name: '',

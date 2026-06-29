@@ -1,8 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // Background images that will beautifully blur behind each question
 const BG_IMAGES = [
@@ -117,6 +116,19 @@ export default function MultiStepContactModal() {
             const data = await response.json()
             if (response.ok) {
                 setIsSuccess(true)
+                // Fire Google Ads conversion event on successful form submission
+                try {
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                        ; (window as any).gtag('event', 'conversion', {
+                            send_to: 'AW-18169896326/6ACZCInq0rkcEIa7ithD',
+                            value: 1.0,
+                            currency: 'INR',
+                        })
+                    }
+                } catch (e) {
+                    console.log("ignore gtag")
+                    // Silently ignore if gtag is not available
+                }
                 // No auto-close — let user enjoy the success experience and take action
             } else {
                 setErrorMsg(data.error || 'Something went wrong')
@@ -186,7 +198,7 @@ export default function MultiStepContactModal() {
                         {/* Stats Row */}
                         <div className="success-stats">
                             <div className="success-stat">
-                                <span className="stat-number">50<span className="stat-plus">+</span></span>
+                                <span className="stat-number">15<span className="stat-plus">+</span></span>
                                 <span className="stat-label">F&amp;B Brands Served</span>
                             </div>
                             <div className="success-stat-divider" />
