@@ -126,6 +126,26 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* Click-to-call conversion tracking function */}
+        <Script id="gtag-report-conversion" strategy="afterInteractive">
+          {`
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                'send_to': 'AW-18169896326/4nIkCML3zcAcEIa7ithD',
+                'value': 1.0,
+                'currency': 'INR',
+                'event_callback': callback
+              });
+              return false;
+            }
+          `}
+        </Script>
+
         {/* Meta Pixel Code */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`

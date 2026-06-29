@@ -100,7 +100,16 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div className="contact-text">
-                  <a href="tel:+971547454416">+971 54 745 4416</a>
+                  <a
+                    href="tel:+971547454416"
+                    onClick={() => {
+                      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+                        return (window as any).gtag_report_conversion('tel:+971547454416')
+                      }
+                    }}
+                  >
+                    +971 54 745 4416
+                  </a>
                 </div>
               </div>
               <div className="contact-item">
