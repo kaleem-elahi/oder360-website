@@ -49,8 +49,9 @@ export default function MultiStepContactModal() {
             setFormData({
                 name: '', email: '', businessAge: '', serviceOfInterest: '', message: '', contactPreference: '', phone: ''
             })
-            // Lock body scroll
-            document.body.style.overflow = 'hidden'
+            // Lock body scroll and hide scrollbar track
+            document.body.classList.add('modal-open')
+            document.documentElement.classList.add('modal-open')
         }
 
         window.addEventListener('open-contact-modal', handleOpen)
@@ -68,7 +69,8 @@ export default function MultiStepContactModal() {
         }
 
         setIsOpen(false)
-        document.body.style.overflow = ''
+        document.body.classList.remove('modal-open')
+        document.documentElement.classList.remove('modal-open')
 
         // Reset modal state after it's closed so success message can be shown externally
         setTimeout(() => {

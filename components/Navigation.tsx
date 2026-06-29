@@ -95,7 +95,6 @@ export default function Navigation() {
               <button
                 className="nav-link nav-cta text-left cursor-pointer"
                 data-tooltip="Let's connect to setup your business model"
-                title="Let's connect to setup your business model"
                 onClick={(e) => {
                   e.preventDefault();
                   handleLinkClick();

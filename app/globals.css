@@ -631,23 +631,8 @@ body {
 }
 
 .nav-cta::after {
-    display: block !important;
+    display: none !important;
     content: '' !important;
-    position: absolute;
-    bottom: -9px;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    border-width: 6px;
-    border-style: solid;
-    border-color: transparent transparent rgba(18, 7, 6, 0.95) transparent;
-    width: 0;
-    height: 0;
-    background: transparent !important;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
-    z-index: 10000;
 }
 
 .nav-cta:hover {
@@ -656,8 +641,7 @@ body {
     box-shadow: 0 12px 25px rgba(255, 99, 71, 0.35);
 }
 
-.nav-cta:hover::before,
-.nav-cta:hover::after {
+.nav-cta:hover::before {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
@@ -4334,6 +4318,25 @@ body {
 }
 
 /* Typeform Contact Modal */
+/* Hide scrollbar track when modal is open */
+body.modal-open {
+    overflow: hidden;
+    scrollbar-width: none; /* Firefox */
+}
+body.modal-open::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+/* Target html element too — browsers attach the page scrollbar to html */
+html:has(body.modal-open),
+html.modal-open {
+    overflow: hidden;
+    scrollbar-width: none;
+}
+html:has(body.modal-open)::-webkit-scrollbar,
+html.modal-open::-webkit-scrollbar {
+    display: none;
+}
+
 .typeform-modal-overlay {
     position: fixed;
     inset: 0;
@@ -4342,6 +4345,8 @@ body {
     flex-direction: column;
     justify-content: center;
     background: #000;
+    overflow: hidden;
+    scrollbar-width: none;
 }
 
 .typeform-bg-img {
@@ -4410,9 +4415,8 @@ body {
     max-width: 900px;
     margin: 0 auto;
     padding: 3rem 2rem;
-    min-height: 500px;
-    max-height: 100dvh;
-    overflow-y: auto;
+    height: 100dvh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
