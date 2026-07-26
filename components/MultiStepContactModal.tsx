@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+import { useLanguage } from '@/lib/LanguageContext'
 
 // Background images that will beautifully blur behind each question
 const BG_IMAGES = [
@@ -12,17 +13,10 @@ const BG_IMAGES = [
     '/images/assets/Website/Pizzaty/restaurant-0891.jpg',
 ]
 
-const DISCUSSION_STARTERS = [
-    { label: "Full Operational Review", text: "We operate a [concept type] restaurant in [Emirate] with [number] outlet(s).\nWe are currently facing challenges in [margin control / labor efficiency / inventory management / SOP consistency].\nWe would like to request a full operational audit and improvement roadmap." },
-    { label: "Improve Profitability", text: "Our restaurant generates approximately [monthly revenue range].\nWe are experiencing pressure on margins due to food cost, labor, or overhead inefficiencies.\nWe need structured financial oversight, P&L clarity, and cost optimization support." },
-    { label: "Pre-Opening Support", text: "We are planning to launch a [concept type] restaurant in the UAE.\nWe require support with feasibility assessment, SOP development, compliance readiness, and structured pre-opening execution." },
-    { label: "Menu Optimization", text: "We would like to improve our menu profitability and pricing strategy.\nWe need margin analysis, sales mix insights, and contribution mapping to increase average check and overall revenue performance." },
-    { label: "Workforce Optimization", text: "We are looking to optimize manpower structure, KPI tracking, and staff productivity.\nOur goal is to reduce labor cost while maintaining service consistency across [number] outlet(s)." },
-    { label: "Franchise Development", text: "We are preparing for multi-location expansion and require structured franchise systems, operating manuals, and performance control frameworks to scale sustainably." },
-    { label: "Strategic Assessment", text: "We are facing operational challenges but would prefer a structured diagnostic assessment to identify key improvement areas and define a clear action roadmap." }
-]
-
 export default function MultiStepContactModal() {
+    const { t, lang } = useLanguage()
+    const m = t.modal
+
     const [isOpen, setIsOpen] = useState(false)
     const [step, setStep] = useState(0)
 
@@ -49,7 +43,6 @@ export default function MultiStepContactModal() {
             setFormData({
                 name: '', email: '', businessAge: '', serviceOfInterest: '', message: '', contactPreference: '', phone: ''
             })
-            // Lock body scroll and hide scrollbar track
             document.body.classList.add('modal-open')
             document.documentElement.classList.add('modal-open')
         }
@@ -59,12 +52,11 @@ export default function MultiStepContactModal() {
     }, [])
 
     const closeModal = () => {
-        // If the form was successfully submitted, dispatch a global event
         if (isSuccess) {
             try {
                 window.dispatchEvent(new CustomEvent('contact-success', { detail: { name: formData.name } }))
             } catch (e) {
-                // ignore in environments without CustomEvent
+                // ignore
             }
         }
 
@@ -72,7 +64,6 @@ export default function MultiStepContactModal() {
         document.body.classList.remove('modal-open')
         document.documentElement.classList.remove('modal-open')
 
-        // Reset modal state after it's closed so success message can be shown externally
         setTimeout(() => {
             setStep(0)
             setFormData({ name: '', email: '', businessAge: '', serviceOfInterest: '', message: '', contactPreference: '', phone: '' })
@@ -99,7 +90,6 @@ export default function MultiStepContactModal() {
             e.preventDefault()
             handleNext()
         } else if (e.key === 'Enter' && step !== 3) {
-            // Allow standard enter to proceed except on textarea (which is now step 3)
             e.preventDefault()
             handleNext()
         }
@@ -118,7 +108,6 @@ export default function MultiStepContactModal() {
             const data = await response.json()
             if (response.ok) {
                 setIsSuccess(true)
-                // Fire Google Ads conversion event on successful form submission
                 try {
                     if (typeof window !== 'undefined' && (window as any).gtag) {
                         ; (window as any).gtag('event', 'conversion', {
@@ -129,9 +118,7 @@ export default function MultiStepContactModal() {
                     }
                 } catch (e) {
                     console.log("ignore gtag")
-                    // Silently ignore if gtag is not available
                 }
-                // No auto-close — let user enjoy the success experience and take action
             } else {
                 setErrorMsg(data.error || 'Something went wrong')
             }
@@ -154,8 +141,6 @@ export default function MultiStepContactModal() {
 
     if (!isOpen) return null
 
-    const isFormComplete = step === 5
-
     return (
         <div className="typeform-modal-overlay">
             {/* Blurred sliding background */}
@@ -173,7 +158,7 @@ export default function MultiStepContactModal() {
                 <div className="typeform-progress-bar" style={{ width: `${((step + 1) / 6) * 100}%` }} />
             </div>
 
-            <button className="typeform-close" onClick={closeModal} aria-label="Close modal">
+            <button className="typeform-close" onClick={closeModal} aria-label={m.closeLabel}>
                 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
 
@@ -192,54 +177,54 @@ export default function MultiStepContactModal() {
 
                         {/* Headline */}
                         <div className="success-headline-block">
-                            <p className="success-label">You&apos;re inside the 360°</p>
-                            <h2 className="success-headline">Welcome, {formData.name?.split(' ')[0] || 'friend'}.</h2>
-                            <p className="success-sub">Your inquiry is with us. Our team will reach out within <strong>24 hours</strong> to begin your operational journey.</p>
+                            <p className="success-label">{m.successLabel}</p>
+                            <h2 className="success-headline">{m.successHeadline(formData.name?.split(' ')[0] || (lang === 'ar' ? 'صديقنا' : 'friend'))}</h2>
+                            <p className="success-sub">{m.successSub}</p>
                         </div>
 
                         {/* Stats Row */}
                         <div className="success-stats">
                             <div className="success-stat">
                                 <span className="stat-number">15<span className="stat-plus">+</span></span>
-                                <span className="stat-label">F&amp;B Brands Served</span>
+                                <span className="stat-label">{m.successStat1}</span>
                             </div>
                             <div className="success-stat-divider" />
                             <div className="success-stat">
                                 <span className="stat-number">AED 20M<span className="stat-plus">+</span></span>
-                                <span className="stat-label">Revenue Optimised</span>
+                                <span className="stat-label">{m.successStat2}</span>
                             </div>
                             <div className="success-stat-divider" />
                             <div className="success-stat">
                                 <span className="stat-number">98<span className="stat-plus">%</span></span>
-                                <span className="stat-label">Client Retention</span>
+                                <span className="stat-label">{m.successStat3}</span>
                             </div>
                         </div>
 
                         {/* What Happens Next */}
                         <div className="success-next-steps">
-                            <p className="success-next-label">What happens next</p>
+                            <p className="success-next-label">{m.successNextLabel}</p>
                             <div className="success-steps-row">
                                 <div className="success-step">
                                     <div className="success-step-num">01</div>
                                     <div className="success-step-text">
-                                        <strong>Review</strong>
-                                        <span>We analyse your inquiry within 24h</span>
+                                        <strong>{m.successStep1Title}</strong>
+                                        <span>{m.successStep1Sub}</span>
                                     </div>
                                 </div>
                                 <div className="success-step-arrow">→</div>
                                 <div className="success-step">
                                     <div className="success-step-num">02</div>
                                     <div className="success-step-text">
-                                        <strong>Discovery Call</strong>
-                                        <span>A tailored strategy session with our team</span>
+                                        <strong>{m.successStep2Title}</strong>
+                                        <span>{m.successStep2Sub}</span>
                                     </div>
                                 </div>
                                 <div className="success-step-arrow">→</div>
                                 <div className="success-step">
                                     <div className="success-step-num">03</div>
                                     <div className="success-step-text">
-                                        <strong>Your Roadmap</strong>
-                                        <span>A custom operational plan built for your business</span>
+                                        <strong>{m.successStep3Title}</strong>
+                                        <span>{m.successStep3Sub}</span>
                                     </div>
                                 </div>
                             </div>
@@ -254,10 +239,10 @@ export default function MultiStepContactModal() {
                                 className="success-cta-btn success-cta-linkedin"
                             >
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" /><circle cx="4" cy="4" r="2" /></svg>
-                                Follow on LinkedIn
+                                {m.successLinkedIn}
                             </a>
                             <button className="success-cta-btn success-cta-explore" onClick={closeModal}>
-                                Explore our work
+                                {m.successExplore}
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                             </button>
                         </div>
@@ -267,11 +252,11 @@ export default function MultiStepContactModal() {
                         {/* STEP 0: NAME */}
                         <div className={`typeform-slide ${step === 0 ? 'active' : step < 0 ? 'prev' : 'next'}`}>
                             <div className="typeform-question-number">1 &rarr;</div>
-                            <h2 className="typeform-title">May I have your name? *</h2>
+                            <h2 className="typeform-title">{m.step1Question}</h2>
                             <input
                                 type="text"
                                 autoFocus
-                                placeholder="Type your answer here..."
+                                placeholder={m.step1Placeholder}
                                 className="typeform-input"
                                 value={formData.name}
                                 onChange={e => setFormData({ ...formData, name: e.target.value })}
@@ -282,26 +267,26 @@ export default function MultiStepContactModal() {
                                 onClick={handleNext}
                                 disabled={!formData.name.trim()}
                             >
-                                OK ✓
+                                {m.step1Btn}
                             </button>
                         </div>
 
                         {/* STEP 1: BUSINESS AGE */}
                         <div className={`typeform-slide ${step === 1 ? 'active' : step < 1 ? 'prev' : 'next'}`}>
                             <div className="typeform-question-number">2 &rarr;</div>
-                            <h2 className="typeform-title">Nice to meet you, {formData.name}! How old is your Business?</h2>
+                            <h2 className="typeform-title">{m.step2Question(formData.name)}</h2>
                             <div className="typeform-options">
                                 <button
                                     className={`typeform-option-btn ${formData.businessAge === 'Less than 5 years' ? 'selected' : ''}`}
                                     onClick={() => { setFormData({ ...formData, businessAge: 'Less than 5 years' }); handleNext() }}
                                 >
-                                    <span className="key-hint">A</span> Less than 5 years
+                                    <span className="key-hint">A</span> {m.step2OptionA}
                                 </button>
                                 <button
                                     className={`typeform-option-btn ${formData.businessAge === 'More than 5 years' ? 'selected' : ''}`}
                                     onClick={() => { setFormData({ ...formData, businessAge: 'More than 5 years' }); handleNext() }}
                                 >
-                                    <span className="key-hint">B</span> More than 5 years
+                                    <span className="key-hint">B</span> {m.step2OptionB}
                                 </button>
                             </div>
                         </div>
@@ -309,7 +294,7 @@ export default function MultiStepContactModal() {
                         {/* STEP 2: SERVICE OF INTEREST */}
                         <div className={`typeform-slide ${step === 2 ? 'active' : step < 2 ? 'prev' : 'next'}`}>
                             <div className="typeform-question-number">3 &rarr;</div>
-                            <h2 className="typeform-title">Which service would you like to know more about...</h2>
+                            <h2 className="typeform-title">{m.step3Question}</h2>
                             <div className="service-grid">
                                 <button
                                     className={`service-card-btn ${formData.serviceOfInterest === 'Open a New Concept' ? 'selected' : ''}`}
@@ -318,7 +303,7 @@ export default function MultiStepContactModal() {
                                     <div className="service-icon">
                                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path><polygon points="12 2 15 5 9 5 12 2"></polygon></svg>
                                     </div>
-                                    <span className="service-name">Open a New Concept</span>
+                                    <span className="service-name">{lang === 'ar' ? 'افتتاح مفهوم جديد' : 'Open a New Concept'}</span>
                                 </button>
                                 <button
                                     className={`service-card-btn ${formData.serviceOfInterest === 'Account Audit (Financial Management)' ? 'selected' : ''}`}
@@ -327,7 +312,7 @@ export default function MultiStepContactModal() {
                                     <div className="service-icon">
                                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
                                     </div>
-                                    <span className="service-name">Account Audit (Financial Management)</span>
+                                    <span className="service-name">{lang === 'ar' ? 'تدقيق مالي' : 'Account Audit (Financial Management)'}</span>
                                 </button>
                                 <button
                                     className={`service-card-btn ${formData.serviceOfInterest === 'Franchise Development & Expansion' ? 'selected' : ''}`}
@@ -336,7 +321,7 @@ export default function MultiStepContactModal() {
                                     <div className="service-icon">
                                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
                                     </div>
-                                    <span className="service-name">Franchise Development & Expansion</span>
+                                    <span className="service-name">{lang === 'ar' ? 'تطوير الامتياز التجاري' : 'Franchise Development & Expansion'}</span>
                                 </button>
                                 <button
                                     className={`service-card-btn ${formData.serviceOfInterest === 'General Inquiry' ? 'selected' : ''}`}
@@ -345,7 +330,7 @@ export default function MultiStepContactModal() {
                                     <div className="service-icon">
                                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                                     </div>
-                                    <span className="service-name">General Inquiry</span>
+                                    <span className="service-name">{lang === 'ar' ? 'استفسار عام' : 'General Inquiry'}</span>
                                 </button>
                             </div>
                         </div>
@@ -353,21 +338,21 @@ export default function MultiStepContactModal() {
                         {/* STEP 3: DETAILS */}
                         <div className={`typeform-slide ${step === 3 ? 'active' : step < 3 ? 'prev' : 'next'}`}>
                             <div className="typeform-question-number">4 &rarr;</div>
-                            <h2 className="typeform-title">Please share more details about your inquiry. *</h2>
-                            <p className="typeform-subtitle">You can share the website of your company, or share the service you need for your business idea. (Ctrl+Enter to proceed)</p>
+                            <h2 className="typeform-title">{m.step4Question}</h2>
+                            <p className="typeform-subtitle">{m.step4Subtitle}</p>
 
                             <textarea
                                 className="typeform-input typeform-textarea"
-                                placeholder="Type your answer here..."
+                                placeholder={m.step4Placeholder}
                                 value={formData.message}
                                 onChange={e => setFormData({ ...formData, message: e.target.value })}
                                 onKeyDown={handleKeyDown}
                             />
 
                             <div className="discussion-starters">
-                                <p className="starters-label">Not sure what to write? Select a structured discussion starter below:</p>
+                                <p className="starters-label">{m.step4StartersLabel}</p>
                                 <div className="starters-grid">
-                                    {DISCUSSION_STARTERS.map((s, i) => (
+                                    {m.discussionStarters.map((s, i) => (
                                         <button
                                             key={i}
                                             className="starter-btn"
@@ -387,39 +372,39 @@ export default function MultiStepContactModal() {
                                 onClick={handleNext}
                                 disabled={!formData.message.trim()}
                             >
-                                OK ✓
+                                {m.step4Btn}
                             </button>
                         </div>
 
                         {/* STEP 4: CONTACT PREF */}
                         <div className={`typeform-slide ${step === 4 ? 'active' : step < 4 ? 'prev' : 'next'}`}>
                             <div className="typeform-question-number">5 &rarr;</div>
-                            <h2 className="typeform-title">What is the best way to contact you? *</h2>
+                            <h2 className="typeform-title">{m.step5Question}</h2>
                             <div className="typeform-options">
                                 <button
                                     className={`typeform-option-btn align-center ${formData.contactPreference === 'Call me' ? 'selected' : ''}`}
                                     onClick={() => { setFormData({ ...formData, contactPreference: 'Call me' }); handleNext() }}
                                 >
                                     <div className="icon-large">📞</div>
-                                    Call me
+                                    {m.step5OptionCall}
                                 </button>
                                 <button
                                     className={`typeform-option-btn align-center ${formData.contactPreference === 'Email me' ? 'selected' : ''}`}
                                     onClick={() => { setFormData({ ...formData, contactPreference: 'Email me' }); handleNext() }}
                                 >
                                     <div className="icon-large">✉️</div>
-                                    Email me
+                                    {m.step5OptionEmail}
                                 </button>
                             </div>
                         </div>
 
-                        {/* STEP 5: CONTACT DETAIL (PHONE OR EMAIL) & SUBMIT */}
+                        {/* STEP 5: CONTACT DETAIL & SUBMIT */}
                         <div className={`typeform-slide ${step === 5 ? 'active' : step < 5 ? 'prev' : 'next'}`}>
                             <div className="typeform-question-number">6 &rarr;</div>
                             <h2 className="typeform-title">
                                 {formData.contactPreference === 'Call me'
-                                    ? "Of course. What is your phone number? *"
-                                    : "Great. What is your email address? *"}
+                                    ? m.step6QuestionCall
+                                    : m.step6QuestionEmail}
                             </h2>
 
                             {formData.contactPreference === 'Call me' ? (
@@ -427,7 +412,7 @@ export default function MultiStepContactModal() {
                                     <span className="phone-prefix">🌍</span>
                                     <input
                                         type="tel"
-                                        placeholder="+971 50 123 4567"
+                                        placeholder={m.step6PlaceholderPhone}
                                         className="typeform-input phone-input"
                                         value={formData.phone}
                                         onChange={e => setFormData({ ...formData, phone: e.target.value })}
@@ -438,7 +423,7 @@ export default function MultiStepContactModal() {
                             ) : (
                                 <input
                                     type="email"
-                                    placeholder="name@example.com"
+                                    placeholder={m.step6PlaceholderEmail}
                                     className="typeform-input"
                                     value={formData.email}
                                     onChange={e => setFormData({ ...formData, email: e.target.value })}
@@ -458,7 +443,7 @@ export default function MultiStepContactModal() {
                                     (formData.contactPreference === 'Email me' && (!formData.email.trim() || !formData.email.includes('@')))
                                 }
                             >
-                                {isLoading ? 'Submitting...' : 'Submit 🎉'}
+                                {isLoading ? m.submittingBtn : m.submitBtn}
                             </button>
                         </div>
                     </div>

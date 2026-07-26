@@ -1,8 +1,12 @@
 'use client'
 
 import { FormEvent, useState } from 'react';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function Contact() {
+  const { t } = useLanguage()
+  const c = t.contact
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,7 +21,6 @@ export default function Contact() {
     setIsSubmitting(true)
 
     try {
-      // Send form data to API route
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -30,7 +33,7 @@ export default function Contact() {
 
       if (response.ok) {
         setNotification({
-          message: data.message || "Thank you! Your message has been sent. We'll get back to you soon.",
+          message: data.message || c.successMessage,
           type: 'success',
         })
 
@@ -47,31 +50,22 @@ export default function Contact() {
           // Silently ignore if gtag is not available
         }
 
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          message: '',
-        })
+        setFormData({ name: '', email: '', phone: '', message: '' })
       } else {
         setNotification({
-          message: data.error || 'Failed to send message. Please try again.',
+          message: data.error || c.errorMessage,
           type: 'error',
         })
       }
     } catch (error) {
       console.error('Error submitting form:', error)
       setNotification({
-        message: 'Failed to send message. Please try again later.',
+        message: c.errorRetry,
         type: 'error',
       })
     } finally {
       setIsSubmitting(false)
-      // Clear notification after 5 seconds
-      setTimeout(() => {
-        setNotification(null)
-      }, 5000)
+      setTimeout(() => { setNotification(null) }, 5000)
     }
   }
 
@@ -87,11 +81,8 @@ export default function Contact() {
       <div className="container">
         <div className="contact-content">
           <div className="contact-info fade-in-left">
-            <h2 className="section-title">Let&apos;s Work Together</h2>
-            <p className="contact-description">
-              Ready to transform your F&B operations? Get in touch with us to discuss how O'der360 can help
-              elevate your business in the UAE market.
-            </p>
+            <h2 className="section-title">{c.sectionTitle}</h2>
+            <p className="contact-description">{c.description}</p>
             <div className="contact-details">
               <div className="contact-item">
                 <div className="contact-icon">
@@ -108,7 +99,7 @@ export default function Contact() {
                       }
                     }}
                   >
-                    +971 54 745 4416
+                    {c.phone}
                   </a>
                 </div>
               </div>
@@ -120,7 +111,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div className="contact-text">
-                  <a href="mailto:contact@oder360.com">contact@oder360.com</a>
+                  <a href="mailto:contact@oder360.com">{c.email}</a>
                 </div>
               </div>
               <div className="contact-item">
@@ -131,7 +122,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div className="contact-text">
-                  <p>Abu Dhabi, UAE</p>
+                  <p>{c.location}</p>
                 </div>
               </div>
             </div>
@@ -148,11 +139,7 @@ export default function Contact() {
                   <circle cx="4" cy="4" r="2"></circle>
                 </svg>
               </a>
-              <a
-                href="mailto:contact@oder360.com"
-                className="social-link"
-                aria-label="Email"
-              >
+              <a href="mailto:contact@oder360.com" className="social-link" aria-label="Email">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
@@ -167,7 +154,7 @@ export default function Contact() {
                   type="text"
                   id="name"
                   name="name"
-                  placeholder="Your Name"
+                  placeholder={c.namePlaceholder}
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -178,7 +165,7 @@ export default function Contact() {
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Your Email"
+                  placeholder={c.emailPlaceholder}
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -189,7 +176,7 @@ export default function Contact() {
                   type="tel"
                   id="phone"
                   name="phone"
-                  placeholder="Your Phone Number"
+                  placeholder={c.phonePlaceholder}
                   value={formData.phone}
                   onChange={handleChange}
                 />
@@ -199,7 +186,7 @@ export default function Contact() {
                   id="message"
                   name="message"
                   rows={5}
-                  placeholder="Tell us about your project"
+                  placeholder={c.messagePlaceholder}
                   value={formData.message}
                   onChange={handleChange}
                   required
@@ -210,7 +197,7 @@ export default function Contact() {
                 className="btn btn-primary btn-full"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? c.sendingButton : c.sendButton}
               </button>
             </form>
             {notification && (
@@ -238,4 +225,3 @@ export default function Contact() {
     </section>
   )
 }
-

@@ -3,12 +3,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { useLanguage } from '@/lib/LanguageContext'
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [notification, setNotification] = useState<{ show: boolean; text: string }>({ show: false, text: '' })
   const [isDark, setIsDark] = useState(true)
+  const { lang, setLang, t } = useLanguage()
 
   // Apply theme on mount (reads from localStorage to avoid flicker)
   useEffect(() => {
@@ -28,6 +30,10 @@ export default function Navigation() {
     localStorage.setItem('oder360-theme', theme)
   }
 
+  const toggleLang = () => {
+    setLang(lang === 'en' ? 'ar' : 'en')
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100)
@@ -37,7 +43,7 @@ export default function Navigation() {
     const handleContactSuccess = (e: Event) => {
       const detail = (e as CustomEvent)?.detail || {}
       const name = detail.name ? `, ${detail.name}` : ''
-      setNotification({ show: true, text: `Message sent${name}. We will contact you shortly.` })
+      setNotification({ show: true, text: t.nav.messageSuccess.replace('.', `${name}.`) })
       setTimeout(() => setNotification({ show: false, text: '' }), 6000)
     }
     window.addEventListener('contact-success', handleContactSuccess as EventListener)
@@ -45,7 +51,7 @@ export default function Navigation() {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('contact-success', handleContactSuccess as EventListener)
     }
-  }, [])
+  }, [t])
 
   const handleLinkClick = () => {
     setIsMenuOpen(false)
@@ -68,51 +74,61 @@ export default function Navigation() {
           <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
             <li>
               <Link href="/" className="nav-link" onClick={handleLinkClick}>
-                Home
+                {t.nav.home}
               </Link>
             </li>
             <li>
               <Link href="/services" className="nav-link" onClick={handleLinkClick}>
-                Services
+                {t.nav.services}
               </Link>
             </li>
             <li>
               <Link href="/#portfolio" className="nav-link" onClick={handleLinkClick}>
-                Portfolio
+                {t.nav.portfolio}
               </Link>
             </li>
             <li>
               <Link href="/#expertise" className="nav-link" onClick={handleLinkClick}>
-                Expertise
+                {t.nav.expertise}
               </Link>
             </li>
             <li>
               <Link href="/about" className="nav-link" onClick={handleLinkClick}>
-                About
+                {t.nav.about}
               </Link>
             </li>
             <li>
               <button
                 className="nav-link nav-cta text-left cursor-pointer"
-                data-tooltip="Let's connect to setup your business model"
+                data-tooltip={t.nav.letsConnectTooltip}
                 onClick={(e) => {
                   e.preventDefault();
                   handleLinkClick();
                   window.dispatchEvent(new Event('open-contact-modal'));
                 }}
               >
-                Let&apos;s Connect 🧑‍🍳
+                {t.nav.letsConnect}
               </button>
             </li>
           </ul>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            {/* Language Toggle — Dubai style: EN | عربي */}
+            <button
+              className="lang-toggle"
+              onClick={toggleLang}
+              aria-label={lang === 'en' ? 'Switch to Arabic' : 'التبديل إلى الإنجليزية'}
+              title={lang === 'en' ? 'عربي' : 'English'}
+            >
+              {lang === 'en' ? 'عربي' : 'EN'}
+            </button>
+
             {/* Theme toggle */}
             <button
               className="theme-toggle"
               onClick={toggleTheme}
-              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-label={isDark ? t.nav.switchToLight : t.nav.switchToDark}
+              title={isDark ? t.nav.switchToLight : t.nav.switchToDark}
             >
               {isDark ? (
                 /* Sun icon */
@@ -150,7 +166,7 @@ export default function Navigation() {
       {notification.show && (
         <div style={{ position: 'fixed', top: 20, right: 20, zIndex: 1200 }}>
           <div style={{ background: '#10b981', color: 'white', padding: '12px 16px', borderRadius: 8, boxShadow: '0 6px 18px rgba(0,0,0,0.25)', minWidth: 260 }}>
-            <strong>Success</strong>
+            <strong>{lang === 'ar' ? 'تم بنجاح' : 'Success'}</strong>
             <div style={{ marginTop: 6 }}>{notification.text}</div>
           </div>
         </div>

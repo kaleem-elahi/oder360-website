@@ -1,17 +1,14 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { useLanguage } from '@/lib/LanguageContext'
 
-const stats = [
-  { number: 12, label: 'Years Experience' },
-  { number: 8, label: 'Projects Completed' },
-  { number: 4, label: 'Countries Served' },
-  { number: 100, label: '% Dedication' },
-]
+const statsNumbers = [12, 8, 4, 100]
 
 export default function Stats() {
   const [counted, setCounted] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const observerOptions = {
@@ -62,12 +59,12 @@ export default function Stats() {
     <section className="stats" ref={sectionRef}>
       <div className="container">
         <div className="stats-grid">
-          {stats.map((stat, index) => (
+          {statsNumbers.map((num, index) => (
             <div key={index} className="stat-item" data-aos="fade-up" data-delay={index * 100}>
-              <div className="stat-number" data-target={stat.number}>
+              <div className="stat-number" data-target={num}>
                 0
               </div>
-              <div className="stat-label">{stat.label}</div>
+              <div className="stat-label">{t.stats.labels[index]}</div>
             </div>
           ))}
         </div>
@@ -75,4 +72,3 @@ export default function Stats() {
     </section>
   )
 }
-

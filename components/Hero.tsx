@@ -3,8 +3,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect } from 'react'
+import { useLanguage } from '@/lib/LanguageContext'
 
 export default function Hero() {
+  const { t } = useLanguage()
+
   useEffect(() => {
     // Smooth scroll for anchor links
     const handleAnchorClick = (e: Event) => {
@@ -66,27 +69,26 @@ export default function Hero() {
         <div className="hero-text-container">
 
           <h1 className="hero-title-modern">
-            <span className="text-reveal">Transform Your</span>
-            <span className="text-reveal delay-1">F&B Concept Into a</span>
-            <span className="text-reveal highlight-gradient delay-2">Profitable Business</span>
+            <span className="text-reveal">{t.hero.titleLine1}</span>
+            <span className="text-reveal delay-1">{t.hero.titleLine2}</span>
+            <span className="text-reveal highlight-gradient delay-2">{t.hero.titleLine3}</span>
           </h1>
 
           <p className="hero-subtitle-modern fade-in-up delay-3">
-            We help investors, entrepreneurs, and food brands launch and grow restaurants,
-            food trucks, specialty cafés, kiosks, and franchise concepts
-            <span className="text-italic">“from concept development to profitable operations.”</span>
+            {t.hero.subtitle}
+            <span className="text-italic">{t.hero.subtitleItalic}</span>
           </p>
 
           <div className="hero-workflow hero-badge-modern fade-in-up delay-4">
-            <span className="workflow-item">Strategy</span>
+            <span className="workflow-item">{t.hero.workflowStrategy}</span>
             <span className="workflow-arrow">→</span>
-            <span className="workflow-item">Systems</span>
+            <span className="workflow-item">{t.hero.workflowSystems}</span>
             <span className="workflow-arrow">→</span>
-            <span className="workflow-item">Execution</span>
+            <span className="workflow-item">{t.hero.workflowExecution}</span>
           </div>
 
           <p className="hero-description-modern fade-in-up delay-5">
-            Backed by strong financial, accounting, and compliance expertise to reduce risk, control costs, and ensure sustainable growth.
+            {t.hero.description}
           </p>
 
           <div className="hero-actions fade-in-up delay-6">
@@ -98,7 +100,7 @@ export default function Hero() {
               className="btn btn-primary border-none cursor-pointer text-left"
               style={{ fontFamily: 'inherit' }}
             >
-              Start Your Model
+              {t.hero.ctaStart}
               <span className="btn-icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -106,24 +108,24 @@ export default function Hero() {
               </span>
             </button>
             <Link href="#services" className="btn-modern btn-outline-modern">
-              Explore Services
+              {t.hero.ctaExplore}
             </Link>
           </div>
 
           <div className="hero-stats-modern fade-in-up delay-7">
             <div className="stat-glass-item">
               <span className="stat-number">12+</span>
-              <span className="stat-label">Years Experience</span>
+              <span className="stat-label">{t.hero.statYearsLabel}</span>
             </div>
             <div className="divider-line"></div>
             <div className="stat-glass-item">
               <span className="stat-number">8+</span>
-              <span className="stat-label">Projects Delivered</span>
+              <span className="stat-label">{t.hero.statProjectsLabel}</span>
             </div>
             <div className="divider-line"></div>
             <div className="stat-glass-item">
               <span className="stat-number">100%</span>
-              <span className="stat-label">Client Success</span>
+              <span className="stat-label">{t.hero.statSuccessLabel}</span>
             </div>
           </div>
         </div>
@@ -140,8 +142,8 @@ export default function Hero() {
               />
               <div className="glass-overlay-card">
                 <div className="card-info">
-                  <span className="card-tag">Concept to Reality</span>
-                  <p className="card-msg">Scale Your Vision</p>
+                  <span className="card-tag">{t.hero.cardTag}</span>
+                  <p className="card-msg">{t.hero.cardMsg}</p>
                 </div>
               </div>
             </div>

@@ -1,49 +1,40 @@
+'use client'
+
 import Image from 'next/image'
+import { useLanguage } from '@/lib/LanguageContext'
 
 export default function About() {
+  const { t } = useLanguage()
+  const a = t.about
+
   return (
     <section className="about" id="about">
       <div className="container">
         <div className="about-content">
           <div className="about-text fade-in-left">
-            <h2 className="section-title">About Oder360</h2>
+            <h2 className="section-title">{a.sectionTitle}</h2>
+            <p className="about-description">{a.p1}</p>
+            <p className="about-description">{a.p2}</p>
             <p className="about-description">
-              Oder360 is a leading F&B operations consultancy founded by <strong>Abdul Rasheed</strong>,
-              an experienced Restaurant professional with 12 years of significant experience in Restaurant Operations.
-              Extensive knowledge in leading and managing operations and cost control across the UAE and Oman.
-            </p>
-            <p className="about-description">
-              Throughout my journey, I have worked on several Restaurant Openings, renovation projects, and staffing restructuring,
-              developing and maintaining full operation concerning Pre-Opening Multi-store management, brand-new concept development,
-              brand design, kitchen layout and design, interior design conceptualization, menu development, hiring, training, P&L analysis,
-              and support, monitoring financial performance, assist finance manager in review and preparation of budgets, finding new
-              locations and negotiate with landlords, Set up the appropriate supply chains for the fresh ingredients and assets.
-            </p>
-            <p className="about-description">
-              <strong>Cooking is one of my passion.</strong> The recipes I make are incredible, and they reflect my personal tastes.
-              I have worked with different types of F&B Industry: Out Door Catering, Italian Restaurants, Buffet Restaurant,
-              Fine Dining Restaurant, Latino Bar, Sports Recreational Bar, Asian Foods, All Day Dining, and Burger and Pizza
-              are my favorite QSR Concepts.
+              <strong>{a.p3.split('.')[0]}.</strong> {a.p3.split('.').slice(1).join('.').trim()}
             </p>
             <div className="about-highlights">
               <div className="highlight-item">
                 <div className="highlight-icon">✓</div>
                 <div className="highlight-text">
-                  <strong>Proven Results:</strong> Consistent history of increasing profitability up to 21% and
-                  reducing operational costs by 15%
+                  <strong>{a.highlight1Title}</strong> {a.highlight1Text}
                 </div>
               </div>
               <div className="highlight-item">
                 <div className="highlight-icon">✓</div>
                 <div className="highlight-text">
-                  <strong>Multi-Concept Expertise:</strong> Successfully managed 15+ brands across various F&B segments
+                  <strong>{a.highlight2Title}</strong> {a.highlight2Text}
                 </div>
               </div>
               <div className="highlight-item">
                 <div className="highlight-icon">✓</div>
                 <div className="highlight-text">
-                  <strong>Franchise Development:</strong> Expert in international brand expansion and market adaptation
-                  for the UAE market
+                  <strong>{a.highlight3Title}</strong> {a.highlight3Text}
                 </div>
               </div>
             </div>
@@ -66,7 +57,7 @@ export default function About() {
                 </div>
                 <div className="profile-title">
                   <h3>Abdul Rasheed</h3>
-                  <p className="profile-role">Founder & CEO</p>
+                  <p className="profile-role">{a.profileRole}</p>
                 </div>
               </div>
 
@@ -79,7 +70,7 @@ export default function About() {
                         <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
                       </svg>
                     </span>
-                    <span>Bachelor of Arts in Hotel Management</span>
+                    <span>{a.credential1}</span>
                   </div>
                   <div className="credential-tag">
                     <span className="credential-icon">
@@ -88,7 +79,7 @@ export default function About() {
                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                       </svg>
                     </span>
-                    <span>12 Years Restaurant Operations Experience</span>
+                    <span>{a.credential2}</span>
                   </div>
                   <div className="credential-tag">
                     <span className="credential-icon">
@@ -96,7 +87,7 @@ export default function About() {
                         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                       </svg>
                     </span>
-                    <span>Multi-Concept F&B Specialist</span>
+                    <span>{a.credential3}</span>
                   </div>
                 </div>
 
@@ -107,7 +98,7 @@ export default function About() {
                       <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                   </div>
-                  <span>Abu Dhabi, UAE</span>
+                  <span>{a.location}</span>
                 </div>
               </div>
 
@@ -121,4 +112,3 @@ export default function About() {
     </section>
   )
 }
-

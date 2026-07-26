@@ -5580,3 +5580,305 @@ html.modal-open::-webkit-scrollbar {
     pointer-events: none;
     z-index: 0;
 }
+
+/* ============================================================
+   ARABIC / RTL LANGUAGE SUPPORT
+   Dubai-style bilingual website conventions
+   Cairo font for Arabic text (loaded via Next.js font)
+   ============================================================ */
+
+/* ---------- Arabic font ---------- */
+[lang="ar"],
+[lang="ar"] body,
+[dir="rtl"] {
+    font-family: var(--font-cairo, 'Cairo', 'Noto Naskh Arabic', Arial, sans-serif) !important;
+    letter-spacing: 0;
+    word-spacing: 0.05em;
+}
+
+/* ---------- Language Toggle Button ---------- */
+.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border-color, rgba(255,255,255,0.2));
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    font-family: var(--font-cairo, 'Cairo', inherit);
+}
+
+.lang-toggle:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 99, 71, 0.35);
+}
+
+/* ---------- RTL Base Overrides ---------- */
+[dir="rtl"] {
+    text-align: right;
+}
+
+/* Nav */
+[dir="rtl"] .nav-container {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-menu {
+    margin-right: auto;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+[dir="rtl"] .nav-menu li {
+    text-align: right;
+}
+
+/* Flip the flex gap order on the right-side nav controls */
+[dir="rtl"] .nav-container > div:last-child {
+    flex-direction: row-reverse;
+}
+
+/* Hero */
+[dir="rtl"] .hero-content {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-text-container {
+    text-align: right;
+}
+
+[dir="rtl"] .hero-title-modern {
+    text-align: right;
+}
+
+[dir="rtl"] .hero-workflow {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-actions {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+[dir="rtl"] .hero-stats-modern {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .btn-icon {
+    transform: scaleX(-1);
+}
+
+/* About */
+[dir="rtl"] .about-content {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .about-text {
+    text-align: right;
+}
+
+[dir="rtl"] .highlight-item {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+[dir="rtl"] .highlight-text {
+    text-align: right;
+}
+
+[dir="rtl"] .profile-header {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .profile-title {
+    text-align: right;
+}
+
+[dir="rtl"] .credential-tag {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+[dir="rtl"] .profile-location {
+    flex-direction: row-reverse;
+}
+
+/* Services */
+[dir="rtl"] .section-header {
+    text-align: right;
+}
+
+[dir="rtl"] .service-card {
+    text-align: right;
+}
+
+[dir="rtl"] .service-features {
+    padding-right: 0;
+    padding-left: 0;
+    text-align: right;
+    list-style-position: inside;
+}
+
+[dir="rtl"] .service-features li::before {
+    content: '✓ ';
+}
+
+/* Expertise */
+[dir="rtl"] .expertise-item {
+    text-align: right;
+}
+
+/* Stats */
+[dir="rtl"] .stats-grid {
+    flex-direction: row-reverse;
+}
+
+/* Contact */
+[dir="rtl"] .contact-content {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .contact-info {
+    text-align: right;
+}
+
+[dir="rtl"] .contact-item {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .contact-text {
+    text-align: right;
+}
+
+[dir="rtl"] .social-links {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+[dir="rtl"] .form input,
+[dir="rtl"] .form textarea {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Footer */
+[dir="rtl"] .footer-content {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer-column {
+    text-align: right;
+}
+
+[dir="rtl"] .footer-column ul {
+    padding-right: 0;
+}
+
+[dir="rtl"] .footer-bottom {
+    text-align: center;
+}
+
+/* Modal / Typeform */
+[dir="rtl"] .typeform-content-container {
+    text-align: right;
+}
+
+[dir="rtl"] .typeform-title {
+    text-align: right;
+}
+
+[dir="rtl"] .typeform-subtitle {
+    text-align: right;
+}
+
+[dir="rtl"] .typeform-input,
+[dir="rtl"] .typeform-textarea {
+    text-align: right;
+    direction: rtl;
+}
+
+[dir="rtl"] .typeform-options {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .service-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .success-headline-block {
+    text-align: right;
+}
+
+[dir="rtl"] .success-steps-row {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .success-step {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+[dir="rtl"] .success-step-text {
+    text-align: right;
+}
+
+[dir="rtl"] .success-stats {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .success-ctas {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .discussion-starters {
+    text-align: right;
+}
+
+[dir="rtl"] .starters-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .success-cta-explore svg {
+    transform: scaleX(-1);
+}
+
+/* Notification — flip position for RTL */
+[dir="rtl"] .typeform-close {
+    left: 1.5rem;
+    right: auto;
+}
+
+[dir="rtl"] .typeform-navigation {
+    right: auto;
+    left: 1.5rem;
+}
+
+/* Logo ticker — reverse scroll direction for RTL */
+[dir="rtl"] .logo-track {
+    animation-direction: reverse;
+}
+
+/* Scroll arrow flip */
+[dir="rtl"] .workflow-arrow {
+    transform: scaleX(-1);
+    display: inline-block;
+}
+
+/* Success step arrow flip */
+[dir="rtl"] .success-step-arrow {
+    transform: scaleX(-1);
+    display: inline-block;
+}

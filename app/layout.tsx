@@ -1,10 +1,12 @@
 import MultiStepContactModal from '@/components/MultiStepContactModal'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Cairo } from 'next/font/google'
 import './globals.css'
 import Script from 'next/script'
+import { LanguageProvider } from '@/lib/LanguageContext'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const cairo = Cairo({ subsets: ['arabic', 'latin'], variable: '--font-cairo', display: 'swap' })
 
 export const metadata: Metadata = {
   title: {
@@ -88,7 +90,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en-AE" data-theme="dark">
+    <html lang="en-AE" dir="ltr" data-theme="dark">
       <head>
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
@@ -110,7 +112,8 @@ export default function RootLayout({
           })();
         `}} />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${cairo.variable} ${inter.className}`}>
+        <LanguageProvider>
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-18169896326"
@@ -171,8 +174,8 @@ export default function RootLayout({
           />
         </noscript>
 
-        {children}
-        <MultiStepContactModal />
+          {children}
+          <MultiStepContactModal />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -218,6 +221,7 @@ export default function RootLayout({
             }),
           }}
         />
+        </LanguageProvider>
       </body>
     </html>
   )

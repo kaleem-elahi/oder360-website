@@ -12,50 +12,25 @@ import {
   ScrollText,
   Store
 } from 'lucide-react'
+import { useLanguage } from '@/lib/LanguageContext'
 
-const expertiseItems = [
-  {
-    icon: <ScrollText className="w-10 h-10" />,
-    title: 'Menu Creation',
-    description: 'Development of innovative menus that balance customer appeal with profitability',
-    color: '#FF6B35'
-  },
-  {
-    icon: <Banknote className="w-10 h-10" />,
-    title: 'Cost & Budget Management',
-    description: 'Expert financial oversight and budget preparation to maximize profitability',
-    color: '#004E89'
-  },
-  {
-    icon: <Palette className="w-10 h-10" />,
-    title: 'Brand Conceptualization',
-    description: 'From concept to establishment - complete brand design and development',
-    color: '#FFB800'
-  },
-  {
-    icon: <BarChart3 className="w-10 h-10" />,
-    title: 'P&L Analysis',
-    description: 'Comprehensive profit and loss analysis to identify growth opportunities',
-    color: '#22C55E'
-  },
-  {
-    icon: <Flame className="w-10 h-10" />,
-    title: 'Secret Recipe Development',
-    description: 'Specialized in sauce recipes and pizza base development for Italian-style cuisine',
-    color: '#EF4444'
-  },
-  {
-    icon: <Store className="w-10 h-10" />,
-    title: 'Pre-Opening Operations',
-    description: 'Complete setup from kitchen layout to supply chain establishment',
-    color: '#6366F1'
-  },
+const expertiseIcons = [
+  <ScrollText className="w-10 h-10" key="scroll" />,
+  <Banknote className="w-10 h-10" key="banknote" />,
+  <Palette className="w-10 h-10" key="palette" />,
+  <BarChart3 className="w-10 h-10" key="barchart" />,
+  <Flame className="w-10 h-10" key="flame" />,
+  <Store className="w-10 h-10" key="store" />,
 ]
+
+const expertiseColors = ['#FF6B35', '#004E89', '#FFB800', '#22C55E', '#EF4444', '#6366F1']
 
 export default function Expertise() {
   const sectionRef = useRef<HTMLElement>(null)
   const scrollRef = useRef<HTMLDivElement | null>(null)
   const isPausedRef = useRef(false)
+  const { t } = useLanguage()
+  const items = t.expertise.items
 
   useEffect(() => {
     const observerOptions = {
@@ -71,11 +46,11 @@ export default function Expertise() {
       })
     }, observerOptions)
 
-    const items = sectionRef.current?.querySelectorAll('.expertise-item')
-    items?.forEach((item) => observer.observe(item))
+    const expertiseItems = sectionRef.current?.querySelectorAll('.expertise-item')
+    expertiseItems?.forEach((item) => observer.observe(item))
 
     return () => {
-      items?.forEach((item) => observer.unobserve(item))
+      expertiseItems?.forEach((item) => observer.unobserve(item))
     }
   }, [])
 
@@ -83,7 +58,7 @@ export default function Expertise() {
     const container = scrollRef.current
     if (!container) return
 
-    const speed = 0.7 // pixels per frame equivalent – slow, smooth
+    const speed = 0.7
 
     let animationFrameId: number
 
@@ -119,36 +94,28 @@ export default function Expertise() {
       <div className="expertise-bg-shape expertise-bg-shape-2"></div>
       <div className="container">
         <div className="section-header fade-in-up">
-          <h2 className="section-title">My Expertise</h2>
-          <p className="section-subtitle">Comprehensive F&B operations expertise from concept to establishment</p>
+          <h2 className="section-title">{t.expertise.sectionTitle}</h2>
+          <p className="section-subtitle">{t.expertise.sectionSubtitle}</p>
         </div>
         <div
           className="expertise-scroll"
           aria-label="Expertise cards horizontal scroller"
           ref={scrollRef}
-          onMouseEnter={() => {
-            isPausedRef.current = true
-          }}
-          onMouseLeave={() => {
-            isPausedRef.current = false
-          }}
-          onTouchStart={() => {
-            isPausedRef.current = true
-          }}
-          onTouchEnd={() => {
-            isPausedRef.current = false
-          }}
+          onMouseEnter={() => { isPausedRef.current = true }}
+          onMouseLeave={() => { isPausedRef.current = false }}
+          onTouchStart={() => { isPausedRef.current = true }}
+          onTouchEnd={() => { isPausedRef.current = false }}
         >
           <div className="expertise-grid">
-            {expertiseItems.map((item, index) => (
+            {items.map((item, index) => (
               <div
                 key={index}
                 className="expertise-item"
-                style={{ '--accent-color': item.color } as React.CSSProperties}
+                style={{ '--accent-color': expertiseColors[index] } as React.CSSProperties}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
-                <div className="expertise-bg-icon">{item.icon}</div>
+                <div className="expertise-bg-icon">{expertiseIcons[index]}</div>
                 <h3 className="expertise-title">{item.title}</h3>
                 <p className="expertise-description">{item.description}</p>
                 <div className="expertise-card-glow"></div>
@@ -160,6 +127,3 @@ export default function Expertise() {
     </section>
   )
 }
-
-
-
