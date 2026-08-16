@@ -15,9 +15,7 @@ export default function About() {
             <h2 className="section-title">{a.sectionTitle}</h2>
             <p className="about-description">{a.p1}</p>
             <p className="about-description">{a.p2}</p>
-            <p className="about-description">
-              <strong>{a.p3.split('.')[0]}.</strong> {a.p3.split('.').slice(1).join('.').trim()}
-            </p>
+            <p className="about-description">{a.p3}</p>
             <div className="about-highlights">
               <div className="highlight-item">
                 <div className="highlight-icon">✓</div>

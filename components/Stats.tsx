@@ -3,7 +3,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '@/lib/LanguageContext'
 
-const statsNumbers = [12, 8, 4, 100]
+const statsData = [
+  { number: 12, suffix: '+' },
+  { number: 8, suffix: '+' },
+  { number: 4, suffix: '+' },
+  { number: 100, suffix: '%' },
+]
 
 export default function Stats() {
   const [counted, setCounted] = useState(false)
@@ -34,9 +39,9 @@ export default function Stats() {
   }, [counted])
 
   const animateCounters = () => {
-    const statNumbers = sectionRef.current?.querySelectorAll('.stat-number')
-    statNumbers?.forEach((stat) => {
-      const target = parseInt(stat.getAttribute('data-target') || '0')
+    const statCounters = sectionRef.current?.querySelectorAll('.stat-count')
+    statCounters?.forEach((counter) => {
+      const target = parseInt(counter.getAttribute('data-target') || '0')
       const duration = 2000
       const increment = target / (duration / 16)
       let current = 0
@@ -44,10 +49,10 @@ export default function Stats() {
       const updateCounter = () => {
         current += increment
         if (current < target) {
-          stat.textContent = Math.floor(current).toString()
+          counter.textContent = Math.floor(current).toString()
           requestAnimationFrame(updateCounter)
         } else {
-          stat.textContent = target.toString()
+          counter.textContent = target.toString()
         }
       }
 
@@ -59,10 +64,11 @@ export default function Stats() {
     <section className="stats" ref={sectionRef}>
       <div className="container">
         <div className="stats-grid">
-          {statsNumbers.map((num, index) => (
+          {statsData.map(({ number, suffix }, index) => (
             <div key={index} className="stat-item" data-aos="fade-up" data-delay={index * 100}>
-              <div className="stat-number" data-target={num}>
-                0
+              <div className="stat-number">
+                <span className="stat-count" data-target={number}>0</span>
+                <span className="stat-suffix">{suffix}</span>
               </div>
               <div className="stat-label">{t.stats.labels[index]}</div>
             </div>

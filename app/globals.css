@@ -339,6 +339,15 @@ h6,
     -webkit-background-clip: border-box;
 }
 
+[data-theme="light"] .stat-count,
+[data-theme="light"] .stat-suffix {
+    color: #1a0604;
+    background: none;
+    -webkit-text-fill-color: #1a0604;
+    background-clip: border-box;
+    -webkit-background-clip: border-box;
+}
+
 [data-theme="light"] .stat-label {
     color: rgba(26, 6, 4, 0.52);
 }
@@ -606,9 +615,19 @@ h6,
    LIGHT MODE — MOBILE MENU
    ================================================================ */
 [data-theme="light"] .nav-menu.active {
-    background: rgba(255, 255, 255, 0.99);
+    background: rgba(255, 252, 250, 0.99);
     border-top: 1px solid rgba(255, 99, 71, 0.1);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* In light mode, ensure mobile nav links are dark */
+@media (max-width: 968px) {
+    [data-theme="light"] .nav-link {
+        color: rgba(45, 16, 8, 0.85);
+    }
+    [data-theme="light"] .nav-link:hover {
+        color: var(--primary-color);
+    }
 }
 
 /* ================================================================
@@ -1065,7 +1084,6 @@ body {
     color: white;
     font-weight: 800;
     letter-spacing: -2px;
-    font-family: sans-serif;
 }
 
 .text-reveal {
@@ -1404,7 +1422,6 @@ body {
     color: white;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-family: sans-serif;
 }
 
 .workflow-arrow {
@@ -1783,7 +1800,6 @@ body {
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--text-primary);
-    font-family: sans-serif;
 }
 
 .service-description {
@@ -1853,6 +1869,23 @@ body {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.1em;
+}
+
+.stat-count {
+    display: inline;
+}
+
+.stat-suffix {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
     background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.8));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -2312,7 +2345,7 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
-    opacity: 1;
+    opacity: 0;
     transform: translateY(40px);
     scroll-snap-align: start;
     scroll-snap-stop: always;
@@ -2941,13 +2974,13 @@ body {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(18, 7, 6, 0.97);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         width: 100%;
         text-align: center;
         transition: 0.3s;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         padding: 2rem 0;
         gap: 1.5rem;
     }
@@ -3297,7 +3330,10 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    transition: left 0.5s ease;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+    transition: left 0.6s ease;
+    pointer-events: none;
+    z-index: 2;
 }
 
 .service-card:hover::before {
@@ -5605,9 +5641,9 @@ html.modal-open::-webkit-scrollbar {
     height: 32px;
     padding: 0 10px;
     border-radius: 20px;
-    border: 1.5px solid var(--border-color, rgba(255,255,255,0.2));
-    background: transparent;
-    color: var(--text-primary);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -5615,6 +5651,7 @@ html.modal-open::-webkit-scrollbar {
     transition: all 0.25s ease;
     white-space: nowrap;
     font-family: var(--font-cairo, 'Cairo', inherit);
+    backdrop-filter: blur(8px);
 }
 
 .lang-toggle:hover {
@@ -5623,6 +5660,18 @@ html.modal-open::-webkit-scrollbar {
     color: white;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(255, 99, 71, 0.35);
+}
+
+[data-theme="light"] .lang-toggle {
+    border-color: rgba(45, 16, 8, 0.2);
+    background: rgba(45, 16, 8, 0.06);
+    color: rgba(45, 16, 8, 0.8);
+}
+
+[data-theme="light"] .lang-toggle:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
 }
 
 /* ---------- RTL Base Overrides ---------- */
@@ -5718,7 +5767,8 @@ html.modal-open::-webkit-scrollbar {
 
 /* Services */
 [dir="rtl"] .section-header {
-    text-align: right;
+    /* Keep section headers centered in RTL — same as LTR */
+    text-align: center;
 }
 
 [dir="rtl"] .service-card {
@@ -5772,6 +5822,11 @@ html.modal-open::-webkit-scrollbar {
 [dir="rtl"] .form textarea {
     text-align: right;
     direction: rtl;
+}
+
+/* Flip credential-tag hover translateX for RTL */
+[dir="rtl"] .credential-tag:hover {
+    transform: translateX(-5px);
 }
 
 /* Footer */
