@@ -116,6 +116,7 @@ export interface Translations {
     link_about: string
     link_portfolio: string
     link_contact: string
+    link_privacy: string
     copyright: string
   }
 
@@ -297,6 +298,7 @@ const en: Translations = {
     link_about: 'About Us',
     link_portfolio: 'Portfolio',
     link_contact: 'Contact',
+    link_privacy: 'Privacy Policy',
     copyright: `© ${new Date().getFullYear()} Oder360. All rights reserved.`,
   },
 
@@ -485,6 +487,7 @@ const ar: Translations = {
     link_about: 'من نحن',
     link_portfolio: 'أعمالنا',
     link_contact: 'تواصل معنا',
+    link_privacy: 'سياسة الخصوصية',
     copyright: `© ${new Date().getFullYear()} أودر360. جميع الحقوق محفوظة.`,
   },
 

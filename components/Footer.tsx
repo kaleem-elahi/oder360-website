@@ -36,14 +36,18 @@ export default function Footer() {
           <div className="footer-column">
             <h4>{f.companyHeading}</h4>
             <ul>
-              <li><Link href="#about">{f.link_about}</Link></li>
-              <li><Link href="#portfolio">{f.link_portfolio}</Link></li>
-              <li><Link href="#contact">{f.link_contact}</Link></li>
+              <li><Link href="/#about">{f.link_about}</Link></li>
+              <li><Link href="/#portfolio">{f.link_portfolio}</Link></li>
+              <li><Link href="/#contact">{f.link_contact}</Link></li>
+              <li><Link href="/privacy-policy">{f.link_privacy}</Link></li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
           <p>{f.copyright}</p>
+          <div className="footer-legal">
+            <Link href="/privacy-policy">{f.link_privacy}</Link>
+          </div>
         </div>
       </div>
     </footer>
