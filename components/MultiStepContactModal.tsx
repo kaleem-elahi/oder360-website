@@ -116,8 +116,11 @@ export default function MultiStepContactModal() {
                             currency: 'INR',
                         })
                     }
+                    if (typeof window !== 'undefined' && (window as any).fbq) {
+                        ; (window as any).fbq('track', 'Lead')
+                    }
                 } catch (e) {
-                    console.log("ignore gtag")
+                    console.log("ignore tags")
                 }
             } else {
                 setErrorMsg(data.error || 'Something went wrong')

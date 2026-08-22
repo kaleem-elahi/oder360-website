@@ -37,7 +37,7 @@ export default function Contact() {
           type: 'success',
         })
 
-        // Fire Google Ads conversion event on successful form submission
+        // Fire Google Ads & Meta Pixel conversion event on successful form submission
         try {
           if (typeof window !== 'undefined' && (window as any).gtag) {
             ;(window as any).gtag('event', 'conversion', {
@@ -46,8 +46,11 @@ export default function Contact() {
               currency: 'INR',
             })
           }
+          if (typeof window !== 'undefined' && (window as any).fbq) {
+            ;(window as any).fbq('track', 'Lead')
+          }
         } catch (e) {
-          // Silently ignore if gtag is not available
+          // Silently ignore if tags are not available
         }
 
         setFormData({ name: '', email: '', phone: '', message: '' })
@@ -94,6 +97,9 @@ export default function Contact() {
                   <a
                     href="tel:+971547454416"
                     onClick={() => {
+                      if (typeof window !== 'undefined' && (window as any).fbq) {
+                        ;(window as any).fbq('track', 'Contact')
+                      }
                       if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
                         return (window as any).gtag_report_conversion('tel:+971547454416')
                       }
