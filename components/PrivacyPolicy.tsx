@@ -18,21 +18,21 @@ export default function PrivacyPolicy() {
   }
 
   return (
-    <div className="privacy-page-wrapper" style={{ padding: '6rem 0 4rem 0', color: 'var(--text-color, #ffffff)' }}>
+    <div className="privacy-page-wrapper" style={{ padding: '6rem 0 4rem 0', color: 'var(--text-primary)' }}>
       <div className="container" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 1.5rem' }}>
         
         {/* Header Hero Card */}
         <div 
           className="privacy-header-card"
           style={{
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
+            background: 'var(--bg-card)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            border: '1px solid var(--border-card)',
             borderRadius: '24px',
             padding: '2.5rem',
             marginBottom: '2.5rem',
-            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+            boxShadow: 'var(--shadow-md)',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
@@ -47,11 +47,11 @@ export default function PrivacyPolicy() {
             }}>
               {isAr ? 'وثيقة رسمية' : 'Legal Compliance'}
             </span>
-            <span style={{ color: 'rgba(255, 255, 255, 0.5)', fontSize: '0.85rem' }}>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
               {isAr ? 'تاريخ النفاذ: 15 أغسطس 2026' : 'Effective Date: 15 August 2026'}
             </span>
-            <span style={{ color: 'rgba(255, 255, 255, 0.3)' }}>•</span>
-            <span style={{ color: 'rgba(255, 255, 255, 0.5)', fontSize: '0.85rem' }}>
+            <span style={{ color: 'var(--text-secondary)' }}>•</span>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
               {isAr ? 'آخر تحديث: 15 أغسطس 2026' : 'Last Updated: 15 August 2026'}
             </span>
           </div>
@@ -61,9 +61,7 @@ export default function PrivacyPolicy() {
             fontWeight: '800',
             lineHeight: '1.2',
             marginBottom: '1rem',
-            background: 'linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
+            color: 'var(--text-primary)'
           }}>
             {isAr ? 'سياسة الخصوصية' : 'PRIVACY POLICY'}
           </h1>
@@ -71,7 +69,7 @@ export default function PrivacyPolicy() {
           <p style={{
             fontSize: '1.1rem',
             lineHeight: '1.7',
-            color: 'rgba(255, 255, 255, 0.85)',
+            color: 'var(--text-secondary)',
             maxWidth: '900px',
             marginBottom: '1.5rem'
           }}>
@@ -85,16 +83,16 @@ export default function PrivacyPolicy() {
             gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
             gap: '1rem',
             paddingTop: '1.25rem',
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)'
+            borderTop: '1px solid var(--border-card)'
           }}>
             <div>
-              <span style={{ display: 'block', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.5)' }}>
+              <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
                 {isAr ? 'مسؤول البيانات' : 'Data Controller'}
               </span>
-              <strong style={{ color: '#ffffff', fontSize: '0.95rem' }}>ŌDER THREE SIXTY (Abu Dhabi, UAE)</strong>
+              <strong style={{ color: 'var(--text-primary)', fontSize: '0.95rem' }}>ŌDER THREE SIXTY (Abu Dhabi, UAE)</strong>
             </div>
             <div>
-              <span style={{ display: 'block', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.5)' }}>
+              <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
                 {isAr ? 'البريد الإلكتروني للخصوصية' : 'Privacy Email'}
               </span>
               <a href="mailto:contact@oder360.com" style={{ color: '#007AFF', textDecoration: 'none', fontWeight: '600' }}>
@@ -102,10 +100,10 @@ export default function PrivacyPolicy() {
               </a>
             </div>
             <div>
-              <span style={{ display: 'block', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.5)' }}>
+              <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
                 {isAr ? 'التشريعات المطبقة' : 'Governing Laws'}
               </span>
-              <span style={{ color: '#ffffff', fontSize: '0.9rem' }}>UAE PDPL, GDPR & CCPA</span>
+              <span style={{ color: 'var(--text-primary)', fontSize: '0.9rem' }}>UAE PDPL, GDPR & CCPA</span>
             </div>
           </div>
         </div>
@@ -508,7 +506,7 @@ export default function PrivacyPolicy() {
               <p style={{ ...paragraphStyle, marginTop: '1rem' }}>
                 We may request reasonable information to verify identity before fulfilling a rights request.
               </p>
-              <p style={{ ...paragraphStyle, color: 'rgba(255, 255, 255, 0.5)', fontSize: '0.85rem', marginTop: '1.5rem', marginBottom: 0 }}>
+              <p style={{ ...paragraphStyle, color: 'var(--text-secondary)', fontSize: '0.85rem', marginTop: '1.5rem', marginBottom: 0 }}>
                 © {new Date().getFullYear()} ŌDER360. All Rights Reserved.
               </p>
             </section>
@@ -522,13 +520,13 @@ export default function PrivacyPolicy() {
 }
 
 const sectionCardStyle: React.CSSProperties = {
-  background: 'rgba(255, 255, 255, 0.03)',
+  background: 'var(--bg-card)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
-  border: '1px solid rgba(255, 255, 255, 0.08)',
+  border: '1px solid var(--border-card)',
   borderRadius: '20px',
   padding: '2rem',
-  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
+  boxShadow: 'var(--shadow-sm)',
   transition: 'all 0.3s ease',
 }
 
@@ -536,8 +534,8 @@ const sectionTitleStyle: React.CSSProperties = {
   fontSize: '1.5rem',
   fontWeight: '700',
   marginBottom: '1rem',
-  color: '#ffffff',
-  borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+  color: 'var(--text-primary)',
+  borderBottom: '1px solid var(--border-card)',
   paddingBottom: '0.5rem'
 }
 
@@ -546,20 +544,20 @@ const subTitleStyle: React.CSSProperties = {
   fontWeight: '600',
   marginTop: '1.25rem',
   marginBottom: '0.75rem',
-  color: 'rgba(255, 255, 255, 0.95)'
+  color: 'var(--text-primary)'
 }
 
 const paragraphStyle: React.CSSProperties = {
   fontSize: '1rem',
   lineHeight: '1.7',
-  color: 'rgba(255, 255, 255, 0.8)',
+  color: 'var(--text-secondary)',
   marginBottom: '0.85rem'
 }
 
 const listStyle: React.CSSProperties = {
   fontSize: '0.98rem',
   lineHeight: '1.8',
-  color: 'rgba(255, 255, 255, 0.8)',
+  color: 'var(--text-secondary)',
   paddingLeft: '1.5rem',
   marginBottom: '1rem'
 }
@@ -567,17 +565,17 @@ const listStyle: React.CSSProperties = {
 const numberedListStyle: React.CSSProperties = {
   fontSize: '0.98rem',
   lineHeight: '1.8',
-  color: 'rgba(255, 255, 255, 0.8)',
+  color: 'var(--text-secondary)',
   paddingLeft: '1.5rem',
   marginBottom: '1rem'
 }
 
 const infoBoxStyle: React.CSSProperties = {
-  background: 'rgba(0, 122, 255, 0.08)',
-  border: '1px solid rgba(0, 122, 255, 0.2)',
+  background: 'var(--bg-card)',
+  border: '1px solid var(--border-card)',
   borderRadius: '12px',
   padding: '1.25rem',
-  color: 'rgba(255, 255, 255, 0.9)',
+  color: 'var(--text-primary)',
   fontSize: '0.95rem',
   lineHeight: '1.6'
 }
