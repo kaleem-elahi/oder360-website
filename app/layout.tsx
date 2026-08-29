@@ -1,4 +1,5 @@
 import MultiStepContactModal from '@/components/MultiStepContactModal'
+import { AnalyticsTracker } from '@/components/AnalyticsTracker'
 import type { Metadata } from 'next'
 import { Inter, Cairo } from 'next/font/google'
 import './globals.css'
@@ -175,6 +176,7 @@ export default function RootLayout({
 
           {children}
           <MultiStepContactModal />
+          <AnalyticsTracker />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

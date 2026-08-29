@@ -1,0 +1,17 @@
+{
+  "visits": [
+    {
+      "path": "/",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+      "id": "1aeb6cfc-9f3b-4931-bd0f-a3846bf57f46",
+      "timestamp": "2026-08-29T07:27:26.527Z"
+    },
+    {
+      "path": "/",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+      "id": "fcfe3079-ed45-41f2-a8e7-a1572e818d68",
+      "timestamp": "2026-08-29T07:27:26.528Z"
+    }
+  ],
+  "submissions": []
+}

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { addSubmission } from '@/lib/db'
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,6 +32,22 @@ export async function POST(request: NextRequest) {
         { error: 'Email service is not configured. Please contact the administrator.' },
         { status: 500 }
       )
+    }
+
+    // Save submission to local DB
+    try {
+      addSubmission({
+        name: name || '',
+        email: email || '',
+        phone: phone || '',
+        message: message || '',
+        businessAge: businessAge || '',
+        serviceOfInterest: serviceOfInterest || '',
+        contactPreference: contactPreference || ''
+      })
+    } catch (dbErr) {
+      console.error('Failed to save submission to DB:', dbErr)
+      // Continue even if DB save fails to not block email
     }
 
     // Recipient email
