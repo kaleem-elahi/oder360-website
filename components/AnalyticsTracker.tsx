@@ -9,8 +9,8 @@ export function AnalyticsTracker() {
   useEffect(() => {
     if (!pathname || pathname.startsWith('/admin')) return;
 
-    // Make an API call to track the page visit
-    fetch('/api/analytics/track', {
+    // Make an API call to track the page visit (using /api/event to bypass basic adblockers)
+    fetch('/api/event', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

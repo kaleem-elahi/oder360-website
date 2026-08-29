@@ -46,7 +46,13 @@ function ensureDbExists() {
 function readDb(): DbSchema {
   ensureDbExists()
   const data = fs.readFileSync(dbFilePath, 'utf-8')
-  return JSON.parse(data)
+  const parsed = JSON.parse(data)
+  
+  // Ensure arrays exist in case of old schema
+  if (!parsed.visits) parsed.visits = []
+  if (!parsed.submissions) parsed.submissions = []
+  
+  return parsed
 }
 
 function writeDb(data: DbSchema) {
