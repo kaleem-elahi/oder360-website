@@ -160,6 +160,51 @@ export default function AdminPage() {
           </div>
         </div>
 
+        {/* Visitors Table */}
+        <div style={{ background: '#fff', borderRadius: '16px', boxShadow: '0 4px 6px rgba(0,0,0,0.02)', overflow: 'hidden', marginTop: '3rem' }}>
+          <div style={{ padding: '1.5rem', borderBottom: '1px solid #e5e7eb' }}>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#111827' }}>Recent Visitors</h2>
+          </div>
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+              <thead style={{ background: '#f9fafb' }}>
+                <tr>
+                  <th style={{ padding: '1rem 1.5rem', fontSize: '0.875rem', fontWeight: '600', color: '#374151', borderBottom: '1px solid #e5e7eb' }}>Date</th>
+                  <th style={{ padding: '1rem 1.5rem', fontSize: '0.875rem', fontWeight: '600', color: '#374151', borderBottom: '1px solid #e5e7eb' }}>Path</th>
+                  <th style={{ padding: '1rem 1.5rem', fontSize: '0.875rem', fontWeight: '600', color: '#374151', borderBottom: '1px solid #e5e7eb' }}>Country</th>
+                  <th style={{ padding: '1rem 1.5rem', fontSize: '0.875rem', fontWeight: '600', color: '#374151', borderBottom: '1px solid #e5e7eb' }}>Source (Referrer)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {visits.length === 0 ? (
+                  <tr>
+                    <td colSpan={4} style={{ padding: '2rem', textAlign: 'center', color: '#6b7280' }}>No visits yet</td>
+                  </tr>
+                ) : (
+                  visits.slice(0, 20).map((v: any) => {
+                    let source = v.referrer || 'Direct';
+                    if (source.startsWith('http')) {
+                      try { source = new URL(source).hostname; } catch(e) {}
+                    }
+                    return (
+                      <tr key={v.id} style={{ borderBottom: '1px solid #e5e7eb' }}>
+                        <td style={{ padding: '1rem 1.5rem', fontSize: '0.875rem', color: '#4b5563', whiteSpace: 'nowrap' }}>
+                          {new Date(v.timestamp).toLocaleString()}
+                        </td>
+                        <td style={{ padding: '1rem 1.5rem', fontSize: '0.875rem', color: '#111827', fontWeight: '500' }}>{v.path}</td>
+                        <td style={{ padding: '1rem 1.5rem', fontSize: '0.875rem', color: '#4b5563' }}>{v.country || 'Unknown'}</td>
+                        <td style={{ padding: '1rem 1.5rem', fontSize: '0.875rem', color: '#4b5563', maxWidth: '300px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={v.referrer}>
+                          {source}
+                        </td>
+                      </tr>
+                    )
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
     </div>
   )
