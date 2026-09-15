@@ -3,6 +3,14 @@
 import { FormEvent, useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+    fbq?: (...args: any[]) => void;
+    gtag_report_conversion?: (url: string) => void;
+  }
+}
+
 export default function Contact() {
   const { t } = useLanguage()
   const c = t.contact
@@ -39,15 +47,13 @@ export default function Contact() {
 
         // Fire Google Ads & Meta Pixel conversion event on successful form submission
         try {
-          if (typeof window !== 'undefined' && (window as any).gtag) {
-            ;(window as any).gtag('event', 'conversion', {
-              send_to: 'AW-18169896326/6ACZCInq0rkcEIa7ithD',
-              value: 1.0,
-              currency: 'INR',
+          if (typeof window !== 'undefined' && window.gtag) {
+            window.gtag('event', 'conversion', {
+              send_to: 'AW-18169896326/jqbOCMbqm_gcEIa7itbD'
             })
           }
-          if (typeof window !== 'undefined' && (window as any).fbq) {
-            ;(window as any).fbq('track', 'Lead')
+          if (typeof window !== 'undefined' && window.fbq) {
+            window.fbq('track', 'Lead')
           }
         } catch (e) {
           // Silently ignore if tags are not available
@@ -97,11 +103,11 @@ export default function Contact() {
                   <a
                     href="tel:+971547454416"
                     onClick={() => {
-                      if (typeof window !== 'undefined' && (window as any).fbq) {
-                        ;(window as any).fbq('track', 'Contact')
+                      if (typeof window !== 'undefined' && window.fbq) {
+                        window.fbq('track', 'Contact')
                       }
-                      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-                        return (window as any).gtag_report_conversion('tel:+971547454416')
+                      if (typeof window !== 'undefined' && window.gtag_report_conversion) {
+                        return window.gtag_report_conversion('tel:+971547454416')
                       }
                     }}
                   >

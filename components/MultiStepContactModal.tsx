@@ -4,6 +4,13 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '@/lib/LanguageContext'
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+    fbq?: (...args: any[]) => void;
+  }
+}
+
 // Background images that will beautifully blur behind each question
 const BG_IMAGES = [
     '/images/assets/Website/Capsica/pizza.jpg',
@@ -109,15 +116,13 @@ export default function MultiStepContactModal() {
             if (response.ok) {
                 setIsSuccess(true)
                 try {
-                    if (typeof window !== 'undefined' && (window as any).gtag) {
-                        ; (window as any).gtag('event', 'conversion', {
-                            send_to: 'AW-18169896326/6ACZCInq0rkcEIa7ithD',
-                            value: 1.0,
-                            currency: 'INR',
+                    if (typeof window !== 'undefined' && window.gtag) {
+                        window.gtag('event', 'conversion', {
+                            send_to: 'AW-18169896326/jqbOCMbqm_gcEIa7itbD'
                         })
                     }
-                    if (typeof window !== 'undefined' && (window as any).fbq) {
-                        ; (window as any).fbq('track', 'Lead')
+                    if (typeof window !== 'undefined' && window.fbq) {
+                        window.fbq('track', 'Lead')
                     }
                 } catch (e) {
                     console.log("ignore tags")
