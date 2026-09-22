@@ -2,6 +2,22 @@
   "visits": [
     {
       "path": "/",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      "referrer": "",
+      "country": "Unknown",
+      "id": "e45bd55b-0457-44f9-9b9c-94c8fae8316f",
+      "timestamp": "2026-09-22T14:56:22.957Z"
+    },
+    {
+      "path": "/",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      "referrer": "",
+      "country": "Unknown",
+      "id": "e33debd7-d238-409a-ba18-98ffc668f610",
+      "timestamp": "2026-09-22T14:56:22.950Z"
+    },
+    {
+      "path": "/",
       "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
       "referrer": "",
       "country": "Unknown",

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/favicon.png',
-    apple: '/favicon.png',
+    apple: '/apple-touch-icon.png',
   },
   description: '12 years of Restaurant Operations experience. Expert in menu creation, cost management, brand conceptualization, P&L analysis, and secret recipe development. Projects: Cafe Rashed Ali Pro, Capsica, Gemello, Desert Cafe Suwaiq.',
   keywords: [
@@ -41,14 +41,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://oder360.ae'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://oder360.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_AE',
-    url: 'https://oder360.ae',
+    url: 'https://oder360.com',
     siteName: 'Oder360',
     title: 'Oder360 - F&B Operations Excellence for UAE Brand Managers',
     description: 'Leading F&B operations consultancy in UAE. Expert services for brand managers with proven track record of increasing profitability and operational efficiency.',
@@ -204,9 +204,9 @@ export default function RootLayout({
               '@type': 'ProfessionalService',
               name: 'Oder360',
               description: 'Leading F&B operations consultancy in UAE specializing in restaurant management, staff management, financial oversight, and franchise development.',
-              url: 'https://oder360.ae',
-              logo: 'https://oder360.ae/logo.png',
-              image: 'https://oder360.ae/og-image.jpg',
+              url: 'https://oder360.com',
+              logo: 'https://oder360.com/logo.png',
+              image: 'https://oder360.com/og-image.jpg',
               telephone: '+971547454416',
               email: 'contact@oder360.com',
               address: {

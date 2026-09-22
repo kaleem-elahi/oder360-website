@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://oder360.ae'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://oder360.com'
 
   return [
     {
