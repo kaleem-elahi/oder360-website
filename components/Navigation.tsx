@@ -97,7 +97,7 @@ export default function Navigation() {
                 {t.nav.about}
               </Link>
             </li>
-            <li>
+            <li className="nav-cta-mobile-item">
               <button
                 className="nav-link nav-cta text-left cursor-pointer"
                 data-tooltip={t.nav.letsConnectTooltip}
@@ -112,7 +112,18 @@ export default function Navigation() {
             </li>
           </ul>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div className="nav-actions">
+            <button
+              className="nav-cta nav-cta-desktop cursor-pointer"
+              data-tooltip={t.nav.letsConnectTooltip}
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick();
+                window.dispatchEvent(new Event('open-contact-modal'));
+              }}
+            >
+              {t.nav.letsConnect}
+            </button>
             {/* Language Toggle — Dubai style: EN | عربي */}
             <button
               className="lang-toggle"

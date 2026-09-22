@@ -1,13 +1,28 @@
 import MultiStepContactModal from '@/components/MultiStepContactModal'
 import { AnalyticsTracker } from '@/components/AnalyticsTracker'
 import type { Metadata } from 'next'
-import { Inter, Cairo } from 'next/font/google'
+import { Plus_Jakarta_Sans, Playfair_Display, Cairo } from 'next/font/google'
 import './globals.css'
 import Script from 'next/script'
 import { LanguageProvider } from '@/lib/LanguageContext'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const cairo = Cairo({ subsets: ['arabic', 'latin'], variable: '--font-cairo', display: 'swap' })
+const sans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+})
+
+const serif = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+})
+
+const cairo = Cairo({
+  subsets: ['arabic', 'latin'],
+  variable: '--font-cairo',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -147,7 +162,7 @@ export default function RootLayout({
           />
         </noscript>
       </head>
-      <body className={`${inter.variable} ${cairo.variable} ${inter.className}`}>
+      <body className={`${sans.variable} ${serif.variable} ${cairo.variable} ${sans.className}`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 

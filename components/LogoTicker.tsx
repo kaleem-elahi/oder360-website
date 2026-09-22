@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '@/lib/LanguageContext';
 
 const logos = [
     { name: 'Hael', src: '/images/assets/Website/Hael/Hael-Logo.png' },
@@ -16,6 +17,7 @@ const logos = [
 ]
 
 export default function LogoTicker() {
+    const { lang } = useLanguage();
     const sectionRef = useRef<HTMLElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
 
@@ -109,8 +111,12 @@ export default function LogoTicker() {
         <section className="logo-ticker" ref={sectionRef}>
             <div className="container">
                 <div className="ticker-header fade-in-up">
-                    <span className="ticker-badge">Trusted Partners</span>
-                    <h2 className="ticker-title">Brands We've Empowered</h2>
+                    <span className="ticker-badge">
+                        {lang === 'ar' ? 'شركاء النجاح المعتمدون' : 'TRUSTED GCC PARTNERS'}
+                    </span>
+                    <h2 className="ticker-title">
+                        {lang === 'ar' ? 'علامات تجارية تم تمكينها في قطاع المطاعم' : "Brands We've Empowered Across UAE & Region"}
+                    </h2>
                 </div>
             </div>
             <div 
